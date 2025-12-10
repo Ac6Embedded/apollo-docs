@@ -1,0 +1,53 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  /* Apollo primary blue */
+  --ifm-color-primary: #5da0ce;
+  --ifm-color-primary-dark: #4f89b0;
+  --ifm-color-primary-darker: #417195;
+  --ifm-color-primary-darkest: #30526a;
+  --ifm-color-primary-light: #73add4;
+  --ifm-color-primary-lighter: #89bcdc;
+  --ifm-color-primary-lightest: #a3cbe3;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  /* Softer variant of the same blue for dark mode */
+  --ifm-color-primary: #5da0ce;
+  --ifm-color-primary-dark: #4a82a8;
+  --ifm-color-primary-darker: #3a6785;
+  --ifm-color-primary-darkest: #274557;
+  --ifm-color-primary-light: #7bb3d7;
+  --ifm-color-primary-lighter: #97c6df;
+  --ifm-color-primary-lightest: #b3d7e7;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Fixed sizing for Mermaid diagrams */
+.diagram {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.diagram--scope .mermaid,
+.diagram--scope .mermaid svg {
+  width: 640px !important;
+  height: 400px !important;
+  max-width: none !important;
+}
+
+/* Ensure SVG scales consistently and text remains readable */
+.mermaid svg {
+  display: block;
+  height: auto;
+}

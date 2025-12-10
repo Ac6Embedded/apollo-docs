@@ -1,0 +1,14 @@
+{
+  "title": {
+    "message": "Apollo",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Apollo Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Security": {
+    "message": "Security",
+    "description": "Navbar item with label Security"
+  }
+}

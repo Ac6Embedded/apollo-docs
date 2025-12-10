@@ -1,0 +1,22 @@
+{
+  "title": {
+    "message": "Apollo",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Logo Apollo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Security": {
+    "message": "Sécurité",
+    "description": "Navbar item with label Security"
+  },
+  "item.label.RTOS": {
+    "message": "RTOS",
+    "description": "Navbar item with label RTOS"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}
