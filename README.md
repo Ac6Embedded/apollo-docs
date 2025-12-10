@@ -1,6 +1,6 @@
 # AC6 Apollo Docs
 
-AC6 Apollo Docs is the official documentation site for AC6, built with Docusaurus 3. It centralizes AC6 training and product guidance, including security material and embedded/RTOS topics — all under the Apollo “Embedded learning space” umbrella.
+AC6 Apollo Docs is the official documentation site for AC6, built with Docusaurus 3. It centralizes AC6 training and product guidance, including security material and embedded/RTOS topics
 
 Site: https://apollo.ac6-training.com
 
