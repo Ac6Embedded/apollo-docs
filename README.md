@@ -1,6 +1,11 @@
 # AC6 Apollo Docs
 
-AC6 Apollo Docs is the official documentation site for AC6, built with Docusaurus 3. It centralizes AC6 training and product guidance, including security material and embedded/RTOS topics
+AC6 Apollo Docs is the official documentation site for AC6, built with Docusaurus 3. It centralizes AC6 training and product guidance across multiple tracks:
+
+- Security (CRA, secure boot, vendor-specific guides)
+- RTOS (determinism, isolation, integration patterns)
+- CPUs (architecture fundamentals for embedded)
+- Linux (boot, device trees, hardening, diagnostics)
 
 Site: https://apollo.ac6-training.com
 
@@ -28,7 +33,7 @@ yarn
 yarn start
 ```
 
-Starts the dev server and opens the site. Edits hot‑reload without restarting.
+Starts the dev server and opens the site. Edits hot-reload without restarting.
 
 ## Build
 
@@ -66,7 +71,7 @@ Deploy builds the site and pushes it to the `gh-pages` branch. The site is also 
 
 ## Internationalization
 
-The site ships with multiple locales (EN, FR, DE, ES, PT, SV, DA, NB). Update translations with:
+The site currently ships with English (`en`), French (`fr`), and Swedish (`sv`). Update translation sources with:
 
 ```powershell
 yarn write-translations

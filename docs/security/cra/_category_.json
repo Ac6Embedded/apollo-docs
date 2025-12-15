@@ -1,5 +1,9 @@
 {
   "label": "CRA (Cyber Resilience Act)",
   "position": 2,
-  "collapsed": false
+  "collapsed": false,
+  "link": {
+    "type": "doc",
+    "id": "security/cra/cra-overview"
+  }
 }

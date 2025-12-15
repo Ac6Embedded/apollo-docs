@@ -86,27 +86,24 @@ export default function CraTrainingPopup(
   const titleByLocale: Record<string, string> = {
     en: 'Learn more about CRA',
     fr: 'En savoir plus sur le CRA',
-    de: 'Mehr über den CRA erfahren',
-    es: 'Más información sobre el CRA',
-    pt: 'Saiba mais sobre o CRA',
     sv: 'Läs mer om CRA',
-    da: 'Læs mere om CRA',
-    nb: 'Lær mer om CRA',
   };
 
   const bodyByLocale: Record<string, string> = {
     en: 'Discover the Cyber Resilience Act and its impact on embedded systems with AC6 training.',
     fr: 'Découvrez le Cyber Resilience Act et son impact sur les systèmes embarqués avec les formations AC6.',
-    de: 'Erfahren Sie mehr über den Cyber Resilience Act und seine Auswirkungen auf Embedded‑Systeme mit Schulungen von AC6.',
-    es: 'Descubra el Cyber Resilience Act y su impacto en sistemas embebidos con la formación de AC6.',
-    pt: 'Conheça o Cyber Resilience Act e o seu impacto em sistemas embarcados com a formação AC6.',
-    sv: 'Lär dig mer om Cyber Resilience Act och hur den påverkar inbyggda system tillsammans med AC6‑utbildning.',
-    da: 'Bliv klogere på Cyber Resilience Act og dens betydning for indlejrede systemer med træning fra AC6.',
-    nb: 'Lær mer om Cyber Resilience Act og hvordan den påvirker innebygde systemer med opplæring fra AC6.',
+    sv: 'Lär dig mer om Cyber Resilience Act och hur den påverkar inbyggda system med AC6-utbildning.',
+  };
+
+  const closeLabelByLocale: Record<string, string> = {
+    en: 'Close',
+    fr: 'Fermer',
+    sv: 'Stäng',
   };
 
   const title = titleByLocale[locale] ?? titleByLocale.en;
   const body = bodyByLocale[locale] ?? bodyByLocale.en;
+  const closeLabel = closeLabelByLocale[locale] ?? closeLabelByLocale.en;
 
   return (
     <div style={popupStyles}>
@@ -117,17 +114,15 @@ export default function CraTrainingPopup(
           style={ctaStyles}
           href="https://www.ac6-training.com/en/cours.php/cat_oSEC/ref_oSEC10/cyber-resilience-act-and-embedded-systems"
           target="_blank"
-          rel="noreferrer"
-        >
+          rel="noreferrer">
           {title}
         </a>
         <button
           type="button"
           style={closeStyles}
           onClick={() => setVisible(false)}
-          aria-label="Close CRA training suggestion"
-        >
-          Close
+          aria-label={`${closeLabel} CRA training suggestion`}>
+          {closeLabel}
         </button>
       </div>
     </div>

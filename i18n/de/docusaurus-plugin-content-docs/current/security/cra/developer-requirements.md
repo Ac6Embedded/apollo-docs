@@ -7,17 +7,17 @@ sidebar_position: 2.5
 
 ## Warum Entwickler explizite Pflichten haben
 
-Der CRA weist Cybersicherheits‑Pflichten direkt Herstellern, Importeuren, Händlern und **Lieferanten** zu, doch die meisten Nachweise entstehen in den Engineering‑Backlogs.[1] Diese Seite übersetzt die Anforderungen der Anlage I und der Artikel 16–24 in konkrete Verantwortlichkeiten der Entwicklungsteams, damit Firmware‑, Plattform‑ und DevOps‑Leads gegenüber Auditoren zeigen können, dass Kontrollen zugewiesen, gemessen und überprüft werden.
+Der CRA weist Cybersicherheits‑Pflichten direkt Herstellern, Importeuren, Händlern und **Lieferanten** zu, doch die meisten Nachweise entstehen in den Engineering‑Backlogs.[1] Diese Seite übersetzt die Anforderungen der Anlage I und der Artikel 16-24 in konkrete Verantwortlichkeiten der Entwicklungsteams, damit Firmware‑, Plattform‑ und DevOps‑Leads gegenüber Auditoren zeigen können, dass Kontrollen zugewiesen, gemessen und überprüft werden.
 
 ## Produkt‑Coverage‑Matrix
 
 | CRA‑Klausel | Entwicklergetriebene Aktivität | Beispiel‑Deliverables |
 | --- | --- | --- |
-| Annex I(1)(a–d) | Threat Modelling, Security‑Anforderungen, Design‑Freigaben | System‑Kontextdiagramm, STRIDE‑Notizen, dokumentierte Mitigations |
-| Annex I(1)(e–g) | Sichere Defaults, Härtung der Schnittstellen, Kryptoprofile | Matrix sicherer Konfigurationen, API‑Auth‑Spezifikation, Crypto‑Bill‑of‑Materials |
-| Annex I(1)(h–j) | Logging‑Strategie, Hooks für Schwachstellenmanagement | Event‑Taxonomie, Log‑Export‑Design, automatisiertes PSIRT‑Intake |
-| Annex I(2)(a–f) | Update‑Mechanismus, SBOM/VEX‑Automatisierung, Support‑Tools | Diagramme der Update‑Pipelines, SBOM‑CI‑Jobs, Erklärung des Supportzeitraums |
-| Articles 21–24 | Koordination mit Lieferanten und Importeuren | Firmware‑Release‑Schedule, Evidenz‑Paket für ODM/OEM, RACI‑Tabellen |
+| Annex I(1)(a-d) | Threat Modelling, Security‑Anforderungen, Design‑Freigaben | System‑Kontextdiagramm, STRIDE‑Notizen, dokumentierte Mitigations |
+| Annex I(1)(e-g) | Sichere Defaults, Härtung der Schnittstellen, Kryptoprofile | Matrix sicherer Konfigurationen, API‑Auth‑Spezifikation, Crypto‑Bill‑of‑Materials |
+| Annex I(1)(h-j) | Logging‑Strategie, Hooks für Schwachstellenmanagement | Event‑Taxonomie, Log‑Export‑Design, automatisiertes PSIRT‑Intake |
+| Annex I(2)(a-f) | Update‑Mechanismus, SBOM/VEX‑Automatisierung, Support‑Tools | Diagramme der Update‑Pipelines, SBOM‑CI‑Jobs, Erklärung des Supportzeitraums |
+| Articles 21-24 | Koordination mit Lieferanten und Importeuren | Firmware‑Release‑Schedule, Evidenz‑Paket für ODM/OEM, RACI‑Tabellen |
 
 Nutzen Sie diese Matrix bei RACI‑Tabellen oder Statements of Work mit Dienstleistern, damit jede CRA‑Klausel einen benannten Engineering‑Owner hat.
 
@@ -57,11 +57,11 @@ flowchart LR
 
 ## Zusammenarbeit mit Importeuren, Distributoren und OEMs
 
-Die Artikel 21–24 erwarten einen nahtlosen Übergang der Sicherheitsinformationen entlang der Lieferkette. Entwickler sollten:
+Die Artikel 21-24 erwarten einen nahtlosen Übergang der Sicherheitsinformationen entlang der Lieferkette. Entwickler sollten:
 
 - pro Release ein **CRA‑Evidenzpaket** (SBOM, VEX, SDL‑Summary, Testberichte) bereitstellen,  
 - sichere Update‑Doku für OEM‑Partner liefern, inkl. Staging‑Schritten und Rollback‑Recovery,  
 - Schwachstellenhinweise unter koordinierten Offenlegungsbedingungen teilen, damit Downstream‑Parteien fristgerecht patchen können.  
 
-[1]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "Regulation (EU) 2024/2847 — Annex I and Articles 16–24"
+[1]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "Regulation (EU) 2024/2847 — Annex I and Articles 16-24"
 

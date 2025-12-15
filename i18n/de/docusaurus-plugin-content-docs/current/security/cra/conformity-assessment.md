@@ -78,5 +78,5 @@ Vor der Behauptung der Konformität sollten Sie prüfen:
 
 Diese Checkliste ist direkt mit der **Developer Checklist** verknüpft, die von den Engineering‑Teams genutzt wird (siehe [Developer Checklist](./developer-checklist)).
 
-[1]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "Regulation (EU) 2024/2847 — Articles 16–25 and Annexes VI/VII"
+[1]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "Regulation (EU) 2024/2847 — Articles 16-25 and Annexes VI/VII"
 

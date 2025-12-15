@@ -2,13 +2,13 @@
 sidebar_position: 1
 ---
 
-# Apollo – Überblick
+# Apollo - Überblick
 
 Willkommen bei **Apollo**, der AC6‑Lernplattform mit Fokus auf Embedded Security für vernetzte und sicherheitskritische Systeme.
 
 Diese Dokumentation ist um einen Hauptpfad herum aufgebaut:
 
-- **Security** – Konzepte, Regulierung (einschließlich des EU Cyber Resilience Act) und praktische Kontrollen für Embedded‑Produkte.  
+- **Security** - Konzepte, Regulierung (einschließlich des EU Cyber Resilience Act) und praktische Kontrollen für Embedded‑Produkte.  
 
 Verwenden Sie die linke Seitenleiste oder die Navigation oben, um die Security‑Themen zu erkunden. Jede Seite ist bewusst kurz, praxisnah und zitierfähig gehalten, damit Sie sie in Design‑Reviews, Trainings oder Audits nutzen können.
 

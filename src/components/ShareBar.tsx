@@ -44,34 +44,19 @@ export default function ShareBar(): JSX.Element {
   const labelByLocale: Record<string, string> = {
     en: 'Share this page',
     fr: 'Partager cette page',
-    de: 'Diese Seite teilen',
-    es: 'Compartir esta página',
-    pt: 'Partilhar esta página',
     sv: 'Dela den här sidan',
-    da: 'Del denne side',
-    nb: 'Del denne siden',
   };
 
   const buttonByLocale: Record<string, string> = {
     en: copied ? 'Link copied' : 'Copy link',
     fr: copied ? 'Lien copié' : 'Copier le lien',
-    de: copied ? 'Link kopiert' : 'Link kopieren',
-    es: copied ? 'Enlace copiado' : 'Copiar enlace',
-    pt: copied ? 'Link copiado' : 'Copiar link',
     sv: copied ? 'Länk kopierad' : 'Kopiera länk',
-    da: copied ? 'Link kopieret' : 'Kopiér link',
-    nb: copied ? 'Lenke kopiert' : 'Kopier lenke',
   };
 
   const linkedInLabelByLocale: Record<string, string> = {
     en: 'Share on LinkedIn',
     fr: 'Partager sur LinkedIn',
-    de: 'Auf LinkedIn teilen',
-    es: 'Compartir en LinkedIn',
-    pt: 'Partilhar no LinkedIn',
     sv: 'Dela på LinkedIn',
-    da: 'Del på LinkedIn',
-    nb: 'Del på LinkedIn',
   };
 
   const label = labelByLocale[locale] ?? labelByLocale.en;
@@ -80,12 +65,29 @@ export default function ShareBar(): JSX.Element {
     linkedInLabelByLocale[locale] ?? linkedInLabelByLocale.en;
 
   // Build a canonical URL for sharing based on siteConfig + current path.
-  const baseUrl =
-    (siteConfig && typeof siteConfig.url === 'string' && siteConfig.url) || '';
-  const path = location?.pathname ?? '';
-  const search = location?.search ?? '';
-  const hash = location?.hash ?? '';
-  const canonicalUrl = `${baseUrl}${path}${search}${hash}`;
+  const buildCanonicalUrl = () => {
+    const siteUrl =
+      (siteConfig && typeof siteConfig.url === 'string' && siteConfig.url) || '';
+    const baseUrl =
+      (siteConfig &&
+        siteConfig.baseUrl &&
+        typeof siteConfig.baseUrl === 'string' &&
+        siteConfig.baseUrl) ||
+      '/';
+    const path = location?.pathname ?? '';
+    const search = location?.search ?? '';
+    const hash = location?.hash ?? '';
+
+    // Ensure we always have an absolute URL for LinkedIn share preview.
+    const origin = siteUrl.endsWith('/')
+      ? siteUrl.slice(0, -1)
+      : siteUrl;
+    const base = baseUrl.startsWith('/') ? baseUrl : `/${baseUrl}`;
+
+    return `${origin}${base}${path.replace(base, '')}${search}${hash}`;
+  };
+
+  const canonicalUrl = buildCanonicalUrl();
 
   const handleCopy = () => {
     const href =

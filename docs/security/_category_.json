@@ -1,5 +1,8 @@
 {
   "label": "Security",
   "position": 1,
-  "collapsed": false
+  "link": {
+    "type": "doc",
+    "id": "security/security-overview"
+  }
 }

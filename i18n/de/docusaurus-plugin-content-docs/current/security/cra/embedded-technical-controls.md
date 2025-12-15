@@ -19,7 +19,7 @@ Der CRA verlangt starke Identität und Integritätsschutz. Ein typisches Muster:
 - Nutzung von TrustZone‑M oder Secure Enclave zum Schutz der Schlüssel und für Kryptographie,  
 - Anti‑Rollback und Lifecycle‑Zustände in manipulationsgeschütztem Speicher (z. B. Secure Enclave, OTP‑Regionen).  
 
-Damit adressieren Sie Vertraulichkeits‑/Integritätsanforderungen und unterstützen Secure Boot sowie Updates nach Anlage I(1)(e–g).
+Damit adressieren Sie Vertraulichkeits‑/Integritätsanforderungen und unterstützen Secure Boot sowie Updates nach Anlage I(1)(e-g).
 
 ---
 
@@ -29,7 +29,7 @@ Damit adressieren Sie Vertraulichkeits‑/Integritätsanforderungen und unterst�
 - Signaturprüfung auf jeder Stufe mit offline geschützten Root Keys,  
 - Anti‑Rollback‑Mechanismen und A/B‑Slots für sichere Recovery.  
 
-Dokumentieren Sie Algorithmen, Schlüssellängen und Rotations‑Policies im Technikdossier, um Annex I(1)(f–g) abzudecken.[1]
+Dokumentieren Sie Algorithmen, Schlüssellängen und Rotations‑Policies im Technikdossier, um Annex I(1)(f-g) abzudecken.[1]
 
 ---
 
@@ -39,7 +39,7 @@ Dokumentieren Sie Algorithmen, Schlüssellängen und Rotations‑Policies im Tec
 - Zugriff auf sensible Register, kritische Peripherie und Secret‑Speicher einschränken,  
 - monolithische „Superuser‑Firmware“ vermeiden und stattdessen stark eingeschränkte Dienste mit kontrollierter IPC nutzen.  
 
-Damit erfüllen Sie Anforderungen an **Least Privilege** und **Resilienz** nach Anlage I(1)(a–d).
+Damit erfüllen Sie Anforderungen an **Least Privilege** und **Resilienz** nach Anlage I(1)(a-d).
 
 ---
 
@@ -59,7 +59,7 @@ Richten Sie TLS‑Profile an ETSI EN 303 645 oder ähnlichen Leitlinien aus,
 - kritische Logs lokal manipulationssicher speichern und sichere Export‑Pfade bereitstellen (z. B. syslog über TLS, gesichertes MQTT),  
 - personenbezogene Daten in Logs minimieren (Datensparsamkeit).  
 
-Logging unterstützt die Pflichten zur Erkennung, zum Schwachstellenmanagement und zur Incident‑Meldung (Anlage I und Artikel 53–57).[1]
+Logging unterstützt die Pflichten zur Erkennung, zum Schwachstellenmanagement und zur Incident‑Meldung (Anlage I und Artikel 53-57).[1]
 
 ---
 
@@ -77,7 +77,7 @@ Logging unterstützt die Pflichten zur Erkennung, zum Schwachstellenmanagement u
 - SBOMs aktualisieren, wenn Komponenten oder Konfigurationen sich ändern,  
 - VEX einsetzen, um Exploitability von CVEs mit Bezug zu Ihren Komponenten zu kommunizieren.  
 
-Dies adressiert die Punkte (c–f) der Anlage I(2) zu Schwachstellen‑Handling und Updates.[1]
+Dies adressiert die Punkte (c-f) der Anlage I(2) zu Schwachstellen‑Handling und Updates.[1]
 
 [1]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "Regulation (EU) 2024/2847 — Annex I"  
 [2]: https://www.etsi.org/ "ETSI standards including EN 303 645"

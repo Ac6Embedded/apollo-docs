@@ -7,7 +7,7 @@ sidebar_position: 5
 
 ## Warum ein SDL erforderlich ist
 
-Der CRA prüft nicht nur das End‑Binary; er verlangt, dass das Produkt **„entworfen, entwickelt und hergestellt“** wird, wobei Cybersicherheit berücksichtigt wird (Anlage I(1)(a–d)).[1] Das impliziert einen reproduzierbaren **Secure Development Lifecycle**, den Auditoren nachvollziehen können.  
+Der CRA prüft nicht nur das End‑Binary; er verlangt, dass das Produkt **„entworfen, entwickelt und hergestellt“** wird, wobei Cybersicherheit berücksichtigt wird (Anlage I(1)(a-d)).[1] Das impliziert einen reproduzierbaren **Secure Development Lifecycle**, den Auditoren nachvollziehen können.  
 
 Wir orientieren den SDL an **NIST SSDF** und **IEC 62443‑4‑1**, die von der Kommission als geeignete Rahmen zur Abdeckung von Anlage I genannt werden.[2][3] Verweisen Sie in Ihrem Technikdossier explizit auf diese Dokumente.
 
@@ -78,7 +78,7 @@ Für jedes Release‑Build:
 - Firmware‑Images mit offline geschützten Schlüsseln signieren und Signier‑Logs archivieren,  
 - ein **SBOM + VEX**‑Paket erzeugen und an die Release‑Artefakte anhängen.  
 
-Diese Artefakte fließen direkt in **Technikdossier** und **Developer Checklist** ein und erfüllen die Erwartungen aus Anlage I(2)(a–c) hinsichtlich Update‑Readiness.[1]
+Diese Artefakte fließen direkt in **Technikdossier** und **Developer Checklist** ein und erfüllen die Erwartungen aus Anlage I(2)(a-c) hinsichtlich Update‑Readiness.[1]
 
 [1]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "Regulation (EU) 2024/2847 — Annex I"  
 [2]: https://csrc.nist.gov/pubs/sp/800/218/final "NIST SP 800-218 (SSDF)"  

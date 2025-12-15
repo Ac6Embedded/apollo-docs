@@ -17,4 +17,4 @@ CRA använder samlingsbegreppet **“product with digital elements” (PDE)** so
 
 > 📘 **Referens.** När du behöver den exakta juridiska formuleringen, slå upp publikationen av förordning (EU) 2024/2847 i Official Journal.[1]
 
-Artikel 2(2) förtydligar också vad som ligger **utanför scope** – exempelvis produkter som enbart utvecklas för nationell säkerhet/försvar, strikt konfidentiella forskningsprototyper som inte släpps på marknaden eller ren mjukvara som erbjuds kostnadsfritt utan monetarisering.[2] Använd dessa undantag sparsamt och dokumentera resonemanget i CRA‑dossiern.
+Artikel 2(2) förtydligar också vad som ligger **utanför scope** - exempelvis produkter som enbart utvecklas för nationell säkerhet/försvar, strikt konfidentiella forskningsprototyper som inte släpps på marknaden eller ren mjukvara som erbjuds kostnadsfritt utan monetarisering.[2] Använd dessa undantag sparsamt och dokumentera resonemanget i CRA‑dossiern.

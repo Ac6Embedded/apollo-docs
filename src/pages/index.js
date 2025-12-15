@@ -16,11 +16,11 @@ function HomepageHeader() {
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <p className="hero__subtitle">"Houston, we have a watchdog problem</p>
+        <p className="hero__subtitle">Houston, we have a watchdog problem.</p>
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/security/security-overview">
+            to="/docs/security/">
             Explore Security
           </Link>
         </div>

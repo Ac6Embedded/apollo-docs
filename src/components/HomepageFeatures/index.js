@@ -10,7 +10,7 @@ const FeatureList = [
     description: (
       <>
         Short, focused missions on the topics every embedded engineer needs:
-        security, timing, connectivity, toolchains, and more – explained with
+        security, timing, connectivity, toolchains, and more - explained with
         concrete examples you can reuse in real projects.
       </>
     ),
@@ -22,7 +22,7 @@ const FeatureList = [
     description: (
       <>
         Use these pages as mission briefings, then jump to dedicated courses on
-        <code> ac6-training.com</code> for labs, exercises, and instructor‑led
+        <code> ac6-training.com</code> for labs, exercises, and instructor-led
         sessions when you need a deeper dive.
       </>
     ),
@@ -33,7 +33,7 @@ const FeatureList = [
     alt: 'Apollo logo',
     description: (
       <>
-        Use Apollo’s training tools and structured pages to deepen your
+        Use Apollo's training tools and structured pages to deepen your
         embedded skills, keep your crew aligned on the same material, and turn
         hard concepts into everyday engineering practice.
       </>

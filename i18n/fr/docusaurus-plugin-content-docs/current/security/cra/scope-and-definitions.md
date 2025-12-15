@@ -1,99 +1,266 @@
 ---
 id: cra-scope-definitions
 slug: /security/cra/scope-and-definitions
-title: Périmètre, définitions et classification
+title: Portee, definitions et classification
 sidebar_position: 2
 ---
 
-## Pourquoi le périmètre est important
+## Pourquoi la portee compte (pour l'embarque)
 
-Avant d’investir du temps d’ingénierie, vous devez savoir **si votre produit entre dans le périmètre du CRA** et, le cas échéant, **dans quelle classe** il se situe. Cela détermine :
+Le Cyber Resilience Act (CRA) est un **reglement de marquage CE pour la cybersecurite** : il definit *ce qui* doit etre integre au produit, *comment* le fabricant gere les vulnerabilites dans le temps, et *quelles preuves* doivent figurer dans le dossier technique.
 
-- le niveau d’exigence de **l’évaluation de conformité**,  
-- la quantité de **documentation technique** à maintenir,  
-- et les **obligations post‑commercialisation** applicables.  
+Pour un produit embarque, bien definir la portee des le depart fixe :
 
-Le CRA utilise le terme générique **« produit avec éléments numériques » (PEN / PDE)** défini à l’Article 3(1).[1] En pratique, la plupart des dispositifs embarqués, passerelles et images de firmware que vous développez entreront dans cette définition.
-
-> 📘 **Référence.** Dès que vous avez besoin du libellé juridique exact, consultez la publication au Journal officiel du Règlement (UE) 2024/2847.[1]
-
-L’Article 2(2) précise également ce qui est **hors périmètre** : par exemple, les produits développés exclusivement pour la défense/la sécurité nationale, les prototypes de recherche classifiés non mis sur le marché, ou les logiciels fournis gratuitement sans monétisation.[2] Utilisez ces exclusions avec prudence et documentez votre raisonnement dans le dossier technique CRA.
+- le **niveau de securite vise** a mettre en oeuvre (Annexe I),
+- la **route d'evaluation de conformite** (auto vs tiers) selon si vous relevez des **Annexes III / IV**,
+- la taille et la duree de vie de votre **documentation technique** (mises a jour pendant la periode de support),
+- et les obligations operationnelles de **traitement des vulnerabilites** et de **mises a jour de securite**.
 
 ---
 
-## Mon produit embarqué est‑il dans le périmètre ?
+## 1) Portee CRA : declencheur legal, traduit en termes d'ingenierie
 
-Posez‑vous ces questions (issues des Articles 2–3 du CRA).[1][2]
+Le CRA s'applique aux **produits avec elements numeriques** mis a disposition sur le marche de l'UE **lorsque l'usage prevu ou raisonnablement previsible inclut une connexion logique ou physique directe ou indirecte a un appareil ou a un reseau** (Art. 2(1)).
 
-1. **Le produit contient‑il un logiciel ou firmware capable d’exécuter du code ?**  
-   - Microcontrôleur, SoC, API, routeur, passerelle, capteur intelligent, etc.  
-2. **Est‑il mis sur le marché de l’UE (ou mis en service) en tant que produit ?**  
-   - Vendu comme dispositif, intégré dans une machine ou livré dans le cadre d’un système.  
-3. **Peut‑il être connecté directement ou indirectement à un réseau ?**  
-   - Ethernet, Wi‑Fi, cellulaire, bus de terrain, BLE, USB, RF propriétaire…  
+Si votre appareil (ou son logiciel) peut echanger des donnees via *n'importe quelle* interface pouvant raisonnablement se connecter a un environnement reseau, considerez que le CRA s'applique.
 
-Si la réponse aux trois questions est « oui », vous traitez très probablement un **PDE au sens du CRA**.  
+### Connexion de donnees (ce qui compte)
 
-Les outils purement internes (par exemple un gabarit de programmation utilisé uniquement au labo) sont généralement hors périmètre, mais les cartes, modules ou firmwares livrés aux clients ne le sont pas.
+Le CRA definit explicitement :
+
+- **connexion logique** : representation virtuelle via une interface logicielle (Art. 3(8));
+- **connexion physique** : connexion par des moyens physiques, y compris fils ou ondes radio (Art. 3(9));
+- **connexion indirecte** : connexion faisant partie d'un systeme plus large directement connectable (Art. 3(10)).
+
+Pour l'embarque, tout ceci est donc une "connexion" au sens CRA :
+
+- Ethernet, Wi-Fi, cellulaire, Thread, BLE, Zigbee, LoRaWAN
+- USB (CDC/DFU), UART, SPI, I2C utilises via gateway / host
+- CAN / CAN-FD, Modbus, RS-485, PROFINET, EtherCAT quand pontes vers IP
+- interfaces debug (SWD/JTAG) si accessibles sur le terrain (analyse de risque)
 
 ---
 
-## Rôles : qui est le « fabricant » ?
+## 2) Definitions a utiliser de facon coherente
 
-Le CRA raisonne en termes de rôles, pas d’intitulés de poste. Le Chapitre II associe chaque rôle à des obligations juridiques concrètes ; il faut donc une définition précise avant de planifier la documentation ou la délégation.
+### 2.1 Product with Digital Elements (PDE)
 
-**Fabricant.** Le fabricant est toute personne physique ou morale qui met un PDE sur le marché sous son propre nom ou sa propre marque en maîtrisant la conception, la nomenclature (BOM) et le cycle de développement sécurisé.[3] Si vous contrôlez le contenu du firmware ou le dossier de marquage CE, vous êtes le fabricant, même si le matériel vient d’un partenaire ODM ou EMS.
+Un **produit avec elements numeriques** est un produit logiciel ou materiel **et ses solutions de traitement de donnees a distance**, y compris des composants mis sur le marche separement (Art. 3(1)).
 
-**Importateur.** L’importateur est le premier acteur établi dans l’UE qui reçoit un produit d’un pays tiers pour distribution. Il doit vérifier que la Déclaration de Conformité couvre bien la version effective du firmware, confirmer la présence du marquage CE et de la documentation technique, et bloquer les livraisons si les conditions du CRA ne sont pas remplies.
+Lecture ingenierie :
 
-**Distributeur.** Les distributeurs mettent le PDE à disposition sans le modifier. Ils conservent les données de traçabilité, évitent de commercialiser des lots non conformes et contribuent aux actions correctives issues de la gestion des vulnérabilités ou de la surveillance du marché.
+- Un seul "PDE" peut etre l'**appareil + firmware + appli mobile + backend cloud** si la partie distante est requise pour une fonction.
+- Un **livrable logiciel seul** peut etre un PDE (ex. agent gateway).
+- Un module/SDK/lib peut etre un PDE si vous le mettez sur le marche sous votre controle.
 
-**Fournisseur de logiciel.** Un éditeur de firmware, SDK ou service cloud devient fournisseur au sens de l’Article 24, mais le fabricant reste responsable sauf accord contractuel contraire. Les fournisseurs doivent néanmoins produire des preuves de SDL et de gestion des vulnérabilités pour alimenter le dossier technique du fabricant.
+### 2.2 Remote data processing (RDP)
+
+Le **traitement de donnees a distance** est un traitement a distance concu/developpe par (ou sous responsabilite du) fabricant, **et sans lequel le PDE serait empeche d'executer une de ses fonctions** (Art. 3(2)).
+
+Ceci compte beaucoup en embarque car l'OTA, le provisioning, la telemetrie et la gestion flotte sont souvent hors appareil.
+
+#### Diagramme de frontiere PDE (produit embarque typique)
 
 ```mermaid
-flowchart TD
-    Start[Identifier les organisations impliquées sur le PDE] --> A{Marque propre ou autorité sur la conception ?}
-    A -- Oui --> M[Obligations du fabricant<br/>Annexe I + Art. 16-20]
-    A -- Non --> B{Premier acteur UE important depuis un pays tiers ?}
-    B -- Oui --> I[Obligations de l'importateur<br/>Art. 21]
-    B -- Non --> C{Mise à disposition sans modification ?}
-    C -- Oui --> D[Obligations du distributeur<br/>Art. 22]
-    C -- Non --> S[Devoirs du fournisseur logiciel<br/>Art. 24]
-    M --> Shared[Flux de preuves partagé<br/>SBOM, SDL, CVD]
-    I --> Shared
-    D --> Shared
-    S --> Shared
+flowchart LR
+  subgraph PDE["Frontiere PDE (CRA)"]
+    direction TB
+    HW["HW: MCU/SoC + carte"] --> BOOT["Chaine de boot: ROM/1er stage/MCUboot"]
+    BOOT --> OS["RTOS/OS + middleware"]
+    OS --> APP["Application + configuration"]
+    APP --> IF["Interfaces: ETH/Wi-Fi/BLE/USB/Fieldbus"]
+  end
+
+  IF --> GW["Gateway / smartphone / routeur"]
+  GW --> RDP["Remote data processing (RDP):<br/>OTA, provisioning, device mgmt,<br/>telemetry/logs"]
+
+  note1["Si l'absence de RDP empeche une fonction,<br/>le RDP fait partie du PDE (Art. 3(2))."]
+  RDP --- note1
 ```
 
 ---
 
-## Classes de criticité (produits importants / critiques)
+## 3) Ce qui est hors scope (et ce qui ne l'est pas)
 
-Le CRA distingue les **PDE ordinaires** de ceux considérés comme **importants** ou **critiques** (risque plus élevé). Exemples :
+### 3.1 Exclusions explicites (Art. 2)
 
-- systèmes de gestion d’identité, jetons de sécurité,
-- certains composants de contrôle industriel,
-- systèmes d’exploitation et hyperviseurs exécutant d’autres PDE (consultez directement l’Annexe III).[3]  
+Le CRA **ne s'applique pas** a :
 
-Pour les classes importantes/critiques :
+- certains produits de secteurs reglementes listes a l'Art. 2(2)-(4) (ex. regimes dispositifs medicaux; regimes certification aviation);
+- pieces de rechange remplaçant des composants identiques fabriques aux memes specs (Art. 2(6));
+- produits developpes ou modifies uniquement pour la securite/defense nationale, ou concus pour traiter des informations classees (Art. 2(7)).
 
-- une **évaluation de conformité par tierce partie** est souvent obligatoire,  
-- les défaillances de sécurité attirent davantage l’attention des autorités.
+Le CRA peut aussi etre limite/exclu si d'autres regles UE couvrent deja les memes risques cyber au meme niveau ou plus (Art. 2(5)).
 
-Si vous développez des microcontrôleurs basse consommation pour capteurs ou de simples passerelles, vous êtes en général dans la catégorie **« PDE normal »**, mais vérifiez toujours l’Annexe III avant de conclure qu’une auto‑évaluation suffit.[3] Documentez ce contrôle d’annexe dans votre suivi CRA (Jira, Notion, etc.) afin que les auditeurs puissent reconstituer la décision.
+### 3.2 Erreur courante "FOSS hors scope"
+
+**Ne considerez pas l'Art. 2 comme une exemption FOSS globale.** Le CRA introduit un regime specifique pour les **open-source software stewards** (Art. 3(14), Art. 24) et traite soigneusement la mise sur le marche et les roles.
+
+Si vous livrez un produit commercial integrant de l'open source, votre appareil reste un PDE et vous gardez les obligations de fabricant.
 
 ---
 
-## Termes clés du CRA
+## 4) "Mon produit embarque est-il dans le scope ?" - workflow decision
 
-- **Vulnérabilité** : faiblesse pouvant être exploitée pour compromettre la confidentialité, l’intégrité ou la disponibilité.  
-- **Mise à jour de sécurité (correctif)** : modification logicielle/firmware qui corrige une ou plusieurs vulnérabilités ou améliore la sécurité.  
-- **Période de support** : durée pendant laquelle le fabricant s’engage à fournir des mises à jour de sécurité et une gestion des vulnérabilités.  
-- **Mise sur le marché** : première mise à disposition d’un produit pour distribution ou utilisation dans l’UE, et non chaque vente.  
+```mermaid
+%%{init: { 'flowchart': { 'rankSpacing': 10, 'nodeSpacing': 10 }, 'themeVariables': { 'fontSize': '10px' } } }%%
+flowchart TD
+  A["Systeme que vous livrez<br/>(device / module / firmware / app / cloud)"] --> B{"Du logiciel ou firmware ?<br/>(du code s'execute)"}
+  B -- No --> X1["Souvent hors scope CRA<br/>(pas d'elements numeriques)"]
+  B -- Yes --> C{"Connexion de donnees directe/indirecte<br/>logique ou physique ?<br/>(Art. 2(1), Art. 3(8)-(10))"}
+  C -- No --> X2["Souvent hors scope CRA<br/>(pas de connexion)"]
+  C -- Yes --> D{"Mis a disposition sur le marche EU<br/>dans votre offre produit ?"}
+  D -- No --> X3["Possiblement hors scope<br/>(documenter la rationale)"]
+  D -- Yes --> E{"Exclu/limite par Art. 2(2)-(7) ?"}
+  E -- Yes --> X4["Portee exclue/limitee<br/>(gardez la preuve)"]
+  E -- No --> Y["Dans le scope : PDE<br/>(Art. 3(1))"]
+```
 
-Gardez ces définitions à l’esprit (elles se rattachent directement à l’Article 3 et à l’Annexe I du CRA)[1]. Vous les retrouverez dans les sections **SDL**, **gestion des vulnérabilités** et **évaluation de conformité**. En cas de doute, citez la définition exacte dans les revues de conception ou les exigences produit afin que tous raisonnent à partir de la même base.
+Si vous arrivez a **"Dans le scope : PDE"**, continuez avec :
+- *Fundamental Security Requirements* (Annexe I, Part I),
+- *Secure Development Lifecycle / Processes* (Annexe I, Part II),
+- *Vulnerability handling & reporting* (Art. 14 + Annexe I Part II),
+- et *Conformity assessment* (Art. 32 + Annexe VIII).
 
-\[1]: CRA Règlement (UE) 2024/2847 (Article 3 et Annexe I) https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847  
-\[2]: CRA Règlement (UE) 2024/2847 (Article 2): https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847  
-\[3]: CRA Règlement (UE) 2024/2847 (Chapitre II et Annexe III): https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847
+---
 
+## 5) Roles : qui porte quelles obligations ?
+
+Le CRA assigne des obligations aux **operateurs economiques** (Art. 3(12)). Pour la chaine embarquee, les roles clefs sont :
+
+### 5.1 Manufacturer (vous possedez l'histoire securite)
+
+Un **manufacturer** est toute personne qui developpe/fabrique un PDE (ou le fait concevoir/fabriquer) et le commercialise sous son nom ou marque, payant ou non (Art. 3(13)).
+
+En pratique, si vous controlez le **contenu firmware**, la **politique de mises a jour de securite**, et le **dossier CE**, vous etes manufacturer meme si le hardware est ODM/EMS.
+
+Les obligations manufacturer sont surtout dans **Articles 13 et 14** (Assurer la conformity Annexe I; documentation et EU DoC; traitement des vulnerabilites; reporting incident; support period; fournir updates).
+
+### 5.2 Importer
+
+Obligations importateur dans **Article 19** (tracabilite, conserver DoC, fournir doc technique aux autorites, actions correctives, signaler risque cyber significatif, etc.).
+
+### 5.3 Distributor
+
+Obligations distributeur dans **Article 20** (due care; verifier marquage CE et presence documentation; ne pas mettre sur marche un produit non conforme; informer manufacturer des vulnerabilites; cooperer avec autorites).
+
+### 5.4 Quand importateur/distributeur devient "manufacturer"
+
+Si un importateur/distributeur met un PDE sur le marche sous son nom/marque **ou realise une modification substantielle**, il est traite comme manufacturer et soumis aux Articles 13 et 14 (Art. 21).
+
+Les autres personnes qui font une modification substantielle et mettent le produit a disposition sont aussi traitees comme manufacturers pour le scope modifie (Art. 22).
+
+### 5.5 Open-source software stewards (si pertinent)
+
+Un **open-source software steward** est defini a l'Art. 3(14). Ses obligations sont a l'Art. 24 (politique cyber, cooperation avec autorites, obligations incidents lorsqu'il opere l'infrastructure de dev).
+
+#### Diagramme role mapping
+
+```mermaid
+flowchart LR
+  subgraph Market["Role chaine d'approvisionnement"]
+    M["Manufacturer<br/>(Art. 3(13))"]
+    I["Importer<br/>(obligations Art. 19)"]
+    D["Distributor<br/>(obligations Art. 20)"]
+    O["OSS Steward<br/>(Art. 3(14), Art. 24)"]
+  end
+
+  M --> E["Obligations coeur:<br/>Annexe I + Articles 13-14"]
+  I --> T["Tracabilite + due care:<br/>Article 19"]
+  D --> U["Due care + stop non-compliance:<br/>Article 20"]
+  O --> P["Politique securite + cooperation:<br/>Article 24"]
+
+  I -->|rebrand / modification substantielle| E2["Devient manufacturer<br/>(Art. 21)"]
+  D -->|rebrand / modification substantielle| E2
+```
+
+---
+
+## 6) Classification : produit normal vs important vs critique
+
+Cela change la route de conformity assessment et la profondeur du controle.
+
+### 6.1 Important products (Annexe III)
+
+Les produits dont la **fonctionnalite essentielle** correspond aux categories de **l'Annexe III** sont des **important products** et suivent les procedures d'evaluation de conformite des Art. 32(2) et (3) (Art. 7(1)).
+
+L'Annexe III est en **Classe I** et **Classe II**; la Commission peut mettre a jour la liste (Art. 7(3)) et publiera des descriptions techniques (Art. 7(4)).
+
+### 6.2 Critical products (Annexe IV)
+
+Les produits dont la fonctionnalite essentielle correspond a **l'Annexe IV** sont des **critical products**. Ils doivent demontrer la conformity via un schema de certification cyber europeen (si impose) ou via les routes d'evaluation plus elevees (Art. 8 + Art. 32(4)).
+
+### 6.3 Workflow pratique de classification
+
+```mermaid
+flowchart TD
+  A["Identifier la fonctionnalite coeur"] --> B{"Correspondu a l'Annexe IV<br/>categorie critique ?"}
+  B -- Yes --> C["Produit critique (Art. 8)<br/>-> route Art. 32(4)<br/>(+ certification si requise)"]
+  B -- No --> D{"Correspondu a l'Annexe III<br/>categorie important ?"}
+  D -- Yes --> E["Produit important (Art. 7)<br/>-> route Art. 32(2)/(3)"]
+  D -- No --> F["PDE normal<br/>-> route controle interne<br/>(Art. 32(1))"]
+```
+
+**Astuce ingenierie :** la "fonctionnalite coeur" n'est pas "contient telle lib". Si vous embarquez un serveur SSH dans un capteur, la question est si SSH est une fonction coeur du produit commercialise, pas juste present.
+
+---
+
+## 7) Vocabulaire CRA a reutiliser (definir une fois)
+
+Utilisez les definitions CRA pour garder coherence entre analyse de risque, docs d'architecture et politique de mises a jour :
+
+- **cybersecurity risk** et **significant cybersecurity risk** (Art. 3(37)-(38))
+- **SBOM** (Art. 3(39))
+- **vulnerability / exploitable / actively exploited** (Art. 3(40)-(42))
+- **incident impactant la securite du PDE** (Art. 3(44))
+
+Ces termes pilotent vos decisions de declenchement de reporting et vos arguments "no known exploitable vulnerabilities" en release.
+
+---
+
+## 8) Livrables embarques pratiques qui prouvent vos decisions de portee
+
+Pour un audit ou la surveillance du marche, vous devez montrer une trace claire :
+
+1. **Scope statement** (1 page) : frontiere PDE + frontiere RDP + interfaces. (Art. 2(1), Art. 3(1)-(2))
+2. **Inventaire connectivite** : interfaces physiques/logiques, exposees en prod, et comment protegees. (Art. 3(8)-(10))
+3. **Role statement** : mapping manufacturer/importer/distributor + qui maintient l'infra update. (Art. 3(12)-(14), Art. 19-21, Art. 24)
+4. **Decision de classification** : cross-check Annexes III / IV avec rationale "fonction coeur". (Art. 7-8)
+5. **Regle change-control** : ce qui compte comme "modification substantielle" en interne, et comment vous refaites classification + analyse de risque. (Art. 21-22)
+
+---
+
+## 9) Problemes frequents dans cette section (et solutions)
+
+### A) "Ou tracer la frontiere PDE ?"
+**Pb typique :** on ne documente que l'appareil, alors que l'OTA/provisioning/telemetry est necessaire.  
+**Fix :** si l'absence de la partie distante empeche une fonction, traitez-la comme RDP dans la frontiere PDE (Art. 3(2)). Documentez-la dans l'architecture et l'analyse de risque.
+
+### B) "USB / UART / BLE est-ce vraiment une connexion reseau ?"
+**Pb typique :** "c'est local, donc CRA ne s'applique pas".  
+**Fix :** la portee CRA inclut les connexions indirectes (Art. 2(1) + Art. 3(10)). Si l'interface peut realiser un pont vers un systeme reseau, incluez-la dans le scope et le threat model.
+
+### C) "On utilise de l'open source, on est exemptes ?"
+**Pb typique :** confusion entre stewardship FOSS et obligations manufacturer.  
+**Fix :** votre produit commercial reste un PDE; vous restez manufacturer (Art. 3(13)). Les devoirs FOSS steward (Art. 24) ne retirent pas les devoirs manufacturer.
+
+### D) "On est distributeur mais on ajoute notre firmware"
+**Pb typique :** distributeur pense avoir des obligations legeres mais reflashe et rebrand.  
+**Fix :** rebrand ou modification substantielle peut faire de vous le manufacturer (Art. 21-22). Traitez la release comme un manufacturer (Articles 13-14).
+
+### E) "Classification important/critique floue"
+**Pb typique :** confusion presence composant vs fonction coeur.  
+**Fix :** documentez l'usage marketing du produit; mappez aux Annexes III/IV par **fonction coeur** (Art. 7-8). Gardez la rationale dans le dossier technique.
+
+### F) "On ne sait pas quoi mettre dans le dossier technique"
+**Fix :** au minimum, gardez diagrammes de frontiere, inventaire interfaces, mapping roles, decision de classification, et regle change-control. Le CRA exige la documentation technique avant la mise sur le marche et mise a jour pendant la periode de support (Art. 31).
+
+---
+
+## References (normatives)
+
+[1] Regulation (EU) 2024/2847 (Cyber Resilience Act) - texte consolide (EUR-Lex): https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847  
+[2] CRA Article 2 (Scope) - voir [1], Art. 2(1)-(7).  
+[3] CRA Article 3 (Definitions : PDE, RDP, connexion logique/physique/indirecte, manufacturer, OSS steward) - voir [1], Art. 3(1)-(14).  
+[4] CRA Article 7-8 (Important/Critical products) et Annexes III-IV - voir [1], Art. 7-8 et annexes.  
+[5] CRA Articles 19-22 et 24 (Importer/Distributor duties, quand ils deviennent manufacturer; OSS stewards) - voir [1], Art. 19-22 et Art. 24.  

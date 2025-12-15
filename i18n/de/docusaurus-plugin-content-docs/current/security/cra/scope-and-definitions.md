@@ -17,13 +17,13 @@ Der CRA verwendet den Sammelbegriff **„Product with Digital Elements“ (PDE)*
 
 > 📘 **Referenz.** Wenn Sie den genauen Rechtswortlaut benötigen, schlagen Sie die Veröffentlichung der Verordnung (EU) 2024/2847 im Amtsblatt nach.[1]
 
-Art. 2(2) stellt außerdem klar, was **nicht in den Scope** fällt – etwa Produkte ausschließlich für nationale Sicherheit/Militär, streng geheime Forschungsprototypen ohne Marktbereitstellung oder reine Software, die unentgeltlich ohne Monetarisierung bereitgestellt wird.[2] Nutzen Sie diese Ausnahmen sparsam und dokumentieren Sie Ihre Begründung im CRA‑Technikdossier.
+Art. 2(2) stellt außerdem klar, was **nicht in den Scope** fällt - etwa Produkte ausschließlich für nationale Sicherheit/Militär, streng geheime Forschungsprototypen ohne Marktbereitstellung oder reine Software, die unentgeltlich ohne Monetarisierung bereitgestellt wird.[2] Nutzen Sie diese Ausnahmen sparsam und dokumentieren Sie Ihre Begründung im CRA‑Technikdossier.
 
 ---
 
 ## Fällt mein Embedded‑Produkt in den Scope?
 
-Stellen Sie sich diese Fragen (abgeleitet aus Art. 2–3 CRA).[1][2]
+Stellen Sie sich diese Fragen (abgeleitet aus Art. 2-3 CRA).[1][2]
 
 1. **Enthält das Produkt Software oder Firmware, die Code ausführen kann?**  
    - Mikrocontroller, SoC, SPS, Router, Gateway, Smart Sensor etc.  
@@ -42,7 +42,7 @@ Reine interne Tools (z. B. ein einmalig verwendetes Programmier‑Jig im Labor
 
 Der CRA betrachtet Rollen, nicht Jobtitel. Kapitel II ordnet jeder Rolle konkrete rechtliche Pflichten zu, daher brauchen Sie eine präzise Definition, bevor Sie Dokumentation oder Verantwortlichkeiten planen.
 
-**Hersteller.** Hersteller ist jede natürliche oder juristische Person, die ein PDE unter ihrem eigenen Namen oder ihrer eigenen Marke in Verkehr bringt und die Gestaltung, Stückliste und den sicheren Entwicklungsprozess steuert.[3] Wenn Sie den Firmware‑Inhalt oder das CE‑Dossier verantworten, sind Sie Hersteller – selbst wenn die Hardware von einem ODM/EMS stammt.
+**Hersteller.** Hersteller ist jede natürliche oder juristische Person, die ein PDE unter ihrem eigenen Namen oder ihrer eigenen Marke in Verkehr bringt und die Gestaltung, Stückliste und den sicheren Entwicklungsprozess steuert.[3] Wenn Sie den Firmware‑Inhalt oder das CE‑Dossier verantworten, sind Sie Hersteller - selbst wenn die Hardware von einem ODM/EMS stammt.
 
 **Importeur.** Importeur ist die erste in der EU ansässige Stelle, die ein Drittlandsprodukt zur weiteren Verteilung erhält. Importeuren obliegt u. a., zu prüfen, ob die Konformitätserklärung den tatsächlichen Firmware‑Stand abdeckt, CE‑Kennzeichnung und technische Dokumentation vorliegen und Sendungen zu stoppen, wenn CRA‑Vorgaben nicht erfüllt sind.
 
@@ -80,7 +80,7 @@ Für wichtige/kritische Klassen gilt häufig:
 - **Drittparteien‑Konformitätsbewertung** ist verpflichtend,  
 - Sicherheitsmängel führen eher zu regulatorischer Aufmerksamkeit.
 
-Wenn Sie z. B. stromsparende MCUs für Sensoren oder einfache Gateways entwickeln, gehören Sie typischerweise zur Kategorie **„normales PDE“** – prüfen Sie aber immer Anlage III, bevor Sie von reiner Selbsteinschätzung ausgehen.[3] Dokumentieren Sie diese Prüfung in Ihrem CRA‑Task‑Tracker (Jira/Notion etc.), damit Auditoren den Entscheidungsweg nachvollziehen können.
+Wenn Sie z. B. stromsparende MCUs für Sensoren oder einfache Gateways entwickeln, gehören Sie typischerweise zur Kategorie **„normales PDE“** - prüfen Sie aber immer Anlage III, bevor Sie von reiner Selbsteinschätzung ausgehen.[3] Dokumentieren Sie diese Prüfung in Ihrem CRA‑Task‑Tracker (Jira/Notion etc.), damit Auditoren den Entscheidungsweg nachvollziehen können.
 
 ---
 

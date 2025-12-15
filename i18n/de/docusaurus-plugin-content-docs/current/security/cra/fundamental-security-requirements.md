@@ -17,14 +17,14 @@ In Anlage I definiert der CRA wesentliche Cybersicherheitsanforderungen an Pro
 - Fähigkeiten jedes Komponenten‑Typs auf das Notwendige begrenzen (Least Privilege),  
 - gefährliche Zustände auch bei Fehlern oder bösartigen Eingaben vermeiden.  
 
-Damit adressieren Sie v. a. Anlage I(1)(a–d).
+Damit adressieren Sie v. a. Anlage I(1)(a-d).
 
 ---
 
 ## Datenverarbeitung und Vertraulichkeit
 
 - Vertraulichkeit und Integrität der verarbeiteten, gespeicherten und übertragenen Daten schützen,  
-- unnötige Datensammlung – insbesondere personenbezogener Daten – vermeiden,  
+- unnötige Datensammlung - insbesondere personenbezogener Daten - vermeiden,  
 - Datenflüsse, Speicherorte und angewandte Schutzmaßnahmen (Verschlüsselung, Access Control) dokumentieren.  
 
 ---
@@ -35,7 +35,7 @@ Damit adressieren Sie v. a. Anlage I(1)(a–d).
 - Updates vor Installation authentifizieren und Integrität prüfen (Signatur, Hash, Vertrauenskette),  
 - Verhalten bei Fehlern (Rollback, degradierter Modus, Alarme) dokumentieren.  
 
-Dies ist Kern von Anlage I(2)(a–c).
+Dies ist Kern von Anlage I(2)(a-c).
 
 ---
 
@@ -45,7 +45,7 @@ Dies ist Kern von Anlage I(2)(a–c).
 - Supportzeitraum klar definieren und gegenüber Kunden kommunizieren,  
 - Advisories und Updates rechtzeitig veröffentlichen, insbesondere bei kritischen Schwachstellen.  
 
-Hier geht es um Anlage I(2)(d–f) und die Artikel 53–57.
+Hier geht es um Anlage I(2)(d-f) und die Artikel 53-57.
 
 ---
 

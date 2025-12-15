@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://apollo.ac6-training.com/sitemap.xml

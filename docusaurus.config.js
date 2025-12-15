@@ -1,10 +1,11 @@
-// @ts-check
+﻿// @ts-check
 // `@type` JSDoc annotations allow editor autocompletion and type checking
 // (when paired with `@ts-check`).
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import {themes as prismThemes} from 'prism-react-renderer';
+import searchLocal from '@easyops-cn/docusaurus-search-local';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -24,6 +25,8 @@ const config = {
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
+  // Use global trailingSlash per Docusaurus guidance
+  trailingSlash: false,
 
   // GitHub pages deployment config (adjust if you publish to GitHub Pages).
   organizationName: 'ac6', // Usually your GitHub org/user name.
@@ -38,7 +41,7 @@ const config = {
     // Default UI/content language
     defaultLocale: 'en',
     // Add additional locales here
-    locales: ['en', 'fr', 'de', 'es', 'pt', 'sv', 'da', 'nb'],
+    locales: ['en', 'fr', 'sv'],
     // Optional per-locale configuration
     localeConfigs: {
       en: {
@@ -46,36 +49,15 @@ const config = {
         direction: 'ltr',
       },
       fr: {
-        label: 'Français',
-        direction: 'ltr',
-      },
-      de: {
-        label: 'Deutsch',
-        direction: 'ltr',
-      },
-      es: {
-        label: 'Español',
-        direction: 'ltr',
-      },
-      pt: {
-        label: 'Português',
+        label: 'French',
         direction: 'ltr',
       },
       sv: {
         label: 'Svenska',
         direction: 'ltr',
       },
-      da: {
-        label: 'Dansk',
-        direction: 'ltr',
-      },
-      nb: {
-        label: 'Norsk (Bokmål)',
-        direction: 'ltr',
-      },
     },
   },
-
   presets: [
     [
       'classic',
@@ -88,7 +70,23 @@ const config = {
         theme: {
           customCss: './src/css/custom.css',
         },
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.7,
+        },
       }),
+    ],
+  ],
+  plugins: [
+    [
+      searchLocal,
+      {
+        hashed: true,
+        indexBlog: false,
+        indexDocs: true,
+        docsDir: 'docs',
+        language: ['en', 'fr', 'sv'],
+      },
     ],
   ],
   markdown: {
@@ -104,6 +102,17 @@ const config = {
       colorMode: {
         respectPrefersColorScheme: true,
       },
+      mermaid: {
+        options: {
+          flowchart: {
+            rankSpacing: 50,
+            nodeSpacing: 40,
+          },
+          themeVariables: {
+            fontSize: '14px',
+          },
+        },
+      },
       navbar: {
         title: 'Apollo',
         logo: {
@@ -116,10 +125,14 @@ const config = {
             position: 'right',
           },
           {
-            to: '/docs/security/security-overview',
-            position: 'left',
             label: 'Security',
+            position: 'left',
+            items: [
+              {label: 'Overview', to: '/docs/security/'},
+              {label: 'CRA', to: '/docs/security/cra'},
+            ],
           },
+          // Other tracks (RTOS, CPUs, Linux) intentionally hidden until content is ready
           // Add extra navbar items (e.g. AC6 links) here if desired
         ],
       },
@@ -129,7 +142,7 @@ const config = {
           {
             title: 'Docs',
             items: [
-              { label: 'Security', to: '/docs/security/security-overview' },
+              { label: 'Security', to: '/docs/security/' },
             ],
           },
           {
@@ -159,12 +172,18 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} AC6. Built with Docusaurus.`,
+        copyright: `Copyright ${new Date().getFullYear()} AC6. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
+      metadata: [
+        {name: 'keywords', content: 'embedded security, CRA, RTOS, AC6 training'},
+        {name: 'description', content: 'Apollo by AC6: embedded security, CRA guidance, RTOS and Linux fundamentals.'},
+        {property: 'og:title', content: 'Apollo | Embedded Security & CRA Guidance'},
+        {property: 'og:description', content: 'Learn embedded security, CRA timelines, RTOS, and Linux best practices.'},
+      ],
     }),
   themes: ['@docusaurus/theme-mermaid'],
 };

@@ -1,15 +1,22 @@
 ---
 id: cra-overview
-slug: /security/cra/overview
-title: CRA pour les développeurs logiciels
+slug: /security/cra
+title: CRA pour les developpeurs logiciel
 sidebar_position: 1
+sidebar_label: Vue d'ensemble CRA
 ---
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
-Le règlement européen Cyber Resilience Act (CRA) introduit des exigences de cybersécurité obligatoires sur tout le cycle de vie pour le matériel et les logiciels avec éléments numériques.[1] Les développeurs doivent adopter des pratiques de développement sécurisé, maintenir une documentation à jour et gérer les vulnérabilités afin d’atteindre la conformité et le marquage CE.
+Le Cyber Resilience Act (CRA) de l'UE introduit des exigences de securite obligatoires sur tout le cycle de vie des produits avec elements numeriques. Les developpeurs doivent appliquer des pratiques de secure development, maintenir la documentation, et assurer le traitement des vulnerabilites pour obtenir la conformity et le marquage CE.
 
-Cette section propose une approche centrée sur les développeurs avec des conseils pratiques, des exemples et des check‑lists basés sur les exigences essentielles de l’Annexe I et les obligations des Articles 16–24.[1][2] Commencez par le périmètre et les définitions, puis faites le lien avec les contrôles techniques embarqués, le SDL, les artefacts SBOM/VEX et l’évaluation de conformité. Chaque page renvoie au texte publié au Journal officiel, ce qui vous permet de citer la clause exacte dans vos documents de conception ou en réponse aux auditeurs.
+Cette section fournit une vue orientee developpeur avec conseils pratiques, exemples et checklists bases sur les exigences essentielles de l'Annexe I et les obligations des Articles 16-24. Commencez par Scope et Requirements, puis mappez vers Embedded Technical Controls, SDL, SBOM/VEX et Conformity. Chaque page cite le texte du Journal Officiel pour reprendre la clause exacte dans vos docs ou reponses d'audit.
 
-Voir aussi : Références CRA pour les liens officiels et les normes.
+Voir aussi : CRA References pour les liens officiels et standards.
 
-[1]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "Règlement (UE) 2024/2847 (CRA) — Journal officiel"
-[2]: https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act "Portail CRA de la Commission européenne"
+## Explorer les sujets CRA
+
+<DocCardList items={useCurrentSidebarCategory()?.items ?? []} />
+
+[1]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "Regulation (EU) 2024/2847 (CRA) - Official Journal"
+[2]: https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act "European Commission CRA portal"

@@ -7,7 +7,7 @@ sidebar_position: 6
 
 ## Technische Dokumentation unter CRA
 
-Anlage VII beschreibt, was im **Technikdossier** für die Konformitätsbewertung enthalten sein muss und passt zu den Evidenzanforderungen der Artikel 16–23.[1] Für ein Embedded‑Produkt gehören typischerweise dazu:  
+Anlage VII beschreibt, was im **Technikdossier** für die Konformitätsbewertung enthalten sein muss und passt zu den Evidenzanforderungen der Artikel 16-23.[1] Für ein Embedded‑Produkt gehören typischerweise dazu:  
 
 - Produktbeschreibung und bestimmungsgemäßer Gebrauch,  
 - Systemarchitektur‑Diagramme (inkl. Trust Boundaries),  
@@ -64,7 +64,7 @@ Für Embedded‑Geräte liegt dies meist in:
 
 ## Erwartungen an SBOMs
 
-Eine SBOM ist nicht mehr nur „nice to have“, sondern zentral, um zu zeigen, dass Sie bekannte Schwachstellen managen und die Punkte (c)–(f) der Anlage I(2) erfüllen.[1]
+Eine SBOM ist nicht mehr nur „nice to have“, sondern zentral, um zu zeigen, dass Sie bekannte Schwachstellen managen und die Punkte (c)-(f) der Anlage I(2) erfüllen.[1]
 
 Empfehlungen für Firmware‑Projekte:
 
@@ -78,7 +78,7 @@ Empfehlungen für Firmware‑Projekte:
   - Toolchain und wesentliche Build‑Tools,  
 - SBOMs zusammen mit den Build‑Artefakten in CI ablegen.  
 
-Ergänzen Sie **VEX‑Dokumente**, um den Exploitability‑Status bekannter CVEs zu kommunizieren (z. B. wenn ein verwundbarer Pfad auf Ihrem Gerät nicht genutzt wird), und verweisen Sie darauf in Kundenhinweisen, wie es die Artikel 55–57 verlangen.[1]
+Ergänzen Sie **VEX‑Dokumente**, um den Exploitability‑Status bekannter CVEs zu kommunizieren (z. B. wenn ein verwundbarer Pfad auf Ihrem Gerät nicht genutzt wird), und verweisen Sie darauf in Kundenhinweisen, wie es die Artikel 55-57 verlangen.[1]
 
 ---
 
@@ -86,14 +86,14 @@ Ergänzen Sie **VEX‑Dokumente**, um den Exploitability‑Status bekannter CVEs
 
 Eine pragmatische Struktur:
 
-1. `01-product-and-arch/` – Diagramme, Threat Model, Liste der Sicherheitsfeatures.  
-2. `02-sdl-and-testing/` – Beschreibung des SDL, Testpläne und Ergebnisse.  
-3. `03-sbom-and-vuln-handling/` – SBOMs, VEX, CVD‑Policy, Incident‑Records.  
-4. `04-updates-and-provisioning/` – Secure‑Boot‑Konfiguration, Key‑Provisioning, Update‑Flows.  
-5. `05-user-facing-info/` – Handbücher, Release‑Notes mit sicherheitsrelevanten Änderungen.  
+1. `01-product-and-arch/` - Diagramme, Threat Model, Liste der Sicherheitsfeatures.  
+2. `02-sdl-and-testing/` - Beschreibung des SDL, Testpläne und Ergebnisse.  
+3. `03-sbom-and-vuln-handling/` - SBOMs, VEX, CVD‑Policy, Incident‑Records.  
+4. `04-updates-and-provisioning/` - Secure‑Boot‑Konfiguration, Key‑Provisioning, Update‑Flows.  
+5. `05-user-facing-info/` - Handbücher, Release‑Notes mit sicherheitsrelevanten Änderungen.  
 
 Diese Struktur passt gut zu den Anforderungen der **Konformitätsbewertung** und spiegelt die Gliederung der Anlage VII wider, was die Arbeit benannter Stellen erleichtert.[1]
 
-[1]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "Regulation (EU) 2024/2847 — Annexes I, II, VII and Articles 16–57"  
+[1]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "Regulation (EU) 2024/2847 — Annexes I, II, VII and Articles 16-57"  
 [2]: https://digital-strategy.ec.europa.eu/en/library/cyber-resilience-act-summary "CRA summary — European Commission"
 

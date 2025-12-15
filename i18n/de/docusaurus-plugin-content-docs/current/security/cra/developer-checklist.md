@@ -94,5 +94,5 @@ stateDiagram-v2
 - [ ] End‑of‑Life‑Strategie definiert (Supportende, Kommunikation, Migrationsoptionen).  
     - Evidenz: EoL‑Hinweis, Kunden‑FAQ, Übergangsplan.  
 
-[1]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "Regulation (EU) 2024/2847 — Annex I and Articles 16–24"
+[1]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "Regulation (EU) 2024/2847 — Annex I and Articles 16-24"
 

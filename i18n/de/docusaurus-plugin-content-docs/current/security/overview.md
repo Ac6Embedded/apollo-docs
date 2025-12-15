@@ -1,6 +1,6 @@
 ---
 id: security-overview
-title: Überblick – Warum Embedded Security
+title: Überblick - Warum Embedded Security
 slug: /security/security-overview
 sidebar_label: Überblick
 sidebar_position: 1

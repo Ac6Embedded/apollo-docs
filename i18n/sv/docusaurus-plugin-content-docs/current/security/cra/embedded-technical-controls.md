@@ -1,7 +1,7 @@
 ---
 id: cra-embedded-controls
 slug: /security/cra/embedded-technical-controls
-title: Embedded Technical Controls – kartläggning
+title: Embedded Technical Controls - kartläggning
 sidebar_position: 4
 ---
 

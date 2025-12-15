@@ -30,13 +30,13 @@ Wichtige Punkte für Embedded‑Hersteller:
 
 ## Marktüberwachung und Durchsetzung
 
-Nationale Behörden und benannte Stellen können gemäß Art. 43–49:
+Nationale Behörden und benannte Stellen können gemäß Art. 43-49:
 
 - Ihre technische Dokumentation anfordern,  
 - Produkte auf grundlegende Sicherheitsprobleme testen,  
 - Korrekturmaßnahmen oder Markt‑Rücknahmen anordnen.  
 
-Bußgelder können erheblich sein, insbesondere bei Vernachlässigung des Schwachstellenmanagements oder unterlassener Bereitstellung von Sicherheitsupdates während des zugesagten Supportzeitraums (Art. 53–68).[1]
+Bußgelder können erheblich sein, insbesondere bei Vernachlässigung des Schwachstellenmanagements oder unterlassener Bereitstellung von Sicherheitsupdates während des zugesagten Supportzeitraums (Art. 53-68).[1]
 
 ---
 
@@ -44,15 +44,15 @@ Bußgelder können erheblich sein, insbesondere bei Vernachlässigung des Schwac
 
 Eine pragmatische Roadmap:
 
-1. **Jahr 0–1** – Gap‑Analyse und Pilotprojekte.  
+1. **Jahr 0-1** - Gap‑Analyse und Pilotprojekte.  
    - Aktuelle Praktiken gegen CRA‑Kontrollen mappen.  
-   - Basisnormen wählen (IEC 62443‑4‑1/‑4‑2, ETSI EN 303 645) – siehe [References](./references).  
+   - Basisnormen wählen (IEC 62443‑4‑1/‑4‑2, ETSI EN 303 645) - siehe [References](./references).  
 
-2. **Jahr 1–2** – Integration in die Produktlinien.  
+2. **Jahr 1-2** - Integration in die Produktlinien.  
    - SDL, SBOM und CVD in CI/CD integrieren.  
    - Provisioning‑ und Update‑Pipelines aktualisieren.  
 
-3. **Kontinuierlich** – Monitoring von Normung und Leitfäden.  
+3. **Kontinuierlich** - Monitoring von Normung und Leitfäden.  
    - CRA‑harmonisierte Normen über STAN4CRA verfolgen.  
 
 Diese stufenweise Einführung entspricht den Erwartungen der Regulierer an die Reifeentwicklung der Hersteller und passt zu den Leitlinien der Kommission.[2]
@@ -70,6 +70,6 @@ gantt
     Monitor standards & enforcement :2026, 24M
 ```
 
-[1]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "Regulation (EU) 2024/2847 — Articles 71–72 and 43–68"  
+[1]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "Regulation (EU) 2024/2847 — Articles 71-72 and 43-68"  
 [2]: https://digital-strategy.ec.europa.eu/en/policies/cra-summary "CRA summary — European Commission"
 

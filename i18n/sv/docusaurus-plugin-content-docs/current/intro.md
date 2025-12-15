@@ -2,19 +2,17 @@
 sidebar_position: 1
 ---
 
-# Apollo – översikt
+# Apollo oversikt
 
-Välkommen till **Apollo**, AC6:s kunskapsplattform för inbyggd säkerhet i uppkopplade och säkerhetskritiska system.
+Valkommen till **Apollo** - AC6:s larplattform for inbyggda system. Innehall ordnas per spar sa att du snabbt kan ga till ratt omrade:
 
-Den här dokumentationen är organiserad kring ett huvudspår:
+- **Security** - koncept, regelverk (inklusive EU Cyber Resilience Act) och praktiska kontroller. Aktuellt underspar: CRA.
 
-- **Security** – begrepp, regelverk (inklusive EU:s Cyber Resilience Act) och praktiska kontroller för inbyggda produkter.
+Varje spar borjar med en oversikt och varje underspar (t.ex. Security > CRA) har sin egen korta landningssida.
 
-Använd sidomenyn eller navigeringen högst upp för att växla mellan säkerhetsämnena. Varje sida är avsiktligt kort, praktisk och lätt att återanvända i designgranskningar, utbildningar och revisioner.
+## Sa navigerar du
 
-## Så här navigerar du
+- Anvand toppnavigeringen eller sidomenyn for att valja Security-sparet och oppna dess Oversikt.
+- Inom sparet borjar du med CRA-oversikten innan du gar vidare till tutorials och checklistor.
 
-- Börja med **Security → Overview** för att förstå varför inbyggd säkerhet och CRA är viktiga.  
-- Använd CRA‑underavsnittet under Security för allt som rör konformitet, dokumentation och processer.
-
-Du kan växla mellan **English**, **Français**, **Deutsch**, **Español**, **Português** och nordiska språk via språk-menyn i navbaren. Alla språk delar samma struktur så att länkar kan delas mellan team.
+Du kan byta mellan **English**, **Francais** och **Svenska** via sprakmenyn. Strukturen ar densamma i varje sprak sa att delade lankar fortsatter att fungera.

@@ -47,7 +47,90 @@
 }
 
 /* Ensure SVG scales consistently and text remains readable */
+.mermaid {
+  display: inline-block;
+  margin: 1rem auto;
+  text-align: center;
+  width: auto;
+  max-width: 100%;
+}
 .mermaid svg {
   display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 100%;
   height: auto;
+  max-width: 100%;
+}
+
+/* Boxed wrapper for all Mermaid diagrams */
+.mermaid-box {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  background: var(--ifm-background-surface-color);
+  overflow-x: auto;
+  text-align: center;
+}
+
+/* Auto-captions for diagrams and tables */
+.theme-doc-markdown {
+  counter-reset: diagram-counter table-counter;
+}
+
+.mermaid-box {
+  counter-increment: diagram-counter;
+  position: relative;
+}
+
+.mermaid-box::before {
+  content: 'Diagram ' counter(diagram-counter);
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--ifm-color-emphasis-700);
+  text-align: left;
+}
+
+.theme-doc-markdown table {
+  counter-increment: table-counter;
+  border-collapse: collapse;
+  position: relative;
+}
+
+.theme-doc-markdown table::before {
+  content: 'Table ' counter(table-counter);
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+/* Footnote references as [n] with normal baseline */
+a.footnote-ref {
+  text-decoration: none;
+  margin-left: 0.15rem;
+}
+a.footnote-ref::before {
+  content: '[';
+}
+a.footnote-ref::after {
+  content: ']';
+}
+a.footnote-ref sup {
+  font-size: 0.85em;
+  vertical-align: baseline;
+}
+
+/* Normalize footnote superscripts inside docs */
+.theme-doc-markdown sup {
+  vertical-align: baseline;
+  position: static;
+  line-height: 1;
+}
+.theme-doc-markdown sup a.footnote-ref {
+  font-size: 0.95em;
+  vertical-align: baseline;
 }
