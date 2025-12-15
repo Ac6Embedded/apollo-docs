@@ -1,6 +1,6 @@
 # AC6 Apollo Docs
 
-AC6 Apollo Docs is the official documentation site for AC6, built with Docusaurus 3. It centralizes AC6 training and product guidance across multiple tracks:
+AC6 Apollo Docs is the official documentation site for AC6. It centralizes AC6 training and product guidance across multiple tracks:
 
 - Security (CRA, secure boot, vendor-specific guides)
 - RTOS (determinism, isolation, integration patterns)
