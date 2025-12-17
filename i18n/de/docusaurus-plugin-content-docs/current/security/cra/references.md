@@ -1,70 +1,62 @@
----
+﻿---
 id: cra-references
 slug: /security/cra/references
-title: Referenzen, Normen und Ressourcen
-sidebar_position: 11
+title: CRA-Referenzen und Ressourcen
+sidebar_position: 99
 ---
 
-## Zentrale Rechtstexte
+## Nutzung der Referenzen
 
-- Cyber Resilience Act (CRA) — Regulation (EU) 2024/2847  
-  - Herausgeber: Europäische Union  
+- **Primärquellen** für juristische Auslegung/Borderline-Cases.  
+- **Guidance/Standardisierung** für harmonisierte Standards (PT1/PT2/PT3, vertikale Standards).  
+- **SDL/Vuln/SBOM/IoT-Baselines** als technische Untermauerung für Entscheidungen im Technical File.  
+
+---
+
+## CRA-Primärquellen
+
+- Regulation (EU) 2024/2847 - Cyber Resilience Act  
+  - Official Journal (EUR-Lex)  
   - URL: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847  
-  - Kurzbeschreibung: Haupttext mit Anforderungen für Produkte mit digitalen Elementen (PDE).  
-- RED, EMV, Niederspannungsrichtlinie  
-  - Herausgeber: Europäische Union  
-  - URL: https://single-market-economy.ec.europa.eu/single-market/european-standards/harmonised-standards/radio-equipment_en  
-  - Kurzbeschreibung: Rahmen weiterer CE‑Gesetzgebung, die für Embedded‑Produkte relevant sein kann.  
-
-## CRA‑Guides und Zusammenfassungen
-
-- CRA summary — European Commission  
-  - Herausgeber: Europäische Kommission  
+- Cyber Resilience Act - Kommissionsseite  
   - URL: https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act  
-  - Kurzbeschreibung: Offizielle Zusammenfassung, FAQ und Links zur Normungsarbeit.  
-- ENISA — CRA und zugehörige Leitfäden  
-  - Herausgeber: ENISA  
-  - URL: https://www.enisa.europa.eu/  
-  - Kurzbeschreibung: Ergänzende Ressourcen und Best Practices zur Cybersicherheit.  
+- CRA - Summary of the legislative text  
+  - URL: https://digital-strategy.ec.europa.eu/en/policies/cra-summary  
+- CRA - Conformity assessment  
+  - URL: https://digital-strategy.ec.europa.eu/en/policies/cra-conformity-assessment  
+- CRA - Standardisation  
+  - URL: https://digital-strategy.ec.europa.eu/en/policies/cra-standardisation  
+- CRA - Reporting obligations  
+  - URL: https://digital-strategy.ec.europa.eu/en/policies/cra-reporting  
 
-## SDL und Vulnerability‑Management
+## CRA-Guidance
 
-- NIST SP 800‑218 (SSDF) — Secure Software Development Framework  
-  - Herausgeber: NIST  
-  - URL: https://csrc.nist.gov/pubs/sp/800/218/final  
-  - Kurzbeschreibung: Rahmen zur Gestaltung eines SDL, der zum CRA passt.  
-- ISO/IEC 29147 & 30111 — Vulnerability Disclosure & Handling  
-  - Herausgeber: ISO/IEC  
-  - URL: https://www.iso.org/standard/45170.html  
-  - Kurzbeschreibung: Referenznormen für CVD‑Policy und Schwachstellenmanagement.  
+- CRA Implementation FAQ (EU-Kommission): https://ec.europa.eu/newsroom/dae/redirection/document/122331  
+- STAN4CRA (CEN/CENELEC/ETSI): https://www.stan4cra.eu/  
+- ETSI Cyber Security - CRA: https://www.etsi.org/technologies/cyber-security#mytoc5  
 
-## SBOM und VEX
+## SDL
 
-- SPDX & CycloneDX — SBOM‑Formate  
-  - Herausgeber: SPDX, OWASP CycloneDX  
-  - URL: https://spdx.dev/ ; https://cyclonedx.org/  
-  - Kurzbeschreibung: Standardformate zur Beschreibung von Software‑Komponenten.  
-- VEX — Vulnerability Exploitability eXchange  
-  - Herausgeber: CISA / SBOM‑Community  
-  - URL: https://www.cisa.gov/sbom/vex  
-  - Kurzbeschreibung: Format zur Kommunikation der Exploitability bekannter Schwachstellen.  
+- NIST SP 800-218 (SSDF) v1.1: https://csrc.nist.gov/pubs/sp/800/218/final  
+- IEC 62443-4-1 (Secure Product Development Lifecycle): https://webstore.iec.ch/publication/33615  
 
-## Embedded‑/IoT‑Baselines
+## Vulnerability Handling
 
-- ETSI EN 303 645 — Cyber Security for Consumer IoT  
-  - Herausgeber: ETSI  
-  - URL: https://www.etsi.org/deliver/etsi_en/303600_303699/303645/02.01.01_60/en_303645v020101p.pdf  
-  - Kurzbeschreibung: Basisanforderungen für vernetzte Consumer‑Geräte.  
-- IEC 62443‑4‑2 — Technische Sicherheitsanforderungen für IACS‑Komponenten  
-  - Herausgeber: IEC  
-  - URL: https://webstore.iec.ch/publication/34421  
-  - Kurzbeschreibung: Technische Anforderungen für Embedded‑/Industrie‑Komponenten.  
-- ENISA — Baseline Security Recommendations for IoT  
-  - Herausgeber: ENISA  
-  - URL: https://www.enisa.europa.eu/publications/baseline-security-recommendations-for-iot  
-  - Kurzbeschreibung: Praxisnahe Empfehlungen für IoT/Embedded‑Systeme.  
+- ISO/IEC 29147 (Vulnerability Disclosure): https://www.iso.org/standard/72311.html  
+- ISO/IEC 30111 (Vulnerability Handling Processes): https://www.iso.org/standard/69725.html  
 
-## Hinweis zu harmonisierten Normen (Stand Dez. 2025)
+## SBOM/VEX
 
-Mit Stand Dezember 2025 sind CRA‑harmonisierte Normen noch nicht im Amtsblatt gelistet. Der Normungsauftrag der Kommission an die europäischen Normungsorganisationen (ESO) läuft. Bis zur Zitierung können Hersteller robuste internationale/europäische Normen (z. B. IEC 62443‑4‑1/‑4‑2, ETSI EN 303 645) und etablierte Frameworks (z. B. NIST SSDF) nutzen. Die Kommission kann bei Bedarf gemeinsame Spezifikationen nach Art. 27 CRA erlassen.
+- SPDX Spec (ISO/IEC 5962): https://spdx.dev/specifications/  
+- CycloneDX Spec (ECMA-424): https://cyclonedx.org/specification/overview/  
+- VEX (CISA): https://www.cisa.gov/sbom/vex  
 
+## Embedded / IoT Baselines
+
+- ETSI EN 303 645 (Consumer IoT): https://www.etsi.org/deliver/etsi_en/303600_303699/303645/02.01.01_60/en_303645v020101p.pdf  
+- IEC 62443-4-2 (IACS-Komponenten): https://webstore.iec.ch/publication/34421  
+- ENISA IoT Baseline: https://www.enisa.europa.eu/publications/baseline-security-recommendations-for-iot  
+
+## Hinweis zu harmonisierten Standards (Dez 2025)
+
+- Stand Dez 2025: CRA-harmonisierte Standards noch nicht im OJ zitiert. Standardisierungsauftrag an ESO läuft. Bis zur Zitierung auf robuste internationale/europäische Standards (z.B. IEC 62443-4-1/-4-2, ETSI EN 303 645) und anerkannte Frameworks (z.B. NIST SSDF) stützen. Kommission kann Common Specifications erlassen (Art. 27).
