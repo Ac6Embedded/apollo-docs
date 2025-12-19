@@ -3,6 +3,10 @@ id: cra-conformity-assessment
 slug: /security/cra/conformity-assessment
 title: Konformitätsbewertung und CE-Kennzeichnung
 sidebar_position: 8
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Warum es für Embedded zählt
@@ -148,3 +152,4 @@ Interne Regel definieren: was als „substantial modification“ gilt und Compli
 
 [1]: Regulation (EU) 2024/2847 (CRA) - Official Journal http://data.europa.eu/eli/reg/2024/2847/oj  
 [2]: Regulation (EU) 2024/2847 - konsolidierter Text https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847
+

@@ -3,6 +3,10 @@ id: cra-fundamental-security
 slug: /security/cra/fundamental-security-requirements
 title: Grundläggande säkerhetskrav
 sidebar_position: 3
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Vad CRA faktiskt kräver (ingenjörstolkning)
@@ -336,3 +340,4 @@ Om du bara fixar en sak: bygg en **reproducerbar releasepipeline** som producera
 [7]: ETSI EN 303 645 v3.1.3 (Consumer IoT baseline) https://www.etsi.org/deliver/etsi_en/303600_303699/303645/03.01.03_60/en_303645v030103p.pdf
 
 [8]: IEC 62443-4-2 (IACS component technical security requirements) (standard reference; obtain via IEC/ISA)
+

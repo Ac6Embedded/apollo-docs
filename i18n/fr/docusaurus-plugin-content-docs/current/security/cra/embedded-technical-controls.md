@@ -1,21 +1,24 @@
----
+﻿---
 id: cra-embedded-controls
 slug: /security/cra/embedded-technical-controls
 title: Cartographie des controles techniques embarques
 sidebar_position: 4
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
 
 ## Objet de cette cartographie
 
-Cette page mappe les exigences de l’**Annexe I du CRA** vers des **controles techniques implementables** dans les produits embarques : fonctions CPU/SoC, firmware/chaine de boot, configuration RTOS, et pile update + vulnerability handling.
+Cette page mappe les exigences de l'**Annexe I du CRA** vers des **controles techniques implementables** dans les produits embarques : fonctions CPU/SoC, firmware/chaine de boot, configuration RTOS, et pile update + vulnerability handling.
 
-Elle sert de **guide de preuves** : chaque mapping inclut la clause CRA, ce qu’un evaluateur cherchera dans une architecture embarquee, et quels artefacts devraient exister dans la **documentation technique (Annexe VII)**.[1]
+Elle sert de **guide de preuves** : chaque mapping inclut la clause CRA, ce qu'un evaluateur cherchera dans une architecture embarquee, et quels artefacts devraient exister dans la **documentation technique (Annexe VII)**.[1]
 
 ---
 
 ## 0) Modele de reference embarque (base de la cartographie)
 
-Pour l’embarque, la conformite CRA couvre presque toujours **device + firmware + backend d’update**. La cartographie n’est credible que si la frontiere produit est explicite (voir aussi *Scope & Definitions*).
+Pour l'embarque, la conformite CRA couvre presque toujours **device + firmware + backend d'update**. La cartographie n'est credible que si la frontiere produit est explicite (voir aussi *Scope & Definitions*).
 
 ```mermaid
 flowchart TB
@@ -50,7 +53,7 @@ Idee cle : la plupart des clauses CRA se mappe a **plusieurs couches** (silicium
 
 ## 1) Exigences "proprietes" CRA → controles embarques (Annexe I Part I)
 
-L’Annexe I Part I(2)(a-m) est la liste actionnable. Ci-dessous, une **cartographie de controles** fidele au texte.
+L'Annexe I Part I(2)(a-m) est la liste actionnable. Ci-dessous, une **cartographie de controles** fidele au texte.
 
 ### 1.1 Tableau de mapping rapide (quoi implementer et ou)
 
@@ -58,14 +61,14 @@ L’Annexe I Part I(2)(a-m) est la liste actionnable. Ci-dessous, une **cartogra
 | --- | --- | --- | --- |
 | I(2)(a) no known exploitable vulns a la release | Eviter de shipper des vuln exploitables connues | SBOM + triage CVE; config securisee; fuzzing parsers; SAST C/C++; dependency gating | SBOM par build; log CVE/VEX; rapport tests securite |
 | I(2)(b) secure-by-default + reset | Defauts sûrs jour 0 + factory reset | debug lock; services minimaux; creds uniques; comms securisees ON; reset usine efface secrets | Matrice secure defaults; spec + tests factory reset |
-| I(2)(c) security updates (auto par defaut + opt-out) | Patchabilite + UX d’update sure | OTA signee; rollback-safe; rollout etage; auto update defaut (si applicable) + opt-out + report | Archi update; procedure deploiement; tests d’echec update |
-| I(2)(d) protection acces non autorise + reporting | AuthN/AuthZ forte + audit | identite device; mutual auth; politique d’acces; rate limits; logs auth | Modele identite; spec proto auth; taxonomie evenements |
+| I(2)(c) security updates (auto par defaut + opt-out) | Patchabilite + UX d'update sure | OTA signee; rollback-safe; rollout etage; auto update defaut (si applicable) + opt-out + report | Archi update; procedure deploiement; tests d'echec update |
+| I(2)(d) protection acces non autorise + reporting | AuthN/AuthZ forte + audit | identite device; mutual auth; politique d'acces; rate limits; logs auth | Modele identite; spec proto auth; taxonomie evenements |
 | I(2)(e) confidentialite | Proteger secrets/donnees sensibles | TLS/DTLS; stockage chiffre; secure element/TEE; zeroisation de cle | Profil crypto; plan key mgmt; classification data-flow |
 | I(2)(f) integrite data/commands/program/config + report | Prevenir modifs non autorisees + detecter/report | secure boot; configs signees; checks integrite; anti-rollback; events corruption | Doc chaine boot; design signature config; logs tests corruption |
 | I(2)(g) data minimisation | Collecter uniquement le necessaire | minimisation telemetrie; sampling/retention; desactivation identifiants non requis | Schema telemetrie + justification; politique de retention |
-| I(2)(h) disponibilite fonctions essentielles | Resilience + mitigation DoS | watchdog; budgets ressources; bornes d’entree; rate limiting; mode recovery | Tests robustesse; limites ressources; procedure recovery |
+| I(2)(h) disponibilite fonctions essentielles | Resilience + mitigation DoS | watchdog; budgets ressources; bornes d'entree; rate limiting; mode recovery | Tests robustesse; limites ressources; procedure recovery |
 | I(2)(i) minimiser impact sur autres | Ne pas nuire aux autres reseaux/devices | backoff et plafonds de taux; eviter comportement type scan; politique retry sûre | Spec comportement reseau; config de rate-limit |
-| I(2)(j) limiter surfaces d’attaque | Reduc interfaces exposees | desactiver ports inutiles; suppression compile-time; mgmt authentifie; diag securises | Inventaire interfaces; matrice ports/services; hardening config |
+| I(2)(j) limiter surfaces d'attaque | Reduc interfaces exposees | desactiver ports inutiles; suppression compile-time; mgmt authentifie; diag securises | Inventaire interfaces; matrice ports/services; hardening config |
 | I(2)(k) reduire impact via mitigations exploitation | Contenir la compromission | MPU/MMU; TrustZone; separation privileges; flags hardening; sandbox | Design isolation; flags build; resume pen-test |
 | I(2)(l) journaliser/monitorer activite interne + opt-out | Logs securite avec controle utilisateur | taxonomie events; logs tamper-resistant; export securise; semantique opt-out | Design logging; schema protection logs; API export |
 | I(2)(m) suppression securisee + transfert securise | Decommissionnement sûr | secure wipe (flash interne/externe); migration authentifiee | Design + verification secure wipe; instructions utilisateur |
@@ -77,13 +80,13 @@ L’Annexe I Part I(2)(a-m) est la liste actionnable. Ci-dessous, une **cartogra
 
 ## 2) Hardware root of trust et identite device
 
-### 2.1 Pourquoi c’est fondamental
+### 2.1 Pourquoi c'est fondamental
 
 Sans identite fiable et etat de boot prouve, difficile de credibiliser :
 - protection acces non autorise (I(2)(d)),
 - integrite (I(2)(f)),
 - updates securisees (I(2)(c)),
-- reduction d’impact (I(2)(k)).[1]
+- reduction d'impact (I(2)(k)).[1]
 
 ### 2.2 Pattern pratique embarque
 
@@ -109,7 +112,7 @@ sequenceDiagram
   Dev->>CA: CSR (cle reste en frontiere securisee)
   CA->>Fab: Certificat / credos device
   Fab->>Op: Enregistrer identite + attributs
-  Op->>Dev: Mutual auth lors de l’onboarding (TLS/DTLS)
+  Op->>Dev: Mutual auth lors de l'onboarding (TLS/DTLS)
 ```
 
 **Preuves a garder (dossier technique) :**
@@ -123,7 +126,7 @@ sequenceDiagram
 
 ### 3.1 Ancre CRA
 
-- protection d’integrite des programmes/config (I(2)(f))  
+- protection d'integrite des programmes/config (I(2)(f))  
 - reduction surface et mitigation exploitation (I(2)(j), I(2)(k))  
 - updates securisees et anti-rollback en pratique (I(2)(c)).[1]
 
@@ -147,7 +150,7 @@ flowchart TB
 
 **Preuves :**
 - tests negatifs (mauvaise signature, version downgrade, flash corrompue),
-- tests de coupure courant en cours d’update (voir section update),
+- tests de coupure courant en cours d'update (voir section update),
 - evenements de boot logs (verdict) relies a I(2)(l).[1]
 
 ---
@@ -157,7 +160,7 @@ flowchart TB
 ### 4.1 Ancre CRA
 
 - reduire impact des incidents via mitigations exploitation (I(2)(k))  
-- limiter surface d’attaque (I(2)(j))  
+- limiter surface d'attaque (I(2)(j))  
 - proteger confidentialite/integrite (I(2)(e)-(f)).[1]
 
 ### 4.2 Ce que signifie "exploitation mitigation" en embarque
@@ -199,9 +202,9 @@ flowchart LR
 
 - secure-by-default (I(2)(b))  
 - protection acces non autorise + reporting (I(2)(d))  
-- reduction surface d’attaque (I(2)(j)).[1]
+- reduction surface d'attaque (I(2)(j)).[1]
 
-### 5.2 Inventaire d’interfaces obligatoire en pratique
+### 5.2 Inventaire d'interfaces obligatoire en pratique
 
 Faire une liste unique :
 - ports physiques (USB, UART, CAN, SWD/JTAG),
@@ -240,7 +243,7 @@ stateDiagram-v2
 - confidentialite via mecanismes "state of the art" (I(2)(e))  
 - integrite et reporting de corruption (I(2)(f)).[1]
 
-### 6.2 Ce qu’attendent les auditeurs (version embarquee)
+### 6.2 Ce qu'attendent les auditeurs (version embarquee)
 
 Savoir montrer :
 - **quels protocoles** (TLS/DTLS, MQTT over TLS, etc.),
@@ -255,7 +258,7 @@ Rester simple et defensible :
 **Preuves :**
 - document profil crypto,
 - modele de confiance certifs (root CA, intermediaires, pinning),
-- SOP de lifecycle de cle et plan d’incident (compromission de cle).
+- SOP de lifecycle de cle et plan d'incident (compromission de cle).
 
 ---
 
@@ -263,7 +266,7 @@ Rester simple et defensible :
 
 ### 7.1 Ancre CRA
 
-Annexe I Part I(2)(l) : enregistrer et monitorer l’activite interne pertinente (acces/modif de donnees/services/fonctions), avec opt-out utilisateur.[1]
+Annexe I Part I(2)(l) : enregistrer et monitorer l'activite interne pertinente (acces/modif de donnees/services/fonctions), avec opt-out utilisateur.[1]
 
 ### 7.2 Patterns embarques
 
@@ -271,9 +274,9 @@ Even des devices limites doivent produire des events securite. Classes typiques 
 
 - verdicts de boot (secure boot OK/KO),
 - resultats auth/authz,
-- tentatives d’update (download, verify, activate, rollback),
+- tentatives d'update (download, verify, activate, rollback),
 - changements de config,
-- fautes d’integrite (signature fail, flags corruption),
+- fautes d'integrite (signature fail, flags corruption),
 - tentatives debug unlock / changements lifecycle.
 
 #### Esquisse pipeline logging
@@ -289,27 +292,27 @@ flowchart LR
 **Preuves :**
 - taxonomie events + mapping severite,
 - design de protection des logs (anti-tamper / integrite),
-- definition de l’**opt-out** (ce qui est desactive et ce qui reste requis pour safety/security).
+- definition de l'**opt-out** (ce qui est desactive et ce qui reste requis pour safety/security).
 
 ---
 
-## 8) Chemin d’update securise (device + flotte)
+## 8) Chemin d'update securise (device + flotte)
 
 ### 8.1 Ancre CRA (exact)
 
 - Part I(2)(c) : security updates, auto-updates par defaut quand applicable, opt-out, notifications, report possible.[1]  
 - Part II(2) : remedier sans delai, fournir des security updates ; separer updates securite / fonctionnalite si faisable.[1]  
-- Part II(7)-(8) : mecanismes de distribution securises ; diffuser sans delai (et generalement gratuit) ; messages d’avis.[1]
+- Part II(7)-(8) : mecanismes de distribution securises ; diffuser sans delai (et generalement gratuit) ; messages d'avis.[1]
 
-### 8.2 Proprieties minimales pour un mecanisme d’update embarque
+### 8.2 Proprieties minimales pour un mecanisme d'update embarque
 
 Credible si :
 
-1. **Authenticity** : seules les images autorisees manufacturer s’installent (signature verifiee).
+1. **Authenticity** : seules les images autorisees manufacturer s'installent (signature verifiee).
 2. **Integrity** : corruption detectee avant activation (hash, verification).
 3. **Anti-rollback** : politique empeche downgrade vers builds vulnerables.
 4. **Power-fail safety** : recovery apres interruption (A/B, swap, mode recovery).
-5. **Status transparency** : l’appareil peut rapporter l’etat d’update de facon securisee.
+5. **Status transparency** : l'appareil peut rapporter l'etat d'update de facon securisee.
 6. **Fleet control** : rollout etage + rollback flotte (gestion de risque).
 
 #### Esquisse style Zephyr + MCUboot
@@ -328,8 +331,8 @@ flowchart LR
 
 **Preuves :**
 - doc architecture update (device + backend),
-- resultats de tests sur la matrice d’echec (download interrompu, swap interrompu, image corrompue),
-- templates d’advisory (Part II(8)) et traces de rollout.
+- resultats de tests sur la matrice d'echec (download interrompu, swap interrompu, image corrompue),
+- templates d'advisory (Part II(8)) et traces de rollout.
 
 ---
 
@@ -346,7 +349,7 @@ Pour firmware, la SBOM doit couvrir :
 - RTOS,
 - bibliotheques reseau/crypto,
 - middleware (parsers, stacks de serialisation),
-- HALs constructeur et SDK d’elements securises,
+- HALs constructeur et SDK d'elements securises,
 - composants toolchain pertinents pour la provenance.
 
 #### Flux SBOM robuste
@@ -382,14 +385,14 @@ flowchart TB
 ### Boot / firmware
 - verification de signature pour boot et updates
 - politique de version et regles rollback
-- politique d’entree/sortie recovery mode
+- politique d'entree/sortie recovery mode
 - integrite config (config signee / commandes authentifiees)
 
 ### RTOS / runtime
 - separation de privilege (MPU/MMU, userspace)
 - services crypto isoles (TEE ou secure partition si possible)
 - flags de compilation hardening
-- politiques de validation d’entree pour tous parsers/handlers
+- politiques de validation d'entree pour tous parsers/handlers
 - limites ressources (heap, queues, connexions) pour la disponibilite
 
 ### Networking
@@ -399,23 +402,23 @@ flowchart TB
 
 ### Observabilite / logging
 - taxonomie des evenements + retention
-- protection d’integrite des logs
-- auth pour l’export securise
+- protection d'integrite des logs
+- auth pour l'export securise
 
 ---
 
 ## Problemes courants lors du mapping (specifique embarque)
 
-Si l’application parait "dure", c’est souvent :
+Si l'application parait "dure", c'est souvent :
 
 1. **Frontiere PDE floue** : device documente mais OTA/provisioning/telemetry absents (mapping updates/logging casse).  
 2. **Explosion de variantes** : multiples memory maps/boot chains (A/B vs swap) mais evidences sur une seule voie.  
 3. **Pas de politique lifecycle** : manufacturing vs production vs RMA non defini, donc debug/cles/rollback incoherents.  
-4. **Modele d’identite non specifie** : "device a TLS" mais pas d’identite par device ni plan d’emission/revocation.  
-5. **Anti-rollback absent** : mecanisme d’update permet downgrade vers firmware vuln (oppose I(2)(c)).  
+4. **Modele d'identite non specifie** : "device a TLS" mais pas d'identite par device ni plan d'emission/revocation.  
+5. **Anti-rollback absent** : mecanisme d'update permet downgrade vers firmware vuln (oppose I(2)(c)).  
 6. **Logging present mais non securise** : logs falsifiables ou export non authentifie (affaiblit I(2)(l)).  
 7. **Secure wipe non implemente** : reset usine laisse des secrets (I(2)(m)).  
-8. **SBOM sans triage** : SBOM produite mais pas de process d’impact/remediation rapide (Part II(2)).  
+8. **SBOM sans triage** : SBOM produite mais pas de process d'impact/remediation rapide (Part II(2)).  
 9. **Opt-out ambigu** : opt-out logs/auto-updates non defini pour votre type de produit ; documenter interpretation + instructions utilisateur (Annexe II).  
 10. **Evidences non versionnees** : controles existent mais artefacts non lies a un hash de release dans la doc technique (echec Annexe VII).
 
@@ -427,3 +430,5 @@ Si l’application parait "dure", c’est souvent :
 [2]: ETSI EN 303 645 v3.1.3 (Consumer IoT baseline) https://www.etsi.org/deliver/etsi_en/303600_303699/303645/03.01.03_60/en_303645v030103p.pdf  
 [3]: IEC 62443-4-2 (IACS component technical security requirements) (standard reference; obtain via IEC/ISA)  
 [4]: CRA Annexe VII - exigences de documentation technique (EUR-Lex) https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847  
+
+

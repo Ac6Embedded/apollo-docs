@@ -3,6 +3,10 @@ id: cra-developer-checklist
 slug: /security/cra/developer-checklist
 title: Utvecklarchecklista och mallar
 sidebar_position: 10
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Vad checklistan är (och inte är)
@@ -386,3 +390,4 @@ Skapa `security/cra/adr/ADR-XXXX.md`:
 - ISO/IEC 30111 (Vulnerability handling processes): https://www.iso.org/standard/69725.html
 - SPDX specifications: https://spdx.dev/specifications/
 - CycloneDX specification: https://cyclonedx.org/specification/
+

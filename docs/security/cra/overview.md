@@ -1,15 +1,20 @@
-﻿---
+---
 id: cra-overview
 slug: /security/cra
 title: CRA for Embedded Products - Practical Implementation Guide
+description: Cyber Resilience Act (CRA) guide for embedded security teams covering scope, controls, secure updates, SBOM, PSIRT, SDL, and audit-ready evidence.
 sidebar_position: 1
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
+
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 ## Why this guide exists
 
-The Cyber Resilience Act (CRA) is not only about *having* security features - it’s about being able to **demonstrate** that your product was **designed, developed, produced, and maintained** with cybersecurity in mind, and that you can keep it secure after release. In practice, that means turning legal requirements into:
+The Cyber Resilience Act (CRA) is not only about *having* security features - it's about being able to **demonstrate** that your product was **designed, developed, produced, and maintained** with cybersecurity in mind, and that you can keep it secure after release. In practice, that means turning legal requirements into:
 
 - **engineering decisions** (architecture, boot chain, isolation, crypto, update path),
 - **repeatable processes** (SDL, supply-chain control, PSIRT),
@@ -21,7 +26,7 @@ This documentation set is written to help embedded teams do exactly that: **conv
 
 ---
 
-## What you’ll achieve if you follow it
+## What you'll achieve if you follow it
 
 By the end, you should have a CRA-ready baseline that is *auditable*:
 
@@ -54,7 +59,7 @@ flowchart TD
 
 ---
 
-## The “evidence-first” mindset (the real CRA accelerator)
+## The "evidence-first" mindset (the real CRA accelerator)
 
 The fastest way to become CRA-ready is to treat every security decision as **two outputs**:
 
@@ -62,9 +67,9 @@ The fastest way to become CRA-ready is to treat every security decision as **two
 2) **an evidence artefact** (something you can point to later).
 
 Examples:
-- “Secure boot enforced” ? configuration + signed images + verification logs + test results  
-- “Update mechanism is secure” ? update design + policy + rollback tests + staged rollout logs  
-- “No known exploitable vulnerabilities at release” ? SBOM + VEX + triage record + fix commits  
+- "Secure boot enforced" ? configuration + signed images + verification logs + test results  
+- "Update mechanism is secure" ? update design + policy + rollback tests + staged rollout logs  
+- "No known exploitable vulnerabilities at release" ? SBOM + VEX + triage record + fix commits  
 
 ```mermaid
 flowchart TD
@@ -92,21 +97,21 @@ Most CRA guidance is technology-neutral. Here we make it concrete for embedded p
 - **RTOS realities** (privilege separation, userspace, secure bootloader integration)
 - **field update constraints** (A/B slots, power loss handling, rollback policies)
 - **supply-chain visibility** for firmware (SBOM per build + per variant)
-- **device ? app ? gateway ? cloud** boundaries (what is part of the PDE “system” in practice)
+- **device ? app ? gateway ? cloud** boundaries (what is part of the PDE "system" in practice)
 
 ---
 
 ## Typical problems this guide helps you avoid
 
-You’ll see these repeatedly in real audits and real incidents:
+You'll see these repeatedly in real audits and real incidents:
 
-- “We don’t know what exactly is **in scope** (device only? app? cloud?)”
-- “We can’t explain **why** we chose these controls (no risk-to-control mapping)”
-- “We have security features, but **no evidence trail** (no logs, no docs, no repeatability)”
-- “We ship multiple variants, but SBOMs and configs are **not variant-aware**”
-- “Updates exist, but rollback, key handling, and failure modes are **not proven**”
-- “Vulnerability handling is informal (no PSIRT workflow, no response targets)”
-- “CE/DoC is handled late, and engineering cannot answer **technical file** questions quickly”
+- "We don't know what exactly is **in scope** (device only? app? cloud?)"
+- "We can't explain **why** we chose these controls (no risk-to-control mapping)"
+- "We have security features, but **no evidence trail** (no logs, no docs, no repeatability)"
+- "We ship multiple variants, but SBOMs and configs are **not variant-aware**"
+- "Updates exist, but rollback, key handling, and failure modes are **not proven**"
+- "Vulnerability handling is informal (no PSIRT workflow, no response targets)"
+- "CE/DoC is handled late, and engineering cannot answer **technical file** questions quickly"
 
 If one of these sounds familiar, start with **Scope & Definitions**, then move to **Fundamental Security Requirements** and **Embedded Technical Controls**.
 
@@ -121,4 +126,5 @@ This guide is grounded in the CRA legal text, mainly:
 - and the CRA provisions covering vulnerability handling/reporting and conformity assessment routes.
 
 [1]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "Regulation (EU) 2024/2847 - Cyber Resilience Act (CRA)"
+
 

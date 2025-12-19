@@ -1,27 +1,30 @@
-﻿---
+---
 id: cra-developer-checklist
 slug: /security/cra/developer-checklist
 title: Developer Checklist and Templates
 sidebar_position: 10
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
 
 ## What this checklist is (and what it is not)
 
-This page is a **release-grade checklist** for embedded products under the EU Cyber Resilience Act (CRA). It turns CRA obligations into concrete engineering tasks, and forces every “done” item to point to **evidence** that belongs in your CRA technical documentation.
+This page is a **release-grade checklist** for embedded products under the EU Cyber Resilience Act (CRA). It turns CRA obligations into concrete engineering tasks, and forces every "done" item to point to **evidence** that belongs in your CRA technical documentation.
 
-It is **not** a replacement for your legal analysis or your conformity assessment route selection. It’s the day‑to‑day tool that makes those obligations implementable by firmware, platform, and DevSecOps teams.
+It is **not** a replacement for your legal analysis or your conformity assessment route selection. It's the day-to-day tool that makes those obligations implementable by firmware, platform, and DevSecOps teams.
 
-> **Evidence rule:** a checkbox is only “done” if it links to *at least one* of: issue/ticket ID, PR/MR, CI run, test report, signed artifact, SBOM/VEX, design doc, ADR, or a dated decision record.
+> **Evidence rule:** a checkbox is only "done" if it links to *at least one* of: issue/ticket ID, PR/MR, CI run, test report, signed artifact, SBOM/VEX, design doc, ADR, or a dated decision record.
 
 ---
 
 ## CRA anchors (the clauses that drive this checklist)
 
-You’ll see the same few CRA anchors across most controls:
+You'll see the same few CRA anchors across most controls:
 
 - **Designed, developed, produced** in line with Annex I Part I (manufacturer obligation).  
 - **Cybersecurity risk assessment** documented and included in the technical documentation.  
-- **Due diligence** on third‑party components (including open source).  
+- **Due diligence** on third-party components (including open source).  
 - **Vulnerability handling** during the support period (Annex I Part II).  
 - **Mandatory reporting** for *actively exploited vulnerabilities* and *severe incidents* (with strict timelines).  
 - **Technical documentation** (Annex VII) + **user information** (Annex II).
@@ -32,7 +35,7 @@ If you need exact wording, always quote the Official Journal text in the CRA tec
 
 ## Recommended repository layout (Docusaurus + engineering evidence)
 
-Keep “presentation docs” (Docusaurus) separate from “audit evidence” (technical file), but link them.
+Keep "presentation docs" (Docusaurus) separate from "audit evidence" (technical file), but link them.
 
 ```
 repo-root/
@@ -99,7 +102,7 @@ A practical RACI for embedded products. Keep this table in your technical file (
 
 - [ ] **PDE scope confirmed** (product with digital elements, including firmware and any remote data processing in scope).  
   Evidence: `00-scope-classification.md` + ADR ID.
-- [ ] **Important/critical status checked** against Annex III/IV (and documented even if “not applicable”).  
+- [ ] **Important/critical status checked** against Annex III/IV (and documented even if "not applicable").  
   Evidence: annex cross-check table + rationale.
 - [ ] **Variant map frozen for this release** (SoC variants, HW revisions, feature flags, protocol profiles).  
   Evidence: `product-variants.yaml` + bill of materials per variant.
@@ -108,7 +111,7 @@ A practical RACI for embedded products. Keep this table in your technical file (
 - [ ] **Support period declared and recorded** (minimum duration and end-of-support policy).  
   Evidence: `support-period.md` + customer-facing plan.
 
-> Tip for embedded: define scope per *image* (bootloader, app, radio stack), per *hardware SKU*, and per *cloud dependency*. Most “audit pain” comes from undefined boundaries.
+> Tip for embedded: define scope per *image* (bootloader, app, radio stack), per *hardware SKU*, and per *cloud dependency*. Most "audit pain" comes from undefined boundaries.
 
 ---
 
@@ -137,7 +140,7 @@ flowchart TD
 - [ ] **System context diagram** created/updated: device, gateways, apps, remote processing, update servers, manufacturing.  
   Evidence: diagram + version history.
 - [ ] **Trust boundaries identified** (secure vs non-secure execution, debug boundary, update boundary, external networks).  
-  Evidence: threat model section “trust boundaries”.
+  Evidence: threat model section "trust boundaries".
 - [ ] **Attacker model documented** (remote attacker, local attacker with physical access, supply-chain adversary).  
   Evidence: `02-threat-model.md`.
 - [ ] **Abuse cases / misuse cases** documented for: update path, debug/service mode, provisioning, radio/network stack.  
@@ -147,7 +150,7 @@ flowchart TD
 
 ### 3) Secure boot, identity, and provisioning
 
-- [ ] **Boot chain documented** from ROM → first stage → second stage → application.  
+- [ ] **Boot chain documented** from ROM ? first stage ? second stage ? application.  
   Evidence: `03-architecture.md` (boot chain section).
 - [ ] **Authenticity & integrity verification enforced** at each boot stage (signature + hash policy).  
   Evidence: code/config + test report of failure cases.
@@ -173,7 +176,7 @@ flowchart TD
 
 ---
 
-### 5) Interface hardening (don’t ship “debug-by-default”)
+### 5) Interface hardening (don't ship "debug-by-default")
 
 - [ ] **Debug ports protected** (locked/disabled in field units or protected by an authenticated service procedure).  
   Evidence: option bytes/fuse settings + factory verification test.
@@ -188,7 +191,7 @@ flowchart TD
 
 ### 6) Cryptography and key lifecycle
 
-- [ ] **Crypto profile declared** (protocols, algorithms, key sizes, RNG requirements) and justified as “state of the art” for your use case.  
+- [ ] **Crypto profile declared** (protocols, algorithms, key sizes, RNG requirements) and justified as "state of the art" for your use case.  
   Evidence: crypto profile doc + rationale.
 - [ ] **Key lifecycle covered**: generation, storage, usage, rotation, revocation, compromise response.  
   Evidence: key management plan.
@@ -351,7 +354,7 @@ Create `security/cra/adr/ADR-XXXX.md`:
 - Controls mapping section:
 ```
 
-### Template C - SBOM/VEX “minimum bar”
+### Template C - SBOM/VEX "minimum bar"
 
 ```md
 # SBOM/VEX minimum bar (per release)
@@ -367,13 +370,13 @@ Create `security/cra/adr/ADR-XXXX.md`:
 
 ## Common problems teams hit in this section (and how to avoid them)
 
-1. **Undefined scope**: teams forget that *firmware + remote data processing + update services* are part of the security story. Fix: draw a system context diagram early and freeze “what’s in scope” per release.
-2. **Variant explosion**: one “product” is actually 12 SKUs and 5 firmware feature sets. Fix: maintain a variant map and generate SBOM/test evidence per variant group.
+1. **Undefined scope**: teams forget that *firmware + remote data processing + update services* are part of the security story. Fix: draw a system context diagram early and freeze "what's in scope" per release.
+2. **Variant explosion**: one "product" is actually 12 SKUs and 5 firmware feature sets. Fix: maintain a variant map and generate SBOM/test evidence per variant group.
 3. **Support period ambiguity**: no one can point to a declared support period or end-of-support plan. Fix: create a single authoritative `support-period.md` and link it from user docs.
-4. **Update path not testable**: update works “in the lab” but fails under power loss, low flash space, or partial downloads. Fix: HIL update rehearsal becomes a release gate.
+4. **Update path not testable**: update works "in the lab" but fails under power loss, low flash space, or partial downloads. Fix: HIL update rehearsal becomes a release gate.
 5. **Debug left open**: SWD/JTAG or factory shell is still reachable in the field. Fix: make debug lock a manufacturing test item with logged evidence.
 6. **SBOM is incomplete**: missing bootloader, crypto library, or toolchain information. Fix: bind SBOM generation to the build pipeline and treat SBOM as an artifact.
-7. **No reporting readiness**: Article 14 timelines are operationally hard if you don’t have an on-call and a prepared reporting template. Fix: do at least one dry run.
+7. **No reporting readiness**: Article 14 timelines are operationally hard if you don't have an on-call and a prepared reporting template. Fix: do at least one dry run.
 8. **Evidence scattered**: controls exist, but proof is spread across emails and laptops. Fix: one release evidence bundle folder per release, always.
 
 ---
@@ -386,4 +389,6 @@ Create `security/cra/adr/ADR-XXXX.md`:
 - ISO/IEC 30111 (Vulnerability handling processes): https://www.iso.org/standard/69725.html
 - SPDX specifications: https://spdx.dev/specifications/
 - CycloneDX specification: https://cyclonedx.org/specification/
+
+
 

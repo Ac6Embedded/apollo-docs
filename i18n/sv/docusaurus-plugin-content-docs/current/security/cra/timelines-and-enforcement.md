@@ -3,6 +3,10 @@ id: cra-timelines
 slug: /security/cra/timelines-and-enforcement
 title: Tidslinjer, tillsyn och sanktioner
 sidebar_position: 9
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Varför tidslinjer spelar roll (särskilt för inbyggt)
@@ -201,3 +205,4 @@ Påminnelser:
 [1]: Regulation (EU) 2024/2847 (Cyber Resilience Act), Article 71 (application dates) and Article 14 (reporting timelines): https://eur-lex.europa.eu/eli/reg/2024/2847/oj  
 
 [2]: Regulation (EU) 2024/2847, Article 64 (administrative fines): https://eur-lex.europa.eu/eli/reg/2024/2847/oj
+

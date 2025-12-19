@@ -3,6 +3,10 @@ id: cra-references
 slug: /security/cra/references
 title: CRA-Referenzen und Ressourcen
 sidebar_position: 99
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Nutzung der Referenzen
@@ -60,3 +64,4 @@ sidebar_position: 99
 ## Hinweis zu harmonisierten Standards (Dez 2025)
 
 - Stand Dez 2025: CRA-harmonisierte Standards noch nicht im OJ zitiert. Standardisierungsauftrag an ESO läuft. Bis zur Zitierung auf robuste internationale/europäische Standards (z.B. IEC 62443-4-1/-4-2, ETSI EN 303 645) und anerkannte Frameworks (z.B. NIST SSDF) stützen. Kommission kann Common Specifications erlassen (Art. 27).
+

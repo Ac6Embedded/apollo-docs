@@ -3,6 +3,10 @@ id: cra-docs-sbom
 slug: /security/cra/documentation-and-sbom
 title: Dokumentation, användarinformation och SBOM
 sidebar_position: 6
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Vad CRA förväntar sig att se
@@ -271,3 +275,4 @@ Använd som "pre-audit sanity check".
 ## Referenser (primära källor)
 
 [1]: Regulation (EU) 2024/2847 (Cyber Resilience Act), EUR-Lex (konsoliderad text) - Artiklarna 13 och 31; Bilagor I, II, VII: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847
+

@@ -3,6 +3,10 @@ id: cra-embedded-controls
 slug: /security/cra/embedded-technical-controls
 title: Mappning av inbyggda tekniska kontroller
 sidebar_position: 4
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Syfte med mappningen
@@ -430,3 +434,4 @@ Om sidan känns svår att tillämpa är det ofta:
 [3]: IEC 62443-4-2 (IACS component technical security requirements) (standard reference; obtain via IEC/ISA)
 
 [4]: CRA Annex VII - Technical documentation requirements (EUR-Lex) https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847
+

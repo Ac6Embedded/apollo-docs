@@ -41,7 +41,7 @@ const config = {
     // Default UI/content language
     defaultLocale: 'en',
     // Add additional locales here
-    locales: ['en', 'fr', 'sv'],
+    locales: ['en', 'fr', 'de', 'sv'],
     // Optional per-locale configuration
     localeConfigs: {
       en: {
@@ -50,6 +50,10 @@ const config = {
       },
       fr: {
         label: 'French',
+        direction: 'ltr',
+      },
+      de: {
+        label: 'Deutsch',
         direction: 'ltr',
       },
       sv: {
@@ -65,6 +69,8 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
         },
         blog: false,
         theme: {

@@ -3,6 +3,10 @@ id: cra-developer-requirements
 slug: /security/cra/developer-requirements
 title: Entwickleranforderungen und Zuständigkeiten
 sidebar_position: 2.5
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Was diese Seite ist (und nicht ist)
@@ -263,3 +267,4 @@ flowchart TD
 [12]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "CRA Article 21"
 
 [13]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "CRA Article 22"
+

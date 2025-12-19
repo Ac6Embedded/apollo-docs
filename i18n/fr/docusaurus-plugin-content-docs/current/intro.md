@@ -1,5 +1,8 @@
 ---
 sidebar_position: 1
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
 
 # Vue d'ensemble Apollo
@@ -16,3 +19,4 @@ Chaque parcours commence par une vue d'ensemble et chaque sous-parcours (par exe
 - Dans ce parcours, commencez par la vue d'ensemble CRA avant de lire les tutoriels ou checklists detaillees.
 
 Vous pouvez passer entre **English**, **Francais** et **Svenska** via le menu de langue. La structure reste identique dans chaque langue afin de conserver les liens.
+

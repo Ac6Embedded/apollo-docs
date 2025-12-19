@@ -1,5 +1,8 @@
 ---
 sidebar_position: 1
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
 
 # Apollo - Überblick
@@ -18,3 +21,4 @@ Verwenden Sie die linke Seitenleiste oder die Navigation oben, um die Security�
 - Nutzen Sie den CRA‑Unterbereich unter Security für alles rund um Konformität, Dokumentation und Prozesse.
 
 Über das Sprachmenü in der Navigationsleiste können Sie zwischen **English**, **Français**, **Deutsch** und skandinavischen Sprachen wechseln. Alle Sprachen haben die gleiche Struktur, damit sich Links leicht in gemischten Teams teilen lassen.
+

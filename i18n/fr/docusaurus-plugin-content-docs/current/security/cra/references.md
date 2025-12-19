@@ -1,8 +1,11 @@
----
+﻿---
 id: cra-references
 slug: /security/cra/references
 title: References CRA et ressources
 sidebar_position: 99
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
 
 ## Comment utiliser ces references
@@ -10,22 +13,22 @@ sidebar_position: 99
 Cette page rassemble des **sources officielles** et des **standards de support** pour le parcours CRA.
 
 - Utiliser les **sources primaires CRA** pour verifier toute interpretation legale ou cas limite.  
-- Utiliser les **liens de guidance/standardisation** pour suivre l’evolution des standards harmonises (PT1/PT2/PT3, standards verticaux).  
+- Utiliser les **liens de guidance/standardisation** pour suivre l'evolution des standards harmonises (PT1/PT2/PT3, standards verticaux).  
 - Utiliser les **standards SDL, vulnerabilites, SBOM, IoT baseline** comme appui technique concret pour vos decisions documentees dans le dossier technique CRA.   
 
-Chaque page du tutoriel renvoie ici quand elle s’appuie sur l’un de ces documents externes.
+Chaque page du tutoriel renvoie ici quand elle s'appuie sur l'un de ces documents externes.
 
 
 ## Sources primaires CRA
 
 - Regulation (EU) 2024/2847 - Cyber Resilience Act  
-  - Editeur : Journal Officiel de l’UE (EUR-Lex)  
+  - Editeur : Journal Officiel de l'UE (EUR-Lex)  
   - URL : https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847  
   - Resume : texte legal contraignant du CRA.
 - Cyber Resilience Act - Page Commission  
   - Editeur : Commission europeenne (DG CONNECT)  
   - URL : https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act  
-  - Resume : hub officiel avec vue d’ensemble et mises a jour.
+  - Resume : hub officiel avec vue d'ensemble et mises a jour.
 - CRA - Summary of the legislative text  
   - Editeur : Commission europeenne  
   - URL : https://digital-strategy.ec.europa.eu/en/policies/cra-summary  
@@ -93,7 +96,7 @@ Chaque page du tutoriel renvoie ici quand elle s’appuie sur l’un de ces docu
 - Vulnerability Exploitability eXchange (VEX)  
   - Editeur : CISA  
   - URL : https://www.cisa.gov/sbom/vex  
-  - Resume : statut d’exploitabilite de vulnerabilites connues.
+  - Resume : statut d'exploitabilite de vulnerabilites connues.
 
 ## Baselines embarque / IoT
 
@@ -112,4 +115,6 @@ Chaque page du tutoriel renvoie ici quand elle s’appuie sur l’un de ces docu
 
 ## Notes sur les standards harmonises (Dec 2025)
 
-- A Dec 2025, aucun standard CRA harmonise n’a encore ete cite au JO. La demande de standardisation de la Commission aux ESOs est en cours. En attendant, les manufacturers peuvent s’appuyer sur des standards internationaux/europeens robustes (ex. IEC 62443-4-1/4-2, ETSI EN 303 645) et des cadres reconnus (ex. NIST SSDF). La Commission peut adopter des common specifications si necessaire (Art. 27).  
+- A Dec 2025, aucun standard CRA harmonise n'a encore ete cite au JO. La demande de standardisation de la Commission aux ESOs est en cours. En attendant, les manufacturers peuvent s'appuyer sur des standards internationaux/europeens robustes (ex. IEC 62443-4-1/4-2, ETSI EN 303 645) et des cadres reconnus (ex. NIST SSDF). La Commission peut adopter des common specifications si necessaire (Art. 27).  
+
+

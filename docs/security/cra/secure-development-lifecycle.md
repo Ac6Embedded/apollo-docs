@@ -1,8 +1,11 @@
-﻿---
+---
 id: cra-sdl
 slug: /security/cra/secure-development-lifecycle
 title: Secure Development Lifecycle (SDL)
 sidebar_position: 5
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
 
 ## Why an SDL is required (CRA view)
@@ -13,7 +16,7 @@ The CRA then goes further:
 
 - Manufacturers must run a **cybersecurity risk assessment**, document it, and take its outcome into account during **planning, design, development, production, delivery and maintenance** phases.[2]
 - Technical documentation must be created **before** placing the product on the market and **continuously updated** at least during the **support period** (and must contain the elements listed in Annex VII).[3]
-- Conformity can be demonstrated using **harmonised standards** or **common specifications** (presumption of conformity), which is why an SDL needs to be “standardisable” and auditable.[4]
+- Conformity can be demonstrated using **harmonised standards** or **common specifications** (presumption of conformity), which is why an SDL needs to be "standardisable" and auditable.[4]
 
 In embedded engineering terms: **SDL is the mechanism that proves Annex I is implemented**, release after release.
 
@@ -24,8 +27,8 @@ In embedded engineering terms: **SDL is the mechanism that proves Annex I is imp
 A CRA-ready SDL for embedded devices has three properties:
 
 1. **Evidence-first**: every phase produces artifacts that can be indexed in the technical file (Annex VII).[3]
-2. **Risk-driven**: controls are selected and justified via the product’s risk assessment (Art. 13(2)-(4)).[2]
-3. **Lifecycle-complete**: it covers design → release → field maintenance, including vulnerability handling and security updates (Annex I Part II).[1]
+2. **Risk-driven**: controls are selected and justified via the product's risk assessment (Art. 13(2)-(4)).[2]
+3. **Lifecycle-complete**: it covers design ? release ? field maintenance, including vulnerability handling and security updates (Annex I Part II).[1]
 
 ```mermaid
 flowchart TD
@@ -53,7 +56,7 @@ flowchart TD
 
 ### Gate 0 - Product scope, boundary, and classification
 
-**Objective:** define the PDE boundary and your “security environment” so risk is assessable.
+**Objective:** define the PDE boundary and your "security environment" so risk is assessable.
 
 Embedded specifics you must capture:
 - device interfaces (logical/physical/indirect connections),
@@ -80,7 +83,7 @@ flowchart TB
 
 ### Gate 1 - Security requirements and threat modelling
 
-**Objective:** turn Annex I Part I “security properties” into explicit engineering requirements, then validate them against threats.
+**Objective:** turn Annex I Part I "security properties" into explicit engineering requirements, then validate them against threats.
 
 Embedded threat modelling must include:
 - remote threats (protocol parsers, auth bypass, update spoofing),
@@ -90,7 +93,7 @@ Embedded threat modelling must include:
 **Outputs (minimum):**
 - security requirements list tagged to Annex I clauses,
 - threat model with mitigations,
-- testable security acceptance criteria (what “pass” means).
+- testable security acceptance criteria (what "pass" means).
 
 **CRA anchors:** Annex I Part I essential requirements; risk assessment indicating how Annex I(2) is applied (Art. 13(3)).[1][2]
 
@@ -150,7 +153,7 @@ Embedded-specific guardrails:
 - dependency manifest + SBOM generation job,
 - secure key handling SOP for signing (who/where/how).
 
-**CRA anchors:** “no known exploitable vulnerabilities” at release (Annex I Part I(2)(a)); due diligence for third-party components (Art. 13(5)-(6)); technical documentation must describe the means used (Art. 31(1)).[1][3][2]
+**CRA anchors:** "no known exploitable vulnerabilities" at release (Annex I Part I(2)(a)); due diligence for third-party components (Art. 13(5)-(6)); technical documentation must describe the means used (Art. 31(1)).[1][3][2]
 
 ```mermaid
 flowchart TD
@@ -168,7 +171,7 @@ flowchart TD
 
 **Objective:** show the implemented controls actually meet the Annex I properties and remain effective.
 
-For embedded products, “security testing” should include:
+For embedded products, "security testing" should include:
 - static analysis for memory safety and misuse of crypto/APIs,
 - protocol and file-format fuzzing (host harness + nightly HIL),
 - negative tests for secure boot and update paths (bad signature, downgrade attempts),
@@ -204,7 +207,7 @@ Minimum release package for embedded products:
 - signed firmware images + hashes + version policy metadata,
 - SBOM per build (and VEX/triage notes where used),
 - update instructions and security configuration guidance for users/operators,
-- “Annex I coverage” summary linking clause → control → evidence.
+- "Annex I coverage" summary linking clause ? control ? evidence.
 
 **CRA anchors:** security updates and related user information (Annex I Part I(2)(c) + Annex II); technical documentation before market placement (Art. 31(2)); EU declaration of conformity states Annex I fulfillment (Art. 28(1)).[1][3][5]
 
@@ -256,18 +259,18 @@ sequenceDiagram
 
 ## Mapping SDL to NIST SSDF and IEC 62443-4-1 (optional but useful)
 
-The CRA is the legal baseline. Frameworks like **NIST SSDF (SP 800‑218)** and **IEC 62443‑4‑1** are commonly used to structure SDL activities and produce consistent evidence, but they are not a legal substitute for Annex I.[6][7]
+The CRA is the legal baseline. Frameworks like **NIST SSDF (SP 800-218)** and **IEC 62443-4-1** are commonly used to structure SDL activities and produce consistent evidence, but they are not a legal substitute for Annex I.[6][7]
 
 A practical alignment for embedded teams:
 
-- **Prepare (SSDF PO)** → Gate 0-1 (scope, roles, risk model, requirements)
-- **Protect (SSDF PS)** → Gate 2-3 (secure architecture, build integrity, dependency governance)
-- **Produce (SSDF PW)** → Gate 4-5 (testing, signing, SBOM, release evidence)
-- **Respond (SSDF RV)** → Gate 6 (PSIRT + updates)
+- **Prepare (SSDF PO)** ? Gate 0-1 (scope, roles, risk model, requirements)
+- **Protect (SSDF PS)** ? Gate 2-3 (secure architecture, build integrity, dependency governance)
+- **Produce (SSDF PW)** ? Gate 4-5 (testing, signing, SBOM, release evidence)
+- **Respond (SSDF RV)** ? Gate 6 (PSIRT + updates)
 
 ---
 
-## What to store where (so audits don’t turn into archaeology)
+## What to store where (so audits don't turn into archaeology)
 
 A CRA-friendly storage model is to keep:
 - design artifacts (ADRs, diagrams) in the architecture repo,
@@ -290,24 +293,24 @@ flowchart TB
 
 ## Common problems teams hit (and why they matter under CRA)
 
-If your SDL feels “heavy”, it’s usually because one of these foundational points is missing:
+If your SDL feels "heavy", it's usually because one of these foundational points is missing:
 
-1. **PDE boundary not defined**: device is documented, but OTA/provisioning/telemetry services are not → you cannot prove update/logging obligations.[2][3]
+1. **PDE boundary not defined**: device is documented, but OTA/provisioning/telemetry services are not ? you cannot prove update/logging obligations.[2][3]
 2. **Support period decided late**: update strategy and cost model are not aligned with required lifecycle handling (risk assessment and documentation must be updated during support period).[2][3]
-3. **Variant explosion without evidence**: multiple SKUs/boot chains exist but only one is tested/documented → evidence doesn’t represent what ships.
-4. **Signing and keys treated like a build detail**: key custody and signing logs are missing → you can’t prove update authenticity and integrity.[1][3]
-5. **No negative testing**: secure boot/update path is implemented but never attacked in tests (downgrade, corruption, replay) → integrity controls are unproven.
-6. **SBOM created once**: SBOM exists but is not tied to the exact release hash and there is no triage/VEX workflow → “no known exploitable vulnerabilities” is not defensible.[1]
-7. **Debug lifecycle not governed**: SWD/JTAG/UART policies rely on tribal knowledge → breaks secure-by-default and attack surface minimisation.[1]
-8. **PSIRT is “email-based”**: no documented vulnerability intake/triage/update/advisory flow → Annex I Part II expectations become unverifiable.[1]
-9. **Evidence scattered**: artifacts exist but are not indexed per release in the technical documentation → audits become slow and error-prone (Art. 31 + Annex VII).[3]
-10. **Process ignores standards evolution**: series production does not react to updated harmonised standards/common specifications → CRA requires procedures to maintain conformity over time.[2][4]
+3. **Variant explosion without evidence**: multiple SKUs/boot chains exist but only one is tested/documented ? evidence doesn't represent what ships.
+4. **Signing and keys treated like a build detail**: key custody and signing logs are missing ? you can't prove update authenticity and integrity.[1][3]
+5. **No negative testing**: secure boot/update path is implemented but never attacked in tests (downgrade, corruption, replay) ? integrity controls are unproven.
+6. **SBOM created once**: SBOM exists but is not tied to the exact release hash and there is no triage/VEX workflow ? "no known exploitable vulnerabilities" is not defensible.[1]
+7. **Debug lifecycle not governed**: SWD/JTAG/UART policies rely on tribal knowledge ? breaks secure-by-default and attack surface minimisation.[1]
+8. **PSIRT is "email-based"**: no documented vulnerability intake/triage/update/advisory flow ? Annex I Part II expectations become unverifiable.[1]
+9. **Evidence scattered**: artifacts exist but are not indexed per release in the technical documentation ? audits become slow and error-prone (Art. 31 + Annex VII).[3]
+10. **Process ignores standards evolution**: series production does not react to updated harmonised standards/common specifications ? CRA requires procedures to maintain conformity over time.[2][4]
 
 ---
 
 ## References
 
-[1]: Regulation (EU) 2024/2847 (CRA) - Annex I (Part I & Part II) (EUR‑Lex) https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847
+[1]: Regulation (EU) 2024/2847 (CRA) - Annex I (Part I & Part II) (EUR-Lex) https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847
 
 [2]: CRA - Article 13 (manufacturer obligations: risk assessment integrated across lifecycle; updated during support period; included in technical documentation; production conformity procedures) https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847
 
@@ -320,4 +323,6 @@ If your SDL feels “heavy”, it’s usually because one of these foundational 
 [6]: NIST SP 800-218 (Secure Software Development Framework - SSDF) https://csrc.nist.gov/pubs/sp/800/218/final
 
 [7]: IEC 62443-4-1 (Secure product development lifecycle requirements) (standard reference; obtain via IEC/ISA)
+
+
 

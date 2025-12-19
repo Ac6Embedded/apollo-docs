@@ -3,6 +3,10 @@ id: cra-sdl
 slug: /security/cra/secure-development-lifecycle
 title: Secure Development Lifecycle (SDL)
 sidebar_position: 5
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Warum ein SDL (CRA-Sicht)
@@ -248,3 +252,4 @@ flowchart TB
 [5]: CRA - Artikel 28 + Anhang II https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847
 [6]: NIST SP 800-218 (SSDF) https://csrc.nist.gov/pubs/sp/800/218/final
 [7]: IEC 62443-4-1 (Secure Product Development Lifecycle)
+

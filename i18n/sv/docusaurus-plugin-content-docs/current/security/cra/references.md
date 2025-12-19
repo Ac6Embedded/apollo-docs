@@ -3,6 +3,10 @@ id: cra-references
 slug: /security/cra/references
 title: CRA-referenser och resurser
 sidebar_position: 99
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Så använder du referenserna
@@ -113,3 +117,4 @@ Varje sida i serien länkar hit när den bygger på någon av dessa externa käl
 ## Not om harmoniserade standarder (dec 2025)
 
 - Per december 2025 har CRA-harmoniserade standarder ännu inte citerats i OJ. Kommissionens standardiseringsuppdrag till ESO:er pågår. Tills citation sker kan tillverkare luta sig mot robusta internationella/europeiska standarder (t.ex. IEC 62443-4-1/-4-2, ETSI EN 303 645) och välkända ramverk (t.ex. NIST SSDF). Kommissionen kan anta common specifications vid behov (CRA art. 27).
+

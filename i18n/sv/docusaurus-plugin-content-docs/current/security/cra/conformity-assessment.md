@@ -3,6 +3,10 @@ id: cra-conformity-assessment
 slug: /security/cra/conformity-assessment
 title: Conformity assessment och CE-märkning
 sidebar_position: 8
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Varför detta är viktigt för inbyggt
@@ -219,3 +223,4 @@ Exempel på inbyggt som kan bli "substantial modification":
 [1]: Regulation (EU) 2024/2847 (Cyber Resilience Act) - Official Journal (ELI): http://data.europa.eu/eli/reg/2024/2847/oj  
 
 [2]: Regulation (EU) 2024/2847 - consolidated text (CELEX): https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847
+

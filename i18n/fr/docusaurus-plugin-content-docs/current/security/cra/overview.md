@@ -2,9 +2,14 @@
 id: cra-overview
 slug: /security/cra
 title: CRA pour les developpeurs logiciel
+description: Guide CRA pour équipes embarquées couvrant périmètre, contrôles, mises à jour sécurisées, SBOM, PSIRT, SDL et preuves auditables.
 sidebar_position: 1
 sidebar_label: Vue d'ensemble CRA
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
+
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
@@ -20,3 +25,4 @@ Voir aussi : CRA References pour les liens officiels et standards.
 
 [1]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "Regulation (EU) 2024/2847 (CRA) - Official Journal"
 [2]: https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act "European Commission CRA portal"
+

@@ -3,6 +3,10 @@ id: cra-docs-sbom
 slug: /security/cra/documentation-and-sbom
 title: Dokumentation, Nutzerinfo und SBOM
 sidebar_position: 6
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Was der CRA sehen will
@@ -142,3 +146,4 @@ CRA verlangt kein VEX-Format; VEX-ähnliche Statements helfen, warum eine CVE zu
 ## Referenzen
 
 [1]: Regulation (EU) 2024/2847 (CRA), Art. 13 und 31; Anhänge I, II, VII: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847
+

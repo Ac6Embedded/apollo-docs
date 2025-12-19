@@ -134,3 +134,14 @@ a.footnote-ref sup {
   font-size: 0.95em;
   vertical-align: baseline;
 }
+
+/* Slightly smaller doc sidebar links */
+.theme-doc-sidebar-menu .menu__link {
+  font-size: 1rem;
+}
+
+@media (min-width: 997px) {
+  .theme-doc-sidebar-menu .menu__link {
+    font-size: 0.95rem;
+  }
+}

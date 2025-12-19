@@ -1,8 +1,11 @@
----
+﻿---
 id: cra-fundamental-security
 slug: /security/cra/fundamental-security-requirements
 title: Exigences fondamentales de securite
 sidebar_position: 3
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
 
 ## Ce que le CRA demande vraiment (vue ingenierie)
@@ -11,7 +14,7 @@ Le CRA est neutre technologiquement mais **pas vague** : les produits avec eleme
 
 Pour l'embarque, la question pratique est :
 
-> Pouvons-nous montrer—avec artefacts de conception, resultats de tests et procedures operationnelles—que l'appareil, le firmware et l'ecosysteme de mise a jour protegent **confidentialite, integrite, disponibilite**, et que nous pouvons garder le produit securise **pendant toute la periode de support** ?[1][2]
+> Pouvons-nous montrer-avec artefacts de conception, resultats de tests et procedures operationnelles-que l'appareil, le firmware et l'ecosysteme de mise a jour protegent **confidentialite, integrite, disponibilite**, et que nous pouvons garder le produit securise **pendant toute la periode de support** ?[1][2]
 
 Cette page cible MCU/SoC (capteurs, gateways, PLC, devices indus/consumer) et traduit le CRA en controles implementables et preuves a archiver dans la **documentation technique** (Annexe VII).[4]
 
@@ -339,3 +342,5 @@ Si vous ne fixez qu'une chose : construisez un **pipeline de release repetable**
 [6]: NIST SP 800-218 (SSDF) https://csrc.nist.gov/publications/detail/sp/800-218/final  
 [7]: ETSI EN 303 645 v3.1.3 (Consumer IoT baseline) https://www.etsi.org/deliver/etsi_en/303600_303699/303645/03.01.03_60/en_303645v030103p.pdf  
 [8]: IEC 62443-4-2 (IACS component technical security requirements) (standard payant via IEC/ISA)  
+
+

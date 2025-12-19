@@ -1,5 +1,8 @@
 ---
 sidebar_position: 1
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
 
 # Apollo oversikt
@@ -16,3 +19,4 @@ Varje spar borjar med en oversikt och varje underspar (t.ex. Security > CRA) har
 - Inom sparet borjar du med CRA-oversikten innan du gar vidare till tutorials och checklistor.
 
 Du kan byta mellan **English**, **Francais** och **Svenska** via sprakmenyn. Strukturen ar densamma i varje sprak sa att delade lankar fortsatter att fungera.
+

@@ -3,6 +3,10 @@ id: cra-scope-definitions
 slug: /security/cra/scope-and-definitions
 title: Scope, definitioner och klassificering
 sidebar_position: 2
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Varför scope är viktigt (för inbyggda team)
@@ -264,3 +268,4 @@ För revision/market surveillance bör du kunna visa en tydlig kedja:
 [3] CRA Artikel 3 (Definitioner: PDE, RDP, logisk/fysisk/indirekt koppling, manufacturer, OSS steward) - se [1], Art. 3(1)-(14).  
 [4] CRA Artiklar 7-8 (Important/Critical products) och bilaga III-IV - se [1], Art. 7-8 och bilagor.  
 [5] CRA Artiklar 19-22 och 24 (Importör/Distributör-plikter, när de blir manufacturer; OSS stewards) - se [1], Art. 19-22 och Art. 24.  
+

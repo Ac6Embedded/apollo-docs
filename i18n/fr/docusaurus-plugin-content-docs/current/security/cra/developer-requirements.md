@@ -3,6 +3,9 @@ id: cra-developer-requirements
 slug: /security/cra/developer-requirements
 title: Exigences developpeur et responsabilites
 sidebar_position: 2.5
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
 
 ## Ce que cette page est (et n'est pas)
@@ -251,3 +254,4 @@ Ce n'est pas le catalogue complet (voir **Embedded Technical Controls**), mais l
 [11]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "CRA Article 20 - Obligations distributors"  
 [12]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "CRA Article 21 - Quand importer/distributor devient manufacturer"  
 [13]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "CRA Article 22 - Autres cas de modification substantielle"  
+

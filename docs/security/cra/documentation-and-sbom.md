@@ -1,22 +1,25 @@
-﻿---
+---
 id: cra-docs-sbom
 slug: /security/cra/documentation-and-sbom
 title: Documentation, User Info, and SBOM
 sidebar_position: 6
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
 
 ## What the CRA expects to see
 
-The CRA turns into three concrete “documentation outputs”:
+The CRA turns into three concrete "documentation outputs":
 
-1. **Technical documentation (the “technical file”)**  
+1. **Technical documentation (the "technical file")**  
    Required by **Article 31** and detailed in **Annex VII**. It is the structured evidence set used for conformity assessment and for market-surveillance checks.  
 2. **User-facing security information and instructions**  
    Required by **Annex II**. This is what operators/customers need to deploy and run the product securely (including update instructions and support period).  
 3. **Software Bill of Materials (SBOM)**  
    Required by **Annex I, Part II(1)** and referenced again in **Annex VII(8)** (availability to authorities upon reasoned request).
 
-> **Key point:** CRA is not only “be secure”; it is “be secure *and be able to prove it* with consistent, versioned evidence”.
+> **Key point:** CRA is not only "be secure"; it is "be secure *and be able to prove it* with consistent, versioned evidence".
 
 ---
 
@@ -29,7 +32,7 @@ The CRA turns into three concrete “documentation outputs”:
 - **Article 13(13)** requires keeping the technical documentation and the EU declaration of conformity available to market-surveillance authorities for **at least 10 years after placing on the market, or for the support period-whichever is longer**.  
 - **Annex VII** provides the minimum content list.
 
-**What this means for embedded teams:** treat the technical file as a versioned, reproducible “release evidence pack” tied to each shipped firmware/hardware variant.
+**What this means for embedded teams:** treat the technical file as a versioned, reproducible "release evidence pack" tied to each shipped firmware/hardware variant.
 
 ---
 
@@ -45,7 +48,7 @@ Below is Annex VII mapped to typical embedded deliverables (MCU/SoC + RTOS + boo
 
 #### (2) Design, development, production + vulnerability handling processes
 - Architecture description with **component boundaries and trust boundaries**:
-  - Boot chain (ROM → 1st stage → MCUboot → app)
+  - Boot chain (ROM ? 1st stage ? MCUboot ? app)
   - Secure world / non-secure world split (TrustZone-M / TrustZone-A if present)
   - Key storage + lifecycle state (OTP/fuses/secure element/PUF/sealed flash region)
   - Remote data processing (if the product depends on it for intended functions)
@@ -154,9 +157,9 @@ flowchart TD
 ```
 
 **Embedded-specific expectations (what good looks like):**
-- **Update UX is explicit:** “how do I trigger an update?”, “how do I verify status?”, “what happens on failure?”, “how do I recover?”
+- **Update UX is explicit:** "how do I trigger an update?", "how do I verify status?", "what happens on failure?", "how do I recover?"
 - **Security posture is explicit:** which services are exposed, which are disabled, default credentials policy (ideally: none), debug state in production.
-- **Scope boundary is explicit:** what is inside the product’s responsibility vs external infrastructure (e.g., gateways, mobile apps, cloud endpoints).
+- **Scope boundary is explicit:** what is inside the product's responsibility vs external infrastructure (e.g., gateways, mobile apps, cloud endpoints).
 
 ---
 
@@ -169,13 +172,13 @@ flowchart TD
 
 Annex II(9) adds: **if** you decide to make the SBOM available to users, you must provide information on where it can be accessed.
 
-> **Important:** CRA does *not* mandate “publish your full SBOM to the internet”. It mandates **having one, keeping it consistent, and being able to provide it to authorities**.
+> **Important:** CRA does *not* mandate "publish your full SBOM to the internet". It mandates **having one, keeping it consistent, and being able to provide it to authorities**.
 
 ---
 
 ### 3.2 Embedded SBOM scope (what you should include)
 
-For firmware-based products, an SBOM that is “audit-proof” typically includes:
+For firmware-based products, an SBOM that is "audit-proof" typically includes:
 
 - **Boot chain components**
   - ROM immutable assumptions (documented, not a software component)
@@ -190,7 +193,7 @@ For firmware-based products, an SBOM that is “audit-proof” typically include
 - **Build tooling that impacts the binary**
   - compiler toolchain version, link scripts, code generators (as appropriate)
 
-> **Rule of thumb:** if a component can introduce a vulnerability into the shipped binary (or into the update pipeline that produces it), it belongs in your SBOM or in a clearly linked “build BOM”.
+> **Rule of thumb:** if a component can introduce a vulnerability into the shipped binary (or into the update pipeline that produces it), it belongs in your SBOM or in a clearly linked "build BOM".
 
 ---
 
@@ -207,13 +210,13 @@ flowchart TD
   PSIRT --> Update[Security update release]
 ```
 
-**Best practice for variants:** generate **one SBOM per build target** (SKU / SoC / feature set), because embedded variants often compile in/out different stacks (BLE, Wi‑Fi, cellular, secure element drivers, etc.).
+**Best practice for variants:** generate **one SBOM per build target** (SKU / SoC / feature set), because embedded variants often compile in/out different stacks (BLE, Wi-Fi, cellular, secure element drivers, etc.).
 
 ---
 
 ### 3.4 About VEX (useful, but not a CRA keyword)
 
-CRA requires vulnerability handling and SBOM; it does not mandate a specific “VEX” format.  
+CRA requires vulnerability handling and SBOM; it does not mandate a specific "VEX" format.  
 However, in practice, **a VEX-like statement** is the cleanest way to explain why a CVE does or does not apply to your exact build.
 
 If you use VEX, keep it strict:
@@ -224,7 +227,7 @@ If you use VEX, keep it strict:
 
 ---
 
-## Minimal, audit-ready “documentation pack” (embedded-friendly)
+## Minimal, audit-ready "documentation pack" (embedded-friendly)
 
 A structure that maps cleanly to Annex VII and survives product variants:
 
@@ -249,20 +252,20 @@ A structure that maps cleanly to Annex VII and survives product variants:
 
 ## Common problems teams hit (and how to avoid them)
 
-Use this as your “pre-audit sanity check”.
+Use this as your "pre-audit sanity check".
 
-1. **“Which exact thing is the product?”**  
-   Embedded products often include device + app + gateway + cloud. If you don’t define the boundary, your docs will be inconsistent.  
+1. **"Which exact thing is the product?"**  
+   Embedded products often include device + app + gateway + cloud. If you don't define the boundary, your docs will be inconsistent.  
 2. **Firmware variants explode the evidence set.**  
-   Different radios / crypto backends / secure element options → different SBOMs and different tests. Plan the variant model early.  
+   Different radios / crypto backends / secure element options ? different SBOMs and different tests. Plan the variant model early.  
 3. **SBOM exists but cannot be proven to match the shipped binary.**  
    Fix with immutable artifact storage + evidence-index + reproducible build constraints.  
 4. **Update instructions are vague.**  
-   Annex II expects clear operational steps and failure/recovery behaviour, not “supports OTA”.  
-5. **Key handling is “tribal knowledge”.**  
+   Annex II expects clear operational steps and failure/recovery behaviour, not "supports OTA".  
+5. **Key handling is "tribal knowledge".**  
    Provisioning and signing are core to compliance; document who can sign, where keys live, and how key rotation/revocation is handled.  
 6. **Security test evidence is not release-linked.**  
-   “We fuzzed once last year” is not evidence. Tie results to release IDs and store reports immutably.  
+   "We fuzzed once last year" is not evidence. Tie results to release IDs and store reports immutably.  
 7. **Support period is not concrete.**  
    If support period is unclear, you will fail operational expectations quickly. Put it in product materials and device UI/metadata where possible.
 
@@ -271,4 +274,6 @@ Use this as your “pre-audit sanity check”.
 ## References (primary sources)
 
 [1]: Regulation (EU) 2024/2847 (Cyber Resilience Act), EUR-Lex (consolidated text) - Articles 13 and 31; Annexes I, II, VII: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847
+
+
 

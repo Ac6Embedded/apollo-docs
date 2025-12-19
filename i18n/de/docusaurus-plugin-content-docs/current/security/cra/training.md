@@ -4,6 +4,10 @@ slug: /security/cra/training
 title: CRA-Training für Embedded-Teams
 description: Lektorengeführtes Cyber Resilience Act (CRA) Training für eingebettete Produkte mit Fokus auf Scope, Kontrollen, SDL, Evidenz und Audit-Readiness.
 sidebar_position: 100
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 Diese Seite beschreibt, wie AC6 Cyber Resilience Act (CRA) Training speziell für eingebettete Produkte anbietet. Ergänzt die Implementierungsanleitung um lektorengeführte Vertiefung, Labs und die Durchsprache Ihres Kontexts.
@@ -32,3 +36,4 @@ Diese Seite beschreibt, wie AC6 Cyber Resilience Act (CRA) Training speziell fü
 ## Teilnahme
 
 - Kurs: [Cyber Resilience Act and Embedded Systems (AC6)](https://www.ac6-training.com/en/cours.php/cat_oSEC/ref_oSEC10/cyber-resilience-act-and-embedded-systems)
+

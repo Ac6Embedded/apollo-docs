@@ -3,11 +3,14 @@ id: cra-timelines
 slug: /security/cra/timelines-and-enforcement
 title: Timelines, Enforcement, and Penalties
 sidebar_position: 9
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
 
 ## Why timelines matter (especially for embedded)
 
-The CRA is a **CE-marking regulation**: once it applies, you cannot “patch compliance” later. For embedded products with long lifetimes (MCUs in the field for 10+ years), the hard part is usually not the crypto primitive - it’s planning **support period**, **update logistics**, **evidence retention**, and **incident/vulnerability reporting** across product variants.
+The CRA is a **CE-marking regulation**: once it applies, you cannot "patch compliance" later. For embedded products with long lifetimes (MCUs in the field for 10+ years), the hard part is usually not the crypto primitive - it's planning **support period**, **update logistics**, **evidence retention**, and **incident/vulnerability reporting** across product variants.
 
 ---
 
@@ -37,13 +40,13 @@ timeline
     2027-08-01 : CRA applies (most obligations)
 ```
 
-**Engineering implication:** if you wait until late 2027 to build your processes, you’ll miss the point - the CRA expects **repeatable evidence**, not a one-time scramble.
+**Engineering implication:** if you wait until late 2027 to build your processes, you'll miss the point - the CRA expects **repeatable evidence**, not a one-time scramble.
 
 ---
 
-## What “existing products” means for long-lived devices
+## What "existing products" means for long-lived devices
 
-For embedded vendors, a typical trap is assuming “we shipped that model years ago, so it’s not impacted.”
+For embedded vendors, a typical trap is assuming "we shipped that model years ago, so it's not impacted."
 
 In CE terminology, what matters is **when you place a product on the market** (first supply for distribution/use in the EU). If you keep shipping the *same model* after CRA applies, you will need a compliant release + technical file **for the version you place on the market at that time**.
 
@@ -71,9 +74,9 @@ sequenceDiagram
     participant Auth as Single reporting platform (via ENISA)
     Ops->>Dev: Detection / report received
     Dev->>Dev: Triage (is it actively exploited? impact? affected versions?)
-    Dev->>Auth: Early warning (≤24h)
-    Dev->>Auth: Notification (≤72h)
-    Dev->>Auth: Final report (≤1 month) + updates
+    Dev->>Auth: Early warning (=24h)
+    Dev->>Auth: Notification (=72h)
+    Dev->>Auth: Final report (=1 month) + updates
 ```
 
 **Embedded reality check:** to hit these timelines, you need logging/telemetry (even minimal), a PSIRT workflow, and the ability to map a report to impacted firmware builds fast (SBOM + release traceability).
@@ -111,7 +114,7 @@ stateDiagram-v2
 - lack of SBOM for firmware + toolchain components,
 - no credible vulnerability handling / CVD process,
 - weak defaults (open debug, default passwords, exposed services),
-- “paper security”: claims without test evidence.
+- "paper security": claims without test evidence.
 
 ---
 
@@ -121,9 +124,9 @@ The CRA defines maximum administrative fine tiers in **Article 64**. For plannin
 
 | Non-compliance category (simplified) | Maximum administrative fines (upper bound) |
 |---|---|
-| Breach of **essential requirements** (Annex I) and certain core obligations (incl. reporting) | up to **€15,000,000** or **2.5%** of total worldwide annual turnover (whichever is higher) |
-| Breach of various **economic-operator duties** (e.g., documentation, cooperation, some supply-chain obligations) | up to **€10,000,000** or **2%** of turnover |
-| **Incorrect, incomplete or misleading information** to authorities | up to **€5,000,000** or **1%** of turnover |
+| Breach of **essential requirements** (Annex I) and certain core obligations (incl. reporting) | up to **15,000,000** or **2.5%** of total worldwide annual turnover (whichever is higher) |
+| Breach of various **economic-operator duties** (e.g., documentation, cooperation, some supply-chain obligations) | up to **10,000,000** or **2%** of turnover |
+| **Incorrect, incomplete or misleading information** to authorities | up to **5,000,000** or **1%** of turnover |
 
 Special notes that matter in practice:
 - The CRA includes **adjustments for micro and small enterprises** on certain reporting timelines (Article 64).
@@ -149,7 +152,7 @@ gantt
 
     section By 1 May 2026 (Article 14 readiness)
     Detection + triage runbooks + reporting drills     :b1, 2026-01-01, 240d
-    Release traceability (build → SBOM → binaries)     :b2, 2026-02-01, 200d
+    Release traceability (build ? SBOM ? binaries)     :b2, 2026-02-01, 200d
 
     section By 1 Aug 2027 (full application)
     Technical file (Annex VII) per product/variant     :c1, 2026-10-01, 420d
@@ -177,13 +180,13 @@ Key reminders:
 
 ## Typical problems teams hit in this section
 
-Use this list as a self-check before you leave “timelines & enforcement” and move to implementation.
+Use this list as a self-check before you leave "timelines & enforcement" and move to implementation.
 
 1. **Confusing entry-into-force vs application.**  
    You plan from the wrong date and miss the earlier process milestones (Aug 2025 / May 2026).
 
-2. **No clear “placing on the market” model for firmware.**  
-   You can’t answer: *which firmware build is tied to the CE technical file for this shipment batch?*
+2. **No clear "placing on the market" model for firmware.**  
+   You can't answer: *which firmware build is tied to the CE technical file for this shipment batch?*
 
 3. **Undefined support period for embedded devices.**  
    Sales promises 5-10 years, engineering plans 18 months. CRA forces this to be explicit and evidenced.
@@ -192,13 +195,13 @@ Use this list as a self-check before you leave “timelines & enforcement” and
    You still need a credible update mechanism: signed updates, integrity checks, recovery path, and user guidance on how updates are applied.
 
 5. **Variant explosion.**  
-   Different MCUs, radios, memory sizes, boot flows - you need evidence per variant, not “one PDF for everything.”
+   Different MCUs, radios, memory sizes, boot flows - you need evidence per variant, not "one PDF for everything."
 
 6. **Reporting readiness is underestimated.**  
-   24h/72h windows are not compatible with “we’ll look at it next sprint.” You need on-call PSIRT capability and clear thresholds.
+   24h/72h windows are not compatible with "we'll look at it next sprint." You need on-call PSIRT capability and clear thresholds.
 
 7. **Supplier evidence gaps.**  
-   ODM/OEM/SDK suppliers don’t provide SBOMs, test evidence, or vulnerability status - you can’t close your own obligations.
+   ODM/OEM/SDK suppliers don't provide SBOMs, test evidence, or vulnerability status - you can't close your own obligations.
 
 ---
 
@@ -207,4 +210,7 @@ Use this list as a self-check before you leave “timelines & enforcement” and
 [1]: Regulation (EU) 2024/2847 (Cyber Resilience Act), Article 71 (application dates) and Article 14 (reporting timelines): https://eur-lex.europa.eu/eli/reg/2024/2847/oj  
 
 [2]: Regulation (EU) 2024/2847, Article 64 (administrative fines): https://eur-lex.europa.eu/eli/reg/2024/2847/oj
+
+
+
 

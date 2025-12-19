@@ -3,7 +3,12 @@ id: cra-overview
 slug: /security/cra
 title: CRA für eingebettete Produkte – Praktische Implementierungsanleitung
 sidebar_position: 1
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
+
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
@@ -121,3 +126,4 @@ Die Anleitung stützt sich auf den CRA-Rechtstext, vor allem:
 - sowie CRA-Regeln zu Vulnerability Handling/Reporting und Conformity Assessment.
 
 [1]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "Regulation (EU) 2024/2847 - Cyber Resilience Act (CRA)"
+

@@ -1,8 +1,11 @@
----
+﻿---
 id: cra-qa
 slug: /security/cra/qa
 title: CRA Q&A
 sidebar_position: 11
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
 
 ## Our interpretation of the legal text
@@ -25,7 +28,7 @@ The CRA does not mandate a fixed number of years; duration is manufacturer-defin
 ### Q2) Is a soldered 3rd-party compute module (MCU/firmware) a product? What about the finished device?
 
 Often yes: the module is a PDE on its own, and the finished device is also a PDE.
-- If the module is placed on the EU market separately, it fits the PDE definition because the CRA includes “software or hardware components being placed on the market separately.”[1]
+- If the module is placed on the EU market separately, it fits the PDE definition because the CRA includes software or hardware components being placed on the market separately.[1]
 - **Module obligations** (when sold separately): risk assessment, Annex I controls, vulnerability handling, technical documentation, user/integrator instructions, and the right conformity assessment route.[2][7][8]
 - **Finished product obligations**: the final manufacturer remains responsible for CRA compliance of the whole product (module + your software + any remote data processing).[1][2]
 - **Integration due diligence**: third-party components (including OSS) must not compromise cybersecurity; exercise due diligence.[3]
@@ -43,7 +46,7 @@ Most reliable designs use cryptographic authenticity plus protected key storage;
 
 ### Q4) Must debug ports be disabled if the PDE is in a restricted area?
 
-CRA does not say “always disable JTAG/SWD/UART.” It requires minimising attack surface and preventing unauthorised access based on risk (intended purpose, foreseeable misuse, conditions of use).[2][7]
+CRA does not say always disable JTAG/SWD/UART. It requires minimising attack surface and preventing unauthorised access based on risk (intended purpose, foreseeable misuse, conditions of use).[2][7]
 Typical approach:
 - Disable debug by default, or require strong control (crypto unlock, per-device authorisation, tamper evidence, controlled service workflow).[7]
 - If debug must stay, document physical/procedural controls (access logs, roles, seals) and justify residual risk in the risk assessment and technical documentation.[2][7]
@@ -53,7 +56,7 @@ A restricted area lowers risk but does not remove the need to treat debug as sec
 
 Include the OS. Linux (kernel + userland) is part of the shipped attack surface.[1][8]
 - **Component visibility**: SBOM in a common machine-readable format (at least top-level dependencies).[8]
-- **Triage**: evaluate applicability/exploitability for your configuration; remediate “without delay” relative to risk (patch/mitigate/justify).[8]
+- **Triage**: evaluate applicability/exploitability for your configuration; remediate without delay relative to risk (patch/mitigate/justify).[8]
 - **User-facing info**: advisories for fixed vulnerabilities with severity and remediation guidance.[8]
 Practical: fix a baseline (distro, kernel config, package set), generate SBOMs per release, monitor CVEs for those versions, prioritise by exposure/reachability.[8][13]
 
@@ -65,7 +68,7 @@ Yes. CRA is platform-agnostic.[1]
 - Apply hardening/attack-surface reduction (disable unused services, least privilege, strong access control, logging/monitoring).[7]
 Windows compliance usually relies on controlled patch channels, locked-down configs, and asset management so you can prove what is deployed/supported.[7][8][13]
 
-### Q6.1) When is a bus “accessible” to a user?
+### Q6.1) When is a bus accessible to a user?
 
 Risk assessment considers intended purpose and **reasonably foreseeable use**, plus conditions of use (environment, assets, time in use).[2]
 If opening the enclosure with common tools is realistic, treat internal buses/headers as foreseeably accessible (insider/technician threat models) and mitigate:
@@ -73,7 +76,7 @@ If opening the enclosure with common tools is realistic, treat internal buses/he
 - Procedural (service policy, access logs),
 - Technical (debug disable, authenticated maintenance mode, bus protections).[2][7]
 
-### Q7) Our product includes lots of HW/SW we don’t control. What does CRA expect?
+### Q7) Our product includes lots of HW/SW we dont control. What does CRA expect?
 
 The manufacturer placing the PDE remains responsible, even with third-party components.[1][2]
 - **Due diligence**: ensure integrated components (including OSS) do not compromise cybersecurity.[3]
@@ -83,17 +86,17 @@ Supplier selection, support commitments, SBOM, and update capability are the lev
 
 ### Q8) Legacy serial ports (e.g., RS-232/Modbus RTU): must they be encrypted?
 
-CRA does not mandate “encrypt RS-232.” Controls are risk-based: prevent unauthorised access, protect confidentiality/integrity where relevant, and reduce attack surface.[7]
+CRA does not mandate encrypt RS-232. Controls are risk-based: prevent unauthorised access, protect confidentiality/integrity where relevant, and reduce attack surface.[7]
 - If physically exposed or crossing untrusted zones: add access control (locks), gateways, authentication where feasible, segmentation; consider tunnelling via a secure channel when sensitivity/control impact is high.[7]
 - If inside a controlled cabinet with trusted wiring: physical controls may be acceptable, but document the assumption and how misuse is prevented/detected.[2][7]
 Include the interface in threat model/risk assessment and justify controls; ignoring it is not defensible.[2][7]
 
-### Q9) Products placed after the CRA “application date”: must they be new designs?
+### Q9) Products placed after the CRA application date: must they be new designs?
 
 No. Applicability is tied to when the product is placed on the EU market. The Regulation applies from **11 December 2027**.[10]
 - Products placed before 11 December 2027 are subject to CRA only if they undergo a **substantial modification** after that date.[9][11]
 - Reporting obligations in Article 14 apply to all in-scope products, including those placed before 11 December 2027.[9][10]
-Older designs can still be placed after 11 December 2027 if upgraded to meet Annex I and related obligations—often requiring rework for updates, logging, SBOM/vuln handling.[7][8]
+Older designs can still be placed after 11 December 2027 if upgraded to meet Annex I and related obligations"often requiring rework for updates, logging, SBOM/vuln handling.[7][8]
 
 ---
 
@@ -109,6 +112,10 @@ Older designs can still be placed after 11 December 2027 if upgraded to meet Ann
 [8] CRA, Annex I Part II(1)-(7) (vulnerability handling, SBOM, remediation timelines, advisories, CVD, secure updates)  
 [9] CRA, Article 69(2)-(3) (transitional provisions; Article 14 applies to in-scope products placed before application date)  
 [10] CRA, Article 71(2) (application date 11 Dec 2027; earlier application for Article 14 and Chapter IV)  
-[11] CRA, Article 3 (definition of “substantial modification”)  
+[11] CRA, Article 3 (definition of substantial modification)  
 [12] See Annex I Part I(2)(c) and Part II(7)-(8) for secure update expectations  
 [13] CRA, Article 14 (reporting), plus Annex I Part II for vulnerability handling scope
+
+
+
+

@@ -3,6 +3,10 @@ id: cra-qa
 slug: /security/cra/qa
 title: CRA Q&A
 sidebar_position: 11
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Unsere Auslegung des Rechtstextes
@@ -112,3 +116,4 @@ Nein. Maßgeblich ist, wann das Produkt auf den EU-Markt gebracht wird. Die Vero
 [11] CRA, Article 3 (Definition „wesentliche Änderung“)  
 [12] Siehe Annex I Part I(2)(c) und Part II(7)-(8) für Anforderungen an sichere Updates  
 [13] CRA, Article 14 (Meldung) + Annex I Part II zum Scope des Vulnerability Handling
+

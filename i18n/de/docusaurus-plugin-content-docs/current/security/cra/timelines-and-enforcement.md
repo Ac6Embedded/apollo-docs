@@ -3,6 +3,10 @@ id: cra-timelines
 slug: /security/cra/timelines-and-enforcement
 title: Zeitachsen, Aufsicht und Sanktionen
 sidebar_position: 9
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Warum Zeitachsen wichtig sind (Embedded)
@@ -129,3 +133,4 @@ gantt
 
 [1]: CRA, Art. 71 (Anwendungsdaten), Art. 14 (Reporting) https://eur-lex.europa.eu/eli/reg/2024/2847/oj  
 [2]: CRA, Art. 64 (Bußgelder) https://eur-lex.europa.eu/eli/reg/2024/2847/oj
+

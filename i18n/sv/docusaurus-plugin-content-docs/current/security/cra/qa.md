@@ -3,6 +3,10 @@ id: cra-qa
 slug: /security/cra/qa
 title: CRA Q&A
 sidebar_position: 11
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Vår tolkning av den juridiska texten
@@ -112,3 +116,4 @@ Nej. Tillämpning kopplas till när produkten placeras på EU-marknaden. Förord
 [11] CRA, Article 3 (definition av “substantial modification”)  
 [12] Se Bilaga I del I(2)(c) och del II(7)-(8) för krav på säkra uppdateringar  
 [13] CRA, Article 14 (rapportering) + Bilaga I del II för scope för sårbarhetshantering
+

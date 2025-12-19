@@ -1,8 +1,11 @@
-﻿---
+---
 id: cra-embedded-controls
 slug: /security/cra/embedded-technical-controls
 title: Embedded Technical Controls Mapping
 sidebar_position: 4
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
 
 ## Purpose of this mapping
@@ -23,7 +26,7 @@ flowchart TB
     ROM["Boot ROM / immutable RoT"]
     BL["Bootloader (MCUboot / OEM BL)"]
     APP["Firmware (RTOS + apps)"]
-    IF["Interfaces: Eth/Wi‑Fi/BLE/Cellular/USB/UART/Fieldbus"]
+    IF["Interfaces: Eth/Wi-Fi/BLE/Cellular/USB/UART/Fieldbus"]
     DBG["Debug: SWD/JTAG/UART console"]
     ROM --> BL --> APP --> IF
     DBG --- APP
@@ -44,11 +47,11 @@ flowchart TB
     Device -->|Telemetry secured| Logs
 ```
 
-Key idea: most CRA clauses map to **multiple layers** (silicon → boot → runtime → ops).
+Key idea: most CRA clauses map to **multiple layers** (silicon ? boot ? runtime ? ops).
 
 ---
 
-## 1) CRA “property” requirements → embedded controls (Annex I Part I)
+## 1) CRA "property" requirements ? embedded controls (Annex I Part I)
 
 Annex I Part I(2)(a-m) is the actionable list. Below is a **control mapping** that stays faithful to the legal wording.
 
@@ -69,7 +72,7 @@ Annex I Part I(2)(a-m) is the actionable list. Below is a **control mapping** th
 | I(2)(k) reduce impact using exploitation mitigation | Contain compromise | MPU/MMU; TrustZone; privilege separation; hardening flags; sandboxing | Isolation design; build flags; pen-test summary |
 | I(2)(l) record/monitor relevant internal activity + opt-out | Security logging with user control | event taxonomy; tamper-resistant logs; secure export; opt-out semantics | Logging design; log protection scheme; export API |
 | I(2)(m) secure deletion + secure transfer | Decommission safely | secure wipe (internal + external flash); authenticated migration | Secure wipe design + verification; user instructions |
-| I(1) “appropriate level based on risks” | Proportionality backed by risk assessment | threat model; risk register; control rationale per environment | Risk assessment mapping to Annex I controls |
+| I(1) "appropriate level based on risks" | Proportionality backed by risk assessment | threat model; risk register; control rationale per environment | Risk assessment mapping to Annex I controls |
 
 **Source:** CRA Annex I Part I(1)-(2).[1]
 
@@ -115,7 +118,7 @@ sequenceDiagram
 
 **Evidence you should keep (technical file):**
 - provisioning specification (what is injected/derived and where),
-- lifecycle state diagram (manufacturing → production → RMA),
+- lifecycle state diagram (manufacturing ? production ? RMA),
 - certificate/key rotation and revocation plan.
 
 ---
@@ -161,7 +164,7 @@ flowchart TB
 - limit attack surface (I(2)(j))  
 - protect confidentiality/integrity (I(2)(e)-(f)).[1]
 
-### 4.2 What “exploitation mitigation” means on embedded
+### 4.2 What "exploitation mitigation" means on embedded
 
 On MCUs you may not have a full MMU, but you still can (and should) use:
 - **MPU** regioning (privileged vs unprivileged, read-only code, no-execute data where available),
@@ -173,7 +176,7 @@ On MCUs you may not have a full MMU, but you still can (and should) use:
 ```mermaid
 flowchart TD
   subgraph S["Secure world"]
-    TFM["TF‑M / secure services<br/>(crypto, storage, attestation)"]
+    TFM["TF-M / secure services<br/>(crypto, storage, attestation)"]
     SE["Secure storage / RoT keys"]
   end
 
@@ -202,11 +205,11 @@ flowchart TD
 - unauthorised access protection + reporting (I(2)(d))  
 - attack surface limitation (I(2)(j)).[1]
 
-### 5.2 Embedded “interface inventory” is mandatory in practice
+### 5.2 Embedded "interface inventory" is mandatory in practice
 
 Make a single list of:
 - physical ports (USB, UART, CAN, SWD/JTAG),
-- radio surfaces (BLE, Wi‑Fi, NFC),
+- radio surfaces (BLE, Wi-Fi, NFC),
 - software services (web UI, RPC, mgmt protocols, update endpoints).
 
 Then mark each as:
@@ -238,14 +241,14 @@ stateDiagram-v2
 
 ### 6.1 CRA anchor
 
-- confidentiality protection “by state of the art mechanisms” (I(2)(e))  
+- confidentiality protection "by state of the art mechanisms" (I(2)(e))  
 - integrity protection and corruption reporting (I(2)(f)).[1]
 
 ### 6.2 What auditors expect (embedded edition)
 
 You must be able to show:
 - **which protocols** you use (TLS/DTLS, MQTT over TLS, etc.),
-- **which cipher suites** and key sizes (policy, not just “we use TLS”),
+- **which cipher suites** and key sizes (policy, not just "we use TLS"),
 - how keys are generated, stored, rotated, revoked, and recovered (RMA).
 
 Keep it simple and defensible:
@@ -264,7 +267,7 @@ Keep it simple and defensible:
 
 ### 7.1 CRA anchor
 
-Annex I Part I(2)(l) requires recording and monitoring “relevant internal activity” including access or modification of data/services/functions, with an opt-out mechanism.[1]
+Annex I Part I(2)(l) requires recording and monitoring "relevant internal activity" including access or modification of data/services/functions, with an opt-out mechanism.[1]
 
 ### 7.2 Embedded implementation patterns
 
@@ -290,7 +293,7 @@ flowchart TD
 **Evidence you should keep:**
 - event taxonomy + severity mapping,
 - log protection design (tamper resistance / integrity),
-- “opt-out” definition and behavior (what is disabled and what remains required for safety/security).
+- "opt-out" definition and behavior (what is disabled and what remains required for safety/security).
 
 ---
 
@@ -371,7 +374,7 @@ flowchart TB
 
 ---
 
-## 10) “Knobs” checklist (what engineers actually configure)
+## 10) "Knobs" checklist (what engineers actually configure)
 
 Below is a practical list of common embedded security knobs that directly support Annex I:
 
@@ -409,28 +412,30 @@ Below is a practical list of common embedded security knobs that directly suppor
 
 ## Common problems teams hit when doing this mapping (embedded-specific)
 
-If this page feels “hard to apply”, it is usually one of these issues:
+If this page feels "hard to apply", it is usually one of these issues:
 
 1. **Undefined PDE boundary**: device is documented, but OTA/provisioning/telemetry services are not (mapping breaks for updates/logging).  
 2. **Variant explosion**: multiple memory maps/boot chains exist (A/B vs swap) but evidence covers only one path.  
 3. **No lifecycle state policy**: manufacturing vs production vs RMA is not defined, so debug/keys/rollback are inconsistent.  
-4. **Identity model not specified**: “device has TLS” but no clear per-device identity, certificate issuance, or revocation plan.  
+4. **Identity model not specified**: "device has TLS" but no clear per-device identity, certificate issuance, or revocation plan.  
 5. **Anti-rollback missing**: update mechanism exists but allows downgrade to vulnerable firmware (conflicts with the purpose of I(2)(c)).  
 6. **Logging exists but is unsafe**: logs are unauthenticated and can be forged, or export is unauthenticated (weakens I(2)(l)).  
 7. **Secure wipe not implemented**: factory reset exists but secrets remain in flash/external storage (I(2)(m)).  
 8. **SBOM without triage**: SBOM is produced but there is no process to assess impact and remediate without delay (Part II(2)).  
-9. **“Opt-out” ambiguity**: opt-out for logs/auto-updates is not clearly defined for your product type; document the interpretation and user instructions (Annex II).  
+9. **"Opt-out" ambiguity**: opt-out for logs/auto-updates is not clearly defined for your product type; document the interpretation and user instructions (Annex II).  
 10. **Evidence not versioned**: controls exist, but artifacts are not linked to a specific release hash in the technical documentation (Annex VII failure mode).
 
 ---
 
 ## References
 
-[1]: Regulation (EU) 2024/2847 (Cyber Resilience Act) - Annex I (Part I & Part II) (EUR‑Lex) https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847
+[1]: Regulation (EU) 2024/2847 (Cyber Resilience Act) - Annex I (Part I & Part II) (EUR-Lex) https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847
 
 [2]: ETSI EN 303 645 v3.1.3 (Consumer IoT baseline) https://www.etsi.org/deliver/etsi_en/303600_303699/303645/03.01.03_60/en_303645v030103p.pdf
 
-[3]: IEC 62443‑4‑2 (IACS component technical security requirements) (standard reference; obtain via IEC/ISA)
+[3]: IEC 62443-4-2 (IACS component technical security requirements) (standard reference; obtain via IEC/ISA)
 
-[4]: CRA Annex VII - Technical documentation requirements (EUR‑Lex) https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847
+[4]: CRA Annex VII - Technical documentation requirements (EUR-Lex) https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847
+
+
 

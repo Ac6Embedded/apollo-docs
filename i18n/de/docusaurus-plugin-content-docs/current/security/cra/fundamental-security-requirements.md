@@ -3,6 +3,10 @@ id: cra-fundamental-security
 slug: /security/cra/fundamental-security-requirements
 title: Grundlegende Sicherheitsanforderungen
 sidebar_position: 3
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Was der CRA wirklich fordert (engineering-Übersetzung)
@@ -284,3 +288,4 @@ Wenn nur eins: bauen Sie eine **wiederholbare Release-Pipeline**, die (1) signie
 [7]: ETSI EN 303 645 v3.1.3 https://www.etsi.org/deliver/etsi_en/303600_303699/303645/03.01.03_60/en_303645v030103p.pdf
 
 [8]: IEC 62443-4-2 (IACS-Komponentenanforderungen) (Standardbezug)
+

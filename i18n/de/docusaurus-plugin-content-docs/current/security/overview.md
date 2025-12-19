@@ -1,26 +1,40 @@
 ---
 id: security-overview
-title: Ãœberblick - Warum Embedded Security
-slug: /security/security-overview
-sidebar_label: Ãœberblick
+title: Überblick – Warum Embedded Security
+slug: /security
+sidebar_label: Überblick
 sidebar_position: 1
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
 
-Eingebettete GerÃ¤te sind zunehmend vernetzt und sicherheitskritisch. Eine einzelne Schwachstelle kann zu GefÃ¤hrdungen fÃ¼r Personen, Serviceâ€‘AusfÃ¤llen, Verlust von geistigem Eigentum oder regulatorischer Nichtâ€‘KonformitÃ¤t fÃ¼hren. Sicherheit von Anfang an einzuplanen reduziert das Risiko Ã¼ber den gesamten Lebenszyklus und die Total Cost of Ownership.
+import DocCardList from '@theme/DocCardList';
 
-Wesentliche Treiber:
+Eingebettete Geräte sind zunehmend vernetzt und sicherheitskritisch. Eine einzige Schwachstelle kann zu Sicherheitsrisiken, Ausfällen, IP-Verlust oder regulatorischer Nichtkonformität führen. Sicherheit von Anfang an senkt Lebenszyklusrisiken und Gesamtbetriebskosten.
 
-- Safety: Vermeidung unsicheren Verhaltens durch bÃ¶sartige Eingaben oder Fehler.  
-- Compliance: ErfÃ¼llung neuer Vorschriften (z.â€¯B. EU Cyber Resilience Act).  
-- Resilienz: Begrenzung des Schadensumfangs und ErmÃ¶glichung einer sicheren Wiederherstellung.  
-- Vertrauen: Schutz von Daten, IP und Lieferkettenâ€‘IntegritÃ¤t.  
+Haupttreiber:
 
-Zentrale SÃ¤ulen, auf denen wir aufbauen:
+- Safety: Unsicheres Verhalten durch bösartige Eingaben oder Fehler verhindern.
+- Compliance: Neue Vorgaben erfüllen (z.B. EU Cyber Resilience Act).
+- Resilienz: Schadensausmaß begrenzen und sichere Wiederherstellung ermöglichen.
+- Vertrauen: Daten, IP und Supply-Chain-Integrität schützen.
 
-- Threat Modelling und sichere Architektur  
-- Root of Trust, Secure Boot und IntegritÃ¤t von Updates  
-- Speicherschutz und Least Privilege  
-- Sichere Kommunikation und SchlÃ¼sselverwaltung  
-- Schwachstellenmanagement und Incident Response  
+Zentrale Pfeiler, auf denen wir aufbauen:
 
-Als nÃ¤chstes: Verschaffen Sie sich im CRAâ€‘Bereich einen Ãœberblick Ã¼ber die Pflichten fÃ¼r Softwareâ€‘Entwickler und wie sie Embeddedâ€‘Projekte beeinflussen. Siehe Security â†’ CRA â†’ References fÃ¼r offizielle Links und Standards.
+- Threat Modeling und sichere Architektur
+- Root of Trust und Update-Integrität
+- Speicherschutz und Least Privilege
+- Sichere Kommunikation und Key Management
+- Vulnerability Handling und Incident Response
+
+Nächste Schritte: Starten Sie mit den CRA-Pflichten für Software-Entwickler. Siehe Security > CRA > References für offizielle Links und Standards.
+
+## Sicherheitsthemen erkunden
+
+<DocCardList
+  items={[
+    {type: 'link', label: 'CRA Übersicht', href: '/docs/security/cra'},
+  ]}
+/>
+

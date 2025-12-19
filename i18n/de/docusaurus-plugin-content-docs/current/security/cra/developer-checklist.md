@@ -3,6 +3,10 @@ id: cra-developer-checklist
 slug: /security/cra/developer-checklist
 title: Entwickler-Checkliste und Vorlagen
 sidebar_position: 10
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Was diese Checkliste ist (und nicht ist)
@@ -289,3 +293,4 @@ sequenceDiagram
 - ISO/IEC 30111: https://www.iso.org/standard/69725.html
 - SPDX: https://spdx.dev/specifications/
 - CycloneDX: https://cyclonedx.org/specification/
+

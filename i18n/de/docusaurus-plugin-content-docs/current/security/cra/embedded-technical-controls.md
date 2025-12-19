@@ -3,6 +3,10 @@ id: cra-embedded-controls
 slug: /security/cra/embedded-technical-controls
 title: Mapping eingebetteter technischer Kontrollen
 sidebar_position: 4
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Zweck dieses Mappings
@@ -314,3 +318,4 @@ Evidenz: SBOM pro Release mit Build-Hash, CVE-Triage/ggf. VEX, Nachweis, dass Vu
 [3]: IEC 62443-4-2 (IACS-Komponenten-Sicherheitsanforderungen)
 
 [4]: CRA Anhang VII - Technical Documentation https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847
+

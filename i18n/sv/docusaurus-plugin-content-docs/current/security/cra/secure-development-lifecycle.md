@@ -3,6 +3,10 @@ id: cra-sdl
 slug: /security/cra/secure-development-lifecycle
 title: Secure Development Lifecycle (SDL)
 sidebar_position: 5
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Varför ett SDL krävs (CRA-perspektiv)
@@ -320,3 +324,4 @@ Om SDL känns "tungt" saknas ofta något av detta:
 [6]: NIST SP 800-218 (Secure Software Development Framework - SSDF) https://csrc.nist.gov/pubs/sp/800/218/final
 
 [7]: IEC 62443-4-1 (Secure product development lifecycle requirements) (standard reference; obtain via IEC/ISA)
+

@@ -3,6 +3,10 @@ id: cra-scope-definitions
 slug: /security/cra/scope-and-definitions
 title: Scope, Definitionen und Klassifizierung
 sidebar_position: 2
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Warum Scope zählt (für Embedded-Teams)
@@ -264,3 +268,4 @@ Für Audits/Surveillance sollten Sie zeigen können:
 [3] CRA Artikel 3 (Definitionen: PDE, RDP, logische/physische/indirekte Verbindung, Manufacturer, OSS Steward) - siehe [1], Art. 3(1)-(14).  
 [4] CRA Artikel 7-8 (Important/Critical Products) + Anhang III-IV - siehe [1].  
 [5] CRA Artikel 19-22 und 24 (Importer/Distributor-Pflichten, wann sie Manufacturer werden; OSS Stewards) - siehe [1].  
+

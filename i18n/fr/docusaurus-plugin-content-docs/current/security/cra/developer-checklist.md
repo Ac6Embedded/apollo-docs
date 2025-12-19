@@ -1,15 +1,18 @@
----
+﻿---
 id: cra-developer-checklist
 slug: /security/cra/developer-checklist
 title: Checklist developpeur et templates
 sidebar_position: 10
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
 
-## Ce qu’est (ou n’est pas) cette checklist
+## Ce qu'est (ou n'est pas) cette checklist
 
 Checklist **release-grade** pour produits embarques sous le CRA. Elle traduit les obligations CRA en taches ingenierie et force chaque case a pointer vers des **evidences** a placer dans votre dossier technique CRA.
 
-Ce n’est **pas** un substitut a l’analyse legale ou au choix de route de conformity assessment. C’est l’outil quotidien pour firmware, plateforme et DevSecOps.
+Ce n'est **pas** un substitut a l'analyse legale ou au choix de route de conformity assessment. C'est l'outil quotidien pour firmware, plateforme et DevSecOps.
 
 > **Regle evidence :** une case est "done" uniquement si elle pointe vers *au moins* : ID ticket/PR/MR, run CI, rapport de test, artefact signe, SBOM/VEX, doc design, ADR, ou decision datee.
 
@@ -19,7 +22,7 @@ Ce n’est **pas** un substitut a l’analyse legale ou au choix de route de con
 
 Vous verrez souvent :
 
-- **Designed, developed, produced** conforme a l’Annexe I Part I (obligation manufacturer).  
+- **Designed, developed, produced** conforme a l'Annexe I Part I (obligation manufacturer).  
 - **Cybersecurity risk assessment** documentee et incluse dans la doc technique.  
 - **Due diligence** sur composants tiers (dont open source).  
 - **Vulnerability handling** pendant la support period (Annexe I Part II).  
@@ -106,7 +109,7 @@ flowchart LR
 - [ ] **Support period declaree et consigne** (duree minimale et politique end-of-support).  
   Evidence : `support-period.md` + plan client.
 
-> Conseil embarque : definir la portee par *image* (bootloader, app, radio), par *SKU hardware*, et par *dependance cloud*. L’audit foire souvent sur les frontieres floues.
+> Conseil embarque : definir la portee par *image* (bootloader, app, radio), par *SKU hardware*, et par *dependance cloud*. L'audit foire souvent sur les frontieres floues.
 
 ---
 
@@ -114,8 +117,8 @@ flowchart LR
 
 - [ ] **Analyse de risque cyber existe** pour le produit et est mise a jour pour cette release.  
   Evidence : `01-risk-assessment.md` + changelog.
-- [ ] **Analyse couvre** : usage prevu + usage raisonnablement previsible, environnement, assets, duree d’usage attendue.  
-  Evidence : sections d’analyse + refs.
+- [ ] **Analyse couvre** : usage prevu + usage raisonnablement previsible, environnement, assets, duree d'usage attendue.  
+  Evidence : sections d'analyse + refs.
 - [ ] **Mapping Annexe I Part I inclus** : pour chaque exigence, applicabilite + implementation ou justification.  
   Evidence : `04-controls-mapping.md`.
 
@@ -138,7 +141,7 @@ flowchart TD
   Evidence : section threat model "trust boundaries".
 - [ ] **Attacker model documente** (remote, local avec acces physique, supply-chain adversary).  
   Evidence : `02-threat-model.md`.
-- [ ] **Abuse/misuse cases** pour : chemin d’update, debug/service mode, provisioning, stack radio/reseau.  
+- [ ] **Abuse/misuse cases** pour : chemin d'update, debug/service mode, provisioning, stack radio/reseau.  
   Evidence : liste menaces + mitigations.
 
 ---
@@ -148,13 +151,13 @@ flowchart TD
 - [ ] **Chaine de boot documentee** de la ROM au premier/second stage et app.  
   Evidence : `03-architecture.md` (section boot).
 - [ ] **Authenticite & integrite** verifiees a chaque etape (signature + hash policy).  
-  Evidence : code/config + tests d’echec.
+  Evidence : code/config + tests d'echec.
 - [ ] **Anti-rollback defini** (version monotone, compteur secure, fuses) et teste.  
   Evidence : politique de version + logs de test.
 - [ ] **Identite device** definie (cle/cert par device) et protegee par RoT (SE, enclave, OTP, equivalent).  
   Evidence : doc hierarchie de cle + SOP provisioning.
 - [ ] **Provisioning durci** (gestion des cles en usine, separation des taches, audit logs).  
-  Evidence : procedure manufacturing + preuves d’access control.
+  Evidence : procedure manufacturing + preuves d'access control.
 
 ---
 
@@ -225,7 +228,7 @@ flowchart TD
 
 - [ ] **Bundle doc technique** a jour (archi, risk assessment, mapping controles, tests, provisioning, updates).  
   Evidence : `security/cra/releases/<ver>/` bundle.
-- [ ] **Infos securite utilisateur** (support period, methode d’update, config securise, risques residuels).  
+- [ ] **Infos securite utilisateur** (support period, methode d'update, config securise, risques residuels).  
   Evidence : `08-user-info-annex-ii.md` + lien doc publique.
 - [ ] **Inputs DoC UE** a jour (identification produit, standards utilises, info NB si applicable).  
   Evidence : draft DoC + liste de mapping version.
@@ -238,7 +241,7 @@ flowchart TD
   Evidence : URL + copie repo.
 - [ ] **Workflow PSIRT operationnel** (intake, triage, fix, advisory, rollout, postmortem).  
   Evidence : runbook + templates ticket.
-- [ ] **Mecanisme d’update teste end-to-end** (A/B ou swap, coupure courant, prevention rollback, recovery).  
+- [ ] **Mecanisme d'update teste end-to-end** (A/B ou swap, coupure courant, prevention rollback, recovery).  
   Evidence : logs HIL + tests automatisees update.
 - [ ] **Playbook reporting Art. 14** existe et est repete : qui declare, quelles donnees, comment tenir 24h/72h pour actively exploited vulns et severe incidents.  
   Evidence : runbook reporting + on-call rota + trace dry-run.
@@ -262,17 +265,17 @@ sequenceDiagram
 
 ## Templates (copier/coller)
 
-### Template A — CRA Release Evidence Index
+### Template A - CRA Release Evidence Index
 
 `07-release-attestation.md` :
 
 ```md
-# CRA Release Evidence Index — <produit> <version>
+# CRA Release Evidence Index - <produit> <version>
 
 ## Identification
 - Produit/SKU(s) :
 - Revisions HW :
-- IDs d’image firmware (bootloader/app/radio) :
+- IDs d'image firmware (bootloader/app/radio) :
 - Commit/tag build :
 - Date de release :
 
@@ -312,7 +315,7 @@ sequenceDiagram
 - Date :
 ```
 
-### Template B — ADR skeleton (decision securite)
+### Template B - ADR skeleton (decision securite)
 
 `security/cra/adr/ADR-XXXX.md` :
 
@@ -325,7 +328,7 @@ sequenceDiagram
 - Contraintes (ressources MCU, energie, cout, boot ROM, etc.) :
 
 ## Decision
-- Ce qu’on decide :
+- Ce qu'on decide :
 - Pourquoi (rationale risque) :
 
 ## Proprietes securite
@@ -349,7 +352,7 @@ sequenceDiagram
 - Section controls mapping :
 ```
 
-### Template C — SBOM/VEX minimum
+### Template C - SBOM/VEX minimum
 
 ```md
 # SBOM/VEX minimum bar (par release)
@@ -378,9 +381,11 @@ sequenceDiagram
 
 ## References
 
-- Regulation (EU) 2024/2847 (Cyber Resilience Act) — Official Journal (ELI) : http://data.europa.eu/eli/reg/2024/2847/oj/eng  
+- Regulation (EU) 2024/2847 (Cyber Resilience Act) - Official Journal (ELI) : http://data.europa.eu/eli/reg/2024/2847/oj/eng  
 - NIST SP 800-218 (SSDF) : https://csrc.nist.gov/pubs/sp/800/218/final  
 - ISO/IEC 29147 (Vulnerability disclosure) : https://www.iso.org/standard/45170.html  
 - ISO/IEC 30111 (Vulnerability handling processes) : https://www.iso.org/standard/69725.html  
 - SPDX specifications : https://spdx.dev/specifications/  
 - CycloneDX specification : https://cyclonedx.org/specification/  
+
+

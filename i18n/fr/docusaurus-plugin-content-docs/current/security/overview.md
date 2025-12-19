@@ -4,7 +4,11 @@ slug: /security
 title: Vue d'ensemble - Pourquoi la securite embarquee
 sidebar_label: Vue d'ensemble
 sidebar_position: 1
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
+
 import DocCardList from '@theme/DocCardList';
 
 Les systemes embarques sont de plus en plus connectes et critiques pour la securite. Une seule vulnerabilite peut provoquer des dangers pour les personnes, des interruptions de service, une fuite de propriete intellectuelle ou une non-conformite reglementaire. Integrer la securite des la conception reduit le risque sur tout le cycle de vie et le cout total de possession.
@@ -33,3 +37,4 @@ Etape suivante : explorez les obligations du CRA pour les developpeurs logiciels
     {type: 'link', label: 'CRA overview', href: '/docs/security/cra'},
   ]}
 />
+

@@ -4,7 +4,11 @@ title: Oversikt - varfor inbyggd sakerhet
 slug: /security
 sidebar_label: Oversikt
 sidebar_position: 1
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
+
 import DocCardList from '@theme/DocCardList';
 
 Inbyggda enheter ar alltmer uppkopplade och sakerhetskritiska. En enda sarbarhet kan leda till risker for manniskor, driftstopp, IP-forluster eller bristande regelefterlevnad. Bygg in sakerhet fran start for att minska risken over hela livscykeln och agandekostnaden.
@@ -33,3 +37,4 @@ Nasta steg: borja med CRA-obligationerna for utvecklare, ga sedan vidare till Se
     {type: 'link', label: 'CRA overview', href: '/docs/security/cra'},
   ]}
 />
+

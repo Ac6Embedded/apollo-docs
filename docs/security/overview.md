@@ -1,10 +1,14 @@
-﻿---
+---
 id: security-overview
 title: Overview - Why Embedded Security
 slug: /security
 sidebar_label: Overview
 sidebar_position: 1
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
+
 import DocCardList from '@theme/DocCardList';
 
 Embedded devices are increasingly connected and safety-critical. A single vulnerability can lead to safety hazards, service downtime, IP loss, or regulatory non-compliance. Building in security from the start reduces lifecycle risk and total cost of ownership.
@@ -33,3 +37,4 @@ Next steps: start with CRA obligations for software developers. See Security > C
     {type: 'link', label: 'CRA overview', href: '/docs/security/cra'},
   ]}
 />
+

@@ -3,6 +3,10 @@ id: cra-qa
 slug: /security/cra/qa
 title: FAQ CRA
 sidebar_position: 11
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
 
 ## Notre interprétation du texte juridique
@@ -112,3 +116,4 @@ Les anciens designs peuvent être placés après cette date s’ils sont mis à 
 [11] CRA, Article 3 (définition de « substantial modification »)  
 [12] Voir Annex I Part I(2)(c) et Part II(7)-(8) pour les attentes sur les mises à jour sécurisées  
 [13] CRA, Article 14 (notification) + Annexe I Part II pour le périmètre de gestion des vulnérabilités
+

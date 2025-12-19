@@ -1,13 +1,16 @@
-﻿---
+---
 id: cra-developer-requirements
 slug: /security/cra/developer-requirements
 title: Developer Requirements and Ownership
 sidebar_position: 2.5
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
 
-## What this page is (and isn’t)
+## What this page is (and isn't)
 
-This is a **developer-facing translation** of the Cyber Resilience Act (CRA): it explains *what engineering must implement and keep as evidence* so the **manufacturer** can demonstrate compliance. It does **not** create “personal legal duties” for individual developers - the CRA places obligations on **economic operators** (manufacturer/importer/distributor/etc.).[1]
+This is a **developer-facing translation** of the Cyber Resilience Act (CRA): it explains *what engineering must implement and keep as evidence* so the **manufacturer** can demonstrate compliance. It does **not** create "personal legal duties" for individual developers - the CRA places obligations on **economic operators** (manufacturer/importer/distributor/etc.).[1]
 
 For embedded products, the key is simple: **we treat architecture + SDLC artefacts as compliance evidence** and we keep them versioned per release.[2][3]
 
@@ -15,14 +18,14 @@ For embedded products, the key is simple: **we treat architecture + SDLC artefac
 
 ## Legal anchors developers must implement
 
-The CRA makes three ideas non‑optional for engineering teams:
+The CRA makes three ideas non-optional for engineering teams:
 
 1. **Risk-based security engineering** (before release, and updated when needed). Manufacturers must perform a cybersecurity risk assessment and keep it in the technical documentation.[4][5]
 2. **Essential cybersecurity requirements** built into the product (Annex I, Part I). In practice this becomes design requirements + implementation controls + verification.[2]
 3. **Vulnerability handling + security updates** for the support period (Annex I, Part II + Article 13 support-period obligations). This is a sustained operational capability, not a one-off release task.[6][5]
 
-:::note CRA “documentation” is a product feature
-The CRA requires technical documentation to be created **before** placing on the market and to be **continuously updated at least during the support period**.[3] If engineering doesn’t produce and version the artefacts, compliance fails - even if the device is “secure in practice”.
+:::note CRA "documentation" is a product feature
+The CRA requires technical documentation to be created **before** placing on the market and to be **continuously updated at least during the support period**.[3] If engineering doesn't produce and version the artefacts, compliance fails - even if the device is "secure in practice".
 :::
 
 ---
@@ -31,7 +34,7 @@ The CRA requires technical documentation to be created **before** placing on the
 
 ### Why RACI matters
 
-Audits fail more often due to **unclear ownership** than due to missing crypto primitives. The CRA expects the manufacturer to show “the means used” and “the processes put in place” to meet Annex I requirements in the technical documentation.[3]
+Audits fail more often due to **unclear ownership** than due to missing crypto primitives. The CRA expects the manufacturer to show "the means used" and "the processes put in place" to meet Annex I requirements in the technical documentation.[3]
 
 Below is a practical ownership baseline for an embedded PDE (MCU/SoC + firmware + optional cloud/OTA). Adapt the names to your org chart.
 
@@ -64,8 +67,8 @@ Example ID scheme:
 - `CRA-A13-8-support-period` (Article 13(8))
 
 Why it matters:
-- it links **design → code → tests → evidence**,
-- it makes it trivial to generate an “evidence index” for Annex VII technical documentation.[3]
+- it links **design ? code ? tests ? evidence**,
+- it makes it trivial to generate an "evidence index" for Annex VII technical documentation.[3]
 
 ```mermaid
 flowchart TD
@@ -113,7 +116,7 @@ Output artefacts:
 Article 13 expects the manufacturer to keep products compliant across production and change.[7] For embedded engineering, that means:
 
 - **Reproducible builds**: build scripts + toolchain versions pinned.
-- **Secure dependency governance**: dependency manifests versioned; third‑party components must not compromise security (due diligence obligation).[5]
+- **Secure dependency governance**: dependency manifests versioned; third-party components must not compromise security (due diligence obligation).[5]
 - **Coding rules enforced**: static analysis, mandatory reviews, unsafe-code policy for Rust/C/C++ modules.
 - **Key handling rules**: keys never live in source control; signing is performed with controlled access (HSM or equivalent).
 
@@ -124,7 +127,7 @@ Output artefacts:
 
 ### 4) Release engineering (gate 3)
 
-Release is where “proof” is created:
+Release is where "proof" is created:
 
 - **Signed firmware artefacts** + hashes + versioning metadata.
 - **SBOM** tied to the shipped build (CRA definition of SBOM is explicit).[8]
@@ -176,7 +179,7 @@ So engineering should generate a per-release **CRA Evidence Pack** (minimum):
 - support period statement and end-date,
 - vulnerability disclosure/contact details.
 
-:::tip OEM/ODM caution: “substantial modification”
+:::tip OEM/ODM caution: "substantial modification"
 If an importer/distributor (or any other person) makes a **substantial modification** and then makes the product available, they can be treated as a **manufacturer** and become subject to Article 13 and 14 for what they changed (or potentially the whole product).[12][13] That should be reflected in contracts and integration guides.
 :::
 
@@ -192,9 +195,9 @@ flowchart TD
 
 ---
 
-## Embedded-specific “must cover” list (mapped to Annex I)
+## Embedded-specific "must cover" list (mapped to Annex I)
 
-This isn’t the full control catalogue (see **Embedded Technical Controls**), but these topics are the ones that consistently appear in conformity assessment discussions for embedded products.
+This isn't the full control catalogue (see **Embedded Technical Controls**), but these topics are the ones that consistently appear in conformity assessment discussions for embedded products.
 
 | Topic | Typical embedded implementation patterns | CRA anchor |
 | --- | --- | --- |
@@ -212,29 +215,29 @@ This isn’t the full control catalogue (see **Embedded Technical Controls**), b
 
 ## Common problems teams hit in this section (and how to avoid them)
 
-1. **“We’re secure but can’t prove it.”**  
+1. **"We're secure but can't prove it."**  
    Fix: make evidence artefacts first-class outputs (ADRs, test reports, SBOM, update rehearsal logs) and index them in the technical documentation.[3]
 
 2. **Scope drift in embedded systems.**  
    Fix: define the product boundary explicitly (device firmware + bootloader + companion app + cloud endpoints used for updates). Keep the scope diagram versioned per release.
 
 3. **Role confusion across OEM/ODM/integrators.**  
-   Fix: explicitly document who controls the firmware build, signing keys, update endpoints, and support period. If someone modifies security-relevant parts, treat it as a potential “substantial modification” case.[12][13]
+   Fix: explicitly document who controls the firmware build, signing keys, update endpoints, and support period. If someone modifies security-relevant parts, treat it as a potential "substantial modification" case.[12][13]
 
 4. **Support period underestimated.**  
    Fix: decide it early and validate it against expected lifetime; the CRA sets a minimum support period (with a limited exception when expected use is shorter).[5]
 
-5. **SBOM exists but isn’t tied to the shipped binary.**  
+5. **SBOM exists but isn't tied to the shipped binary.**  
    Fix: generate SBOM in CI from the exact build inputs, store it with the release manifest, and keep the definition consistent with Article 3.[8]
 
 6. **Update mechanism designed late.**  
-   Fix: treat secure updates as an architecture requirement (bootloader strategy, partitioning, rollback, key rotation), not as a “feature” to add post‑MVP.[2][6]
+   Fix: treat secure updates as an architecture requirement (bootloader strategy, partitioning, rollback, key rotation), not as a "feature" to add post-MVP.[2][6]
 
 7. **Third-party components become the blind spot.**  
    Fix: maintain a dependency governance process; if we find a vulnerability in a component, we must report upstream and remediate per Annex I Part II.[5][6]
 
 8. **No operational vulnerability handling.**  
-   Fix: implement a PSIRT process with clear intake, triage, fix, and advisory steps, and ensure secure update distribution is ready to deliver fixes “without delay”.[6]
+   Fix: implement a PSIRT process with clear intake, triage, fix, and advisory steps, and ensure secure update distribution is ready to deliver fixes "without delay".[6]
 
 ---
 
@@ -265,4 +268,6 @@ This isn’t the full control catalogue (see **Embedded Technical Controls**), b
 [12]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "CRA Article 21 - Importers/distributors treated as manufacturers in certain cases"
 
 [13]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "CRA Article 22 - Other substantial modification cases treated as manufacturers"
+
+
 

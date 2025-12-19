@@ -1,13 +1,16 @@
-﻿---
+---
 id: cra-fundamental-security
 slug: /security/cra/fundamental-security-requirements
 title: Fundamental Security Requirements
 sidebar_position: 3
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
 
 ## What the CRA is really asking for (in engineering terms)
 
-The Cyber Resilience Act (CRA) is technology-neutral, but it is **not vague**: it requires that products with digital elements (PDEs) are **designed, developed and produced** to reach an “appropriate level of cybersecurity based on the risks” (Annex I, Part I(1)), and then it lists **concrete properties** you must deliver (Annex I, Part I(2)(a-m)).[1]
+The Cyber Resilience Act (CRA) is technology-neutral, but it is **not vague**: it requires that products with digital elements (PDEs) are **designed, developed and produced** to reach an "appropriate level of cybersecurity based on the risks" (Annex I, Part I(1)), and then it lists **concrete properties** you must deliver (Annex I, Part I(2)(a-m)).[1]
 
 For embedded systems, that translates to a very practical question:
 
@@ -17,7 +20,7 @@ This page is written for MCU/SoC products (sensors, gateways, PLCs, industrial/c
 
 ---
 
-## Secure-by-design vs secure-by-default (don’t mix them up)
+## Secure-by-design vs secure-by-default (don't mix them up)
 
 Both are required, but they are not the same thing:
 
@@ -33,7 +36,7 @@ flowchart TD
 ```
 
 
-If secure-by-design is weak (no trustworthy boot, no key protection, no update mechanism), secure-by-default becomes a checkbox exercise and you won’t have credible evidence.
+If secure-by-design is weak (no trustworthy boot, no key protection, no update mechanism), secure-by-default becomes a checkbox exercise and you won't have credible evidence.
 
 ---
 
@@ -45,7 +48,7 @@ CRA evidence is easiest when you define a **reference architecture** and then sh
 flowchart TB
   subgraph Field["Field / Device side"]
     MCU["MCU/SoC<br/>Boot ROM + Bootloader + App"]
-    IF["Interfaces<br/>BLE/Wi‑Fi/Eth/USB/UART"]
+    IF["Interfaces<br/>BLE/Wi-Fi/Eth/USB/UART"]
     DBG["Debug & test<br/>SWD/JTAG/UART console"]
   end
 
@@ -70,9 +73,9 @@ flowchart TB
 
 ## CRA essential requirements translated for embedded devices
 
-Annex I Part I is the core “security properties” checklist. Below, I keep the CRA clause reference and translate it into embedded controls + evidence you can actually ship.
+Annex I Part I is the core "security properties" checklist. Below, I keep the CRA clause reference and translate it into embedded controls + evidence you can actually ship.
 
-### Part I(1): “Appropriate level of cybersecurity based on the risks”
+### Part I(1): "Appropriate level of cybersecurity based on the risks"
 
 This is the top rule: you must justify your security posture using a documented and maintained **cybersecurity risk assessment** (Art. 13(2)-(3)).[2] That risk assessment must indicate how Annex I Part I(2) applies to your product and how you implement it.[2][1]
 
@@ -82,7 +85,7 @@ Practical embedded outcome:
 - define attacker capabilities (remote, local, supply-chain),
 - then choose controls proportional to that risk profile.
 
-### Part I(2)(a): “No known exploitable vulnerabilities” at release time
+### Part I(2)(a): "No known exploitable vulnerabilities" at release time
 
 CRA requires PDEs to be made available **without known exploitable vulnerabilities**.[1]
 
@@ -105,7 +108,7 @@ Embedded translation (examples):
 - factory reset wipes user secrets and restores hardened baseline.
 
 Evidence you keep:
-- “secure defaults matrix” (features/services vs default state) + factory reset behavior spec.[4][1]
+- "secure defaults matrix" (features/services vs default state) + factory reset behavior spec.[4][1]
 
 ### Part I(2)(c): Security updates (including default auto-update + opt-out)
 
@@ -142,7 +145,7 @@ Translation:
 - protect sensitive assets in RAM where possible (isolation + zeroization on reset).
 
 Evidence you keep:
-- crypto profile, key management plan, and “data classification & flows” document.[4][1]
+- crypto profile, key management plan, and "data classification & flows" document.[4][1]
 
 ### Part I(2)(f): Integrity of data, commands, programs and configuration + reporting
 
@@ -163,7 +166,7 @@ CRA requires processing only data that is adequate, relevant, and limited to wha
 
 Embedded translation:
 - only collect telemetry required for security/operations,
-- avoid “always-on” identifiers unless needed,
+- avoid "always-on" identifiers unless needed,
 - define retention windows and on-device sampling policies.
 
 Evidence you keep:
@@ -177,7 +180,7 @@ Embedded translation:
 - watchdog + safe recovery mode,
 - rate limiting for network endpoints; bounds on resource usage (CPU, heap, queues),
 - robust input validation for protocol parsers,
-- “fail secure”/“fail close” decisions for safety/security critical paths.
+- "fail secure"/"fail close" decisions for safety/security critical paths.
 
 Evidence you keep:
 - availability threat analysis, robustness test results, and resource budget limits.[4][1]
@@ -202,7 +205,7 @@ CRA requires recording and monitoring relevant internal activity (access to or m
 Translation:
 - security event list: boot verdicts, auth failures, debug unlock attempts, update failures, integrity alarms,
 - tamper-resistant log storage (bounded ring + integrity protection) or secure export,
-- an explicit opt-out path for the user when the product context requires it (document what “opt-out” means for your device class).
+- an explicit opt-out path for the user when the product context requires it (document what "opt-out" means for your device class).
 
 Evidence you keep:
 - event taxonomy + log protection scheme + export interface security.[4][1]
@@ -212,7 +215,7 @@ Evidence you keep:
 CRA requires a way for users to securely and easily remove all data and settings permanently, and ensure secure transfer when data can be moved to another system.[1][3]
 
 Translation:
-- “secure wipe” that covers credentials, user data, and config (including in external flash),
+- "secure wipe" that covers credentials, user data, and config (including in external flash),
 - secure decommissioning procedure in user documentation,
 - if migration exists (e.g., moving config to a new unit), the transfer must be authenticated and confidentiality-protected.
 
@@ -246,9 +249,9 @@ What to plan for:
 
 ---
 
-## Putting it all together: a “minimum credible” embedded security blueprint
+## Putting it all together: a "minimum credible" embedded security blueprint
 
-This is not the only valid design, but it’s a common pattern that maps cleanly to Annex I:
+This is not the only valid design, but it's a common pattern that maps cleanly to Annex I:
 
 ```mermaid
 flowchart TB
@@ -293,9 +296,9 @@ Where each block maps back to Annex I Part I(2) properties and Part II processes
 
 ## Evidence: what should end up in the technical documentation
 
-CRA’s technical documentation must include (at least) the system architecture description, risk assessment showing how Annex I applies, vulnerability handling process specs (including SBOM and secure update distribution), and test reports.[4][2]
+CRA's technical documentation must include (at least) the system architecture description, risk assessment showing how Annex I applies, vulnerability handling process specs (including SBOM and secure update distribution), and test reports.[4][2]
 
-Use an “evidence map” so you can answer audit questions in minutes:
+Use an "evidence map" so you can answer audit questions in minutes:
 
 ```mermaid
 flowchart TD
@@ -306,28 +309,28 @@ flowchart TD
 ```
 
 Examples:
-- Annex I(2)(c) updates → signed OTA design → update test logs → Annex VII item 2(b) + item 6 evidence.[1][4]
-- Annex I(2)(j) attack surface → interface inventory → port scanning + fuzz results → Annex VII item 2(a) + item 6.[1][4]
-- Part II(1) SBOM → SBOM in CycloneDX/SPDX → archive per release → Annex VII item 2(b) + item 8 (on request).[1][4]
+- Annex I(2)(c) updates ? signed OTA design ? update test logs ? Annex VII item 2(b) + item 6 evidence.[1][4]
+- Annex I(2)(j) attack surface ? interface inventory ? port scanning + fuzz results ? Annex VII item 2(a) + item 6.[1][4]
+- Part II(1) SBOM ? SBOM in CycloneDX/SPDX ? archive per release ? Annex VII item 2(b) + item 8 (on request).[1][4]
 
 ---
 
 ## Common issues teams hit on embedded products (use as a review checklist)
 
-If you’re unsure how to implement or document this chapter, it’s usually one of these problems:
+If you're unsure how to implement or document this chapter, it's usually one of these problems:
 
-1. **Unclear security environment**: physical access assumptions are missing, so “appropriate level of cybersecurity” can’t be justified.[2][1]
+1. **Unclear security environment**: physical access assumptions are missing, so "appropriate level of cybersecurity" can't be justified.[2][1]
 2. **No single update story**: multiple SKUs/boot paths exist, but only one is documented/tested (breaks Annex I(2)(c) evidence).[1][4]
-3. **Debug isn’t governed**: SWD/JTAG/UART policies are “tribal knowledge” (hurts secure-by-default and attack surface reduction).[1]
+3. **Debug isn't governed**: SWD/JTAG/UART policies are "tribal knowledge" (hurts secure-by-default and attack surface reduction).[1]
 4. **Identity model is fuzzy**: no clear device identity, roles, or access control for maintenance actions (fails Annex I(2)(d)).[1]
 5. **Key lifecycle is not defined**: provisioning, rotation, revocation, and RMA are not engineered (weak confidentiality/integrity controls).[1]
-6. **Logging is treated as “nice to have”**: no event taxonomy, no protection, no export story, and no user opt-out definition.[1]
+6. **Logging is treated as "nice to have"**: no event taxonomy, no protection, no export story, and no user opt-out definition.[1]
 7. **Secure wipe is forgotten**: factory reset exists but secrets remain in flash/external storage (fails Annex I(2)(m) and user instructions).[1][3]
 8. **SBOM without operations**: SBOM is generated once, but there is no triage/VEX workflow and no linkage to release gates (fails Part II(1-2)).[1]
-9. **“Availability” is not tested**: watchdog and recovery paths exist but were never exercised under DoS/resource exhaustion conditions.[1]
+9. **"Availability" is not tested**: watchdog and recovery paths exist but were never exercised under DoS/resource exhaustion conditions.[1]
 10. **Evidence is scattered**: artifacts exist but are not referenced and versioned in the technical file (Annex VII pain).[4]
 
-If you fix only one thing: build a **repeatable release pipeline** that produces (1) signed artifacts, (2) SBOM/VEX, (3) security test results, and (4) a short “Annex I coverage report” that points to the evidence for each clause.[1][4]
+If you fix only one thing: build a **repeatable release pipeline** that produces (1) signed artifacts, (2) SBOM/VEX, (3) security test results, and (4) a short "Annex I coverage report" that points to the evidence for each clause.[1][4]
 
 ---
 
@@ -348,4 +351,6 @@ If you fix only one thing: build a **repeatable release pipeline** that produces
 [7]: ETSI EN 303 645 v3.1.3 (Consumer IoT baseline) https://www.etsi.org/deliver/etsi_en/303600_303699/303645/03.01.03_60/en_303645v030103p.pdf
 
 [8]: IEC 62443-4-2 (IACS component technical security requirements) (standard reference; obtain via IEC/ISA)
+
+
 

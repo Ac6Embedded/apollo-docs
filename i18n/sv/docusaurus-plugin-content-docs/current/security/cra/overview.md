@@ -3,7 +3,12 @@ id: cra-overview
 slug: /security/cra
 title: CRA för inbyggda produkter – praktisk implementationsguide
 sidebar_position: 1
+
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-19'
 ---
+
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
@@ -121,3 +126,4 @@ Guiden lutar sig mot den legala CRA-texten, främst:
 - samt CRA:s skrivningar om sårbarhetshantering/rapportering och vägar för conformity assessment.
 
 [1]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "Regulation (EU) 2024/2847 - Cyber Resilience Act (CRA)"
+

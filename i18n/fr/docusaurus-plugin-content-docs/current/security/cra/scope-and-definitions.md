@@ -3,6 +3,9 @@ id: cra-scope-definitions
 slug: /security/cra/scope-and-definitions
 title: Portee, definitions et classification
 sidebar_position: 2
+last_update:
+  author: 'Ayoub Bourjilat (AC6)'
+  date: '2025-12-18'
 ---
 
 ## Pourquoi la portee compte (pour l'embarque)
@@ -264,3 +267,4 @@ Pour un audit ou la surveillance du marche, vous devez montrer une trace claire 
 [3] CRA Article 3 (Definitions : PDE, RDP, connexion logique/physique/indirecte, manufacturer, OSS steward) - voir [1], Art. 3(1)-(14).  
 [4] CRA Article 7-8 (Important/Critical products) et Annexes III-IV - voir [1], Art. 7-8 et annexes.  
 [5] CRA Articles 19-22 et 24 (Importer/Distributor duties, quand ils deviennent manufacturer; OSS stewards) - voir [1], Art. 19-22 et Art. 24.  
+
