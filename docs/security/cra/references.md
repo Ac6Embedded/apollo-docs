@@ -1,7 +1,8 @@
----
+﻿---
 id: cra-references
 slug: /security/cra/references
 title: CRA References and Resources
+description: "CRA references: legal texts, standards, and guidance links for compliance."
 sidebar_position: 99
 last_update:
   author: 'Ayoub Bourjilat (AC6)'
@@ -116,6 +117,8 @@ Each tutorial page in this series links back here when it relies on one of these
 ## Notes on Harmonised Standards (Dec 2025)
 
 - As of Dec 2025, CRA harmonised standards have not yet been cited in the OJ. The Commission's standardisation request to ESOs is in progress. Until citation, manufacturers may rely on robust international/European standards (e.g., IEC 62443-4-1/-4-2, ETSI EN 303 645) and well-recognized frameworks (e.g., NIST SSDF). The Commission may adopt common specifications if necessary (CRA Art. 27).
+
+
 
 
 

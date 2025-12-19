@@ -2,6 +2,7 @@
 id: cra-qa
 slug: /security/cra/qa
 title: CRA Q&A
+description: "CRA Q&A answering common compliance questions for embedded products."
 sidebar_position: 11
 last_update:
   author: 'Ayoub Bourjilat (AC6)'
@@ -115,6 +116,8 @@ Older designs can still be placed after 11 December 2027 if upgraded to meet Ann
 [11] CRA, Article 3 (definition of substantial modification)  
 [12] See Annex I Part I(2)(c) and Part II(7)-(8) for secure update expectations  
 [13] CRA, Article 14 (reporting), plus Annex I Part II for vulnerability handling scope
+
+
 
 
 

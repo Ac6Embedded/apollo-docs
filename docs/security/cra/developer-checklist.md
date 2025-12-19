@@ -1,7 +1,8 @@
----
+﻿---
 id: cra-developer-checklist
 slug: /security/cra/developer-checklist
 title: Developer Checklist and Templates
+description: "Developer checklist for CRA compliance across scope, controls, SDL, documentation, and PSIRT readiness."
 sidebar_position: 10
 last_update:
   author: 'Ayoub Bourjilat (AC6)'
@@ -389,6 +390,7 @@ Create `security/cra/adr/ADR-XXXX.md`:
 - ISO/IEC 30111 (Vulnerability handling processes): https://www.iso.org/standard/69725.html
 - SPDX specifications: https://spdx.dev/specifications/
 - CycloneDX specification: https://cyclonedx.org/specification/
+
 
 
 

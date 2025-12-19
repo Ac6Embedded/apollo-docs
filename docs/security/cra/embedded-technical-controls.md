@@ -1,7 +1,8 @@
----
+﻿---
 id: cra-embedded-controls
 slug: /security/cra/embedded-technical-controls
 title: Embedded Technical Controls Mapping
+description: "Embedded technical controls for CRA: boot, isolation, crypto, updates, identity, logging, and hardening."
 sidebar_position: 4
 last_update:
   author: 'Ayoub Bourjilat (AC6)'
@@ -436,6 +437,7 @@ If this page feels "hard to apply", it is usually one of these issues:
 [3]: IEC 62443-4-2 (IACS component technical security requirements) (standard reference; obtain via IEC/ISA)
 
 [4]: CRA Annex VII - Technical documentation requirements (EUR-Lex) https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847
+
 
 
 

@@ -1,7 +1,8 @@
----
+﻿---
 id: cra-conformity-assessment
 slug: /security/cra/conformity-assessment
 title: Conformity Assessment and CE Marking
+description: "CRA conformity assessment routes, notified body vs self-assessment, and evidence expectations."
 sidebar_position: 8
 last_update:
   author: 'Ayoub Bourjilat (AC6)'
@@ -222,6 +223,7 @@ Embedded examples that can become "substantial modification" in practice:
 [1]: Regulation (EU) 2024/2847 (Cyber Resilience Act) - Official Journal (ELI): http://data.europa.eu/eli/reg/2024/2847/oj  
 
 [2]: Regulation (EU) 2024/2847 - consolidated text (CELEX): https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847
+
 
 
 

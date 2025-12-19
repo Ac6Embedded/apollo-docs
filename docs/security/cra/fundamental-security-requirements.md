@@ -1,7 +1,8 @@
----
+﻿---
 id: cra-fundamental-security
 slug: /security/cra/fundamental-security-requirements
 title: Fundamental Security Requirements
+description: "Fundamental security requirements from CRA Annex I mapped to embedded products."
 sidebar_position: 3
 last_update:
   author: 'Ayoub Bourjilat (AC6)'
@@ -351,6 +352,7 @@ If you fix only one thing: build a **repeatable release pipeline** that produces
 [7]: ETSI EN 303 645 v3.1.3 (Consumer IoT baseline) https://www.etsi.org/deliver/etsi_en/303600_303699/303645/03.01.03_60/en_303645v030103p.pdf
 
 [8]: IEC 62443-4-2 (IACS component technical security requirements) (standard reference; obtain via IEC/ISA)
+
 
 
 

@@ -1,7 +1,8 @@
----
+﻿---
 id: cra-docs-sbom
 slug: /security/cra/documentation-and-sbom
 title: Documentation, User Info, and SBOM
+description: "CRA documentation and SBOM requirements, including evidence files, VEX, and user information."
 sidebar_position: 6
 last_update:
   author: 'Ayoub Bourjilat (AC6)'
@@ -274,6 +275,8 @@ Use this as your "pre-audit sanity check".
 ## References (primary sources)
 
 [1]: Regulation (EU) 2024/2847 (Cyber Resilience Act), EUR-Lex (consolidated text) - Articles 13 and 31; Annexes I, II, VII: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847
+
+
 
 
 

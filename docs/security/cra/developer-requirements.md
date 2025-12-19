@@ -1,7 +1,8 @@
----
+﻿---
 id: cra-developer-requirements
 slug: /security/cra/developer-requirements
 title: Developer Requirements and Ownership
+description: "Developer obligations under the CRA: roles, responsibilities, support period, risk assessment, and vulnerability handling."
 sidebar_position: 2.5
 last_update:
   author: 'Ayoub Bourjilat (AC6)'
@@ -268,6 +269,7 @@ This isn't the full control catalogue (see **Embedded Technical Controls**), but
 [12]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "CRA Article 21 - Importers/distributors treated as manufacturers in certain cases"
 
 [13]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847 "CRA Article 22 - Other substantial modification cases treated as manufacturers"
+
 
 
 

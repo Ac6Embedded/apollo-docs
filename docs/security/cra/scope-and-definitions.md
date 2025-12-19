@@ -2,6 +2,7 @@
 id: cra-scope-definitions
 slug: /security/cra/scope-and-definitions
 title: Scope, Definitions, and Classification
+description: "CRA scope and definitions for PDEs, roles, and important/critical classification."
 sidebar_position: 2
 last_update:
   author: 'Ayoub Bourjilat (AC6)'
@@ -267,6 +268,7 @@ For audits and market surveillance, you should be able to show a clean trace:
 [3] CRA Article 3 (Definitions: PDE, RDP, logical/physical/indirect connection, manufacturer, OSS steward) - see [1], Art. 3(1)-(14).  
 [4] CRA Article 7-8 (Important/Critical products) and Annex III-IV - see [1], Art. 7-8 and Annexes.  
 [5] CRA Articles 19-22 and 24 (Importer/Distributor duties, when they become manufacturer; OSS stewards) - see [1], Art. 19-22 and Art. 24.  
+
 
 
 

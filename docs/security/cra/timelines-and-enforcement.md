@@ -2,6 +2,7 @@
 id: cra-timelines
 slug: /security/cra/timelines-and-enforcement
 title: Timelines, Enforcement, and Penalties
+description: "CRA timelines, enforcement dates, reporting obligations, and compliance planning."
 sidebar_position: 9
 last_update:
   author: 'Ayoub Bourjilat (AC6)'
@@ -210,6 +211,7 @@ Use this list as a self-check before you leave "timelines & enforcement" and mov
 [1]: Regulation (EU) 2024/2847 (Cyber Resilience Act), Article 71 (application dates) and Article 14 (reporting timelines): https://eur-lex.europa.eu/eli/reg/2024/2847/oj  
 
 [2]: Regulation (EU) 2024/2847, Article 64 (administrative fines): https://eur-lex.europa.eu/eli/reg/2024/2847/oj
+
 
 
 
