@@ -1,8 +1,8 @@
----
+ï»¿---
 id: security-overview
-title: Überblick – Warum Embedded Security
+title: Ãœberblick â€“ Warum Embedded Security
 slug: /security
-sidebar_label: Überblick
+sidebar_label: Ãœberblick
 sidebar_position: 1
 last_update:
   author: 'Ayoub Bourjilat (AC6)'
@@ -11,30 +11,29 @@ last_update:
 
 import DocCardList from '@theme/DocCardList';
 
-Eingebettete Geräte sind zunehmend vernetzt und sicherheitskritisch. Eine einzige Schwachstelle kann zu Sicherheitsrisiken, Ausfällen, IP-Verlust oder regulatorischer Nichtkonformität führen. Sicherheit von Anfang an senkt Lebenszyklusrisiken und Gesamtbetriebskosten.
+Eingebettete GerÃ¤te sind zunehmend vernetzt und sicherheitskritisch. Eine einzige Schwachstelle kann zu Sicherheitsrisiken, AusfÃ¤llen, IP-Verlust oder regulatorischer NichtkonformitÃ¤t fÃ¼hren. Sicherheit von Anfang an senkt Lebenszyklusrisiken und Gesamtbetriebskosten.
 
 Haupttreiber:
 
-- Safety: Unsicheres Verhalten durch bösartige Eingaben oder Fehler verhindern.
-- Compliance: Neue Vorgaben erfüllen (z.B. EU Cyber Resilience Act).
-- Resilienz: Schadensausmaß begrenzen und sichere Wiederherstellung ermöglichen.
-- Vertrauen: Daten, IP und Supply-Chain-Integrität schützen.
+- Safety: Unsicheres Verhalten durch bÃ¶sartige Eingaben oder Fehler verhindern.
+- Compliance: Neue Vorgaben erfÃ¼llen (z.B. EU Cyber Resilience Act).
+- Resilienz: SchadensausmaÃŸ begrenzen und sichere Wiederherstellung ermÃ¶glichen.
+- Vertrauen: Daten, IP und Supply-Chain-IntegritÃ¤t schÃ¼tzen.
 
 Zentrale Pfeiler, auf denen wir aufbauen:
 
 - Threat Modeling und sichere Architektur
-- Root of Trust und Update-Integrität
+- Root of Trust und Update-IntegritÃ¤t
 - Speicherschutz und Least Privilege
 - Sichere Kommunikation und Key Management
 - Vulnerability Handling und Incident Response
 
-Nächste Schritte: Starten Sie mit den CRA-Pflichten für Software-Entwickler. Siehe Security > CRA > References für offizielle Links und Standards.
+NÃ¤chste Schritte: Starten Sie mit den CRA-Pflichten fÃ¼r Software-Entwickler. Siehe Security > CRA > References fÃ¼r offizielle Links und Standards.
 
 ## Sicherheitsthemen erkunden
 
 <DocCardList
   items={[
-    {type: 'link', label: 'CRA Übersicht', href: '/docs/security/cra'},
+    {type: 'link', label: 'CRA Ãœbersicht', href: '/docs/security/cra'},
   ]}
 />
-
