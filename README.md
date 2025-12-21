@@ -71,7 +71,7 @@ Deploy builds the site and pushes it to the `gh-pages` branch. The site is also 
 
 ## Internationalization
 
-The site currently ships with English (`en`), French (`fr`), and Swedish (`sv`). Update translation sources with:
+Sources with:
 
 ```powershell
 yarn write-translations
